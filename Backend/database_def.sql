@@ -45,3 +45,15 @@ Create table if not exists doctor(
     contrasena varchar(30)
 );
 
+Create table if not exists asistente(
+    nombre_usuario varchar(30) primary key,
+    nombre text,
+    contrasena varchar(30)
+);
+
+Create table if not exists tratamiento(
+    id_tratamiento serial,
+    nombre text,
+    precio float
+);
+
