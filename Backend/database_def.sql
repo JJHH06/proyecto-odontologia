@@ -64,3 +64,15 @@ Create table if not exists inventario(
     ultima_fecha date
 );
 
+Create table if not exists cita(
+    id_cita serial primary key,
+    paciente int,
+    asistente varchar(30),
+    doctor varchar(30),
+    tratamiento int,
+    foreign key (paciente) references paciente(id_paciente),
+    foreign key (asistente) references asistente(nombre_usuario),
+    foreign key (doctor) references doctor(nombre_usuario),
+    foreign key (tratamiento) references tratamiento(id_tratamiento)
+);
+
