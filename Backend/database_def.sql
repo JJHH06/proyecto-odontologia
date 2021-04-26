@@ -57,3 +57,10 @@ Create table if not exists tratamiento(
     precio float
 );
 
+Create table if not exists inventario(
+    id_item serial primary key,
+    nombre_item varchar(32),
+    cantidad int,
+    ultima_fecha date
+);
+
