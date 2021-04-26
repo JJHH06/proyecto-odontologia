@@ -31,3 +31,17 @@ Create table if not exists diagnostico_dental(
     id_diagnostico serial primary key,
     nombre_diagnostico varchar(30)
 );
+
+Create table if not exists diagnostico_paciente(
+    id_paciente int,
+    id_diagnostico int,
+    id_pieza int,
+    primary key (id_paciente,id_diagnostico,id_pieza);
+
+
+Create table if not exists doctor(
+    nombre_usuario varchar(30) primary key,
+    nombre text,
+    contrasena varchar(30)
+);
+
