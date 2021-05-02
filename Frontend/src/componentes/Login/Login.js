@@ -1,6 +1,5 @@
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import './Login.css';
 
 // objeto de la calculadora
