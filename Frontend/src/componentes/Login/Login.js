@@ -11,7 +11,7 @@ function Login({setToken}){
 
   const handleSubmit = () => {
     const token = 'token123';
-    if(username == 'christiandp@live.com' && password == '123456789'){
+    if(username == 'proyecto@gmail.com' && password == '123456789'){
       setToken(token);
     }
   }
