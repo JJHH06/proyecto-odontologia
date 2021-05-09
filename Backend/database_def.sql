@@ -65,9 +65,11 @@ create table if not exists empleado(
     nombre text
 
 );
+drop table if exists doctor;
+drop table if exists asistente;
 
 
---doctor de la clínica
+/*--doctor de la clínica
 Create table if not exists doctor(
     id_empleado varchar(30) primary key,
     email varchar(60),
@@ -80,7 +82,7 @@ Create table if not exists asistente(
     id_empleado varchar(30) primary key,
     email varchar(60),
     foreign key (id_empleado) references empleado(id_empleado)
-);
+);*/
 
 --tratamientos a realizar
 Create table if not exists tratamiento(
