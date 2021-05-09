@@ -1,5 +1,4 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+html > body > #root > div > div {
+    height: 100vh;
+    padding-top: 0.1px;
 }
