@@ -145,3 +145,22 @@ create table if not exists participantes_cita(
     foreign key (id_cita) references cita(id_cita),
     foreign key (id_empleado) references empleado(id_empleado)
     );
+
+
+--validación de login
+
+create or replace function validate_login (id_attemp varchar, pass_attemp varchar)
+returns bool as
+    $BODY$
+    declare existencia bigint;
+    begin
+        select count(*) into existencia from empleado
+        where id_empleado = id_attemp and password = pass_attemp;
+        return existencia = 1;
+    end;
+    $BODY$
+language 'plpgsql';
+
+insert into empleado values('123@gmail.com', '123', 'xd', 'xd@gmail.com','Doctor')
+
+select validate_login('123@gmail.com','123')
