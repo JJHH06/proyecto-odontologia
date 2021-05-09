@@ -97,15 +97,23 @@ Create table if not exists inventario(
     ultima_fecha date
 );
 
+
+--Borrar tabla vieja
+drop table utilizacion_inventario;
+
 --Cuanto inventario utiliza cada tratamiento
 Create table if not exists utilizacion_inventario(
     id_item int,
-    cantidad int,
-    id_tratamiento int,
-    primary key(id_item, id_tratamiento),
-    foreign key (id_tratamiento) references tratamiento(id_tratamiento),
+    id_cita int,
+    cantidad_utilizada int,
+    primary key(id_item, id_cita),
+    foreign key (id_cita) references cita(id_cita),
     foreign key (id_item) references inventario(id_item)
 );
+
+select * from utilizacion_inventario;
+
+
 
 --La cita, hace falta fecha y hora
 Create table if not exists cita(
