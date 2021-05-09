@@ -25,8 +25,8 @@ router.get("/getAllEmpleados", async(req,res) => {
         console.error(err.message);
     }
 });
-/*
-router.get("/getEmpleado/:id", async(req,res) => {
+
+router.get("/getEmpleado/:id_empleado", async(req,res) => {
     try {
         const {id_empleado} = req.params;
         const getEmpleado = await pool.query(
@@ -37,8 +37,37 @@ router.get("/getEmpleado/:id", async(req,res) => {
     } catch (err) {
         console.error(err.message);
     }
-});*/
+});
 
+router.put("/updateEmpleado/:id_empleado", async(req,res) => {
+    try {
+        const {id_empleado} = req.params;
+        const {password,nombre} = req.body;
+        const updateEmpleado = await pool.query(
+            "UPDATE empleado SET password = $1, nombre = $2 WHERE id_empleado = $3",
+            [password,nombre,id_empleado]
+        );
+        const getEmpleado = await pool.query(
+            "SELECT id_empleado, password, nombre FROM empleado WHERE id_empleado = $1",
+            [id_empleado]
+        );
+        res.json(getEmpleado.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
+router.delete("/deleteEmpleado/:id_empleado", async(req,res) => {
+    try {
+        const {id_empleado} = req.params;
+        const deleteEmpleado = await pool.query(
+            "DELETE FROM empleado WHERE id_empleado = $1",
+            [id_empleado]
+        );
+        res.json("Empleado was deleted!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 module.exports = router;
