@@ -26,8 +26,8 @@ function Login({setToken}){
             <h3 className="signin-text mb-3">Inicio de Sesion</h3>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" className="form-control" onChange={e =>setUserName(e.target.value)} />
+                <label htmlFor="text">Email</label>
+                <input type="text" name="text" className="form-control" onChange={e =>setUserName(e.target.value)} />
               </div>
               <div className="form-group">
                 <label htmlFor="password" className="espacio">
