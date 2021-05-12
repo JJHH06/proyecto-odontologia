@@ -26,4 +26,12 @@ router.get("/getAllPacientes", async(req,res) => {
     }
 });
 
+router.get("/getPaciente", async(req,res) => {
+    try {
+        
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 module.exports = router;
