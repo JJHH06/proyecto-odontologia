@@ -161,6 +161,39 @@ returns bool as
     $BODY$
 language 'plpgsql';
 
-insert into empleado values('123@gmail.com', '123', 'xd', 'xd@gmail.com','Doctor')
+select * from tratamiento;
 
-select validate_login('123@gmail.com','123')
+
+insert into empleado values('123@gmail.com', '123', 'xd', 'xd@gmail.com','Doctor');
+
+select validate_login('123@gmail.com','123');
+
+-----------desde acá sprint 3--------------------------
+
+
+
+
+--tener fecha de realización
+--id serial
+--id_diente
+--id_tratamiento
+
+create table tratamientos_paciente(
+  id_tratamiento_paciente serial primary key,
+  no_pieza varchar(10),
+  id_tratamiento int,
+  id_paciente int,
+  fecha_realizacion date,
+  foreign key (no_pieza) references piezas_dentales(no_pieza) ,
+  foreign key (id_tratamiento) references tratamiento(id_tratamiento),
+  foreign key (id_paciente) references paciente(id_paciente)
+);
+
+select * from tratamiento;
+
+alter table paciente add column abonos float;
+
+--dropear la tabla de diagnostico paciente, diagnostico dental
+
+drop table diagnostico_dental;
+
