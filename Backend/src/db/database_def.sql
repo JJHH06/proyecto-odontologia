@@ -197,3 +197,4 @@ alter table paciente add column abonos float;
 
 drop table diagnostico_dental;
 
+select * from paciente
