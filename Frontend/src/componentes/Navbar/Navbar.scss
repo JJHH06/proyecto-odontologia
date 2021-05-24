@@ -1,3 +1,7 @@
+.nav-container{
+  height: 20vh !important;
+}
+
 .container .img-fluid.size-img{
   
   height: 75px;
@@ -22,3 +26,5 @@
   font-size: 16px;
   color: white;
 }
+
+@import "~bootstrap/scss/bootstrap";

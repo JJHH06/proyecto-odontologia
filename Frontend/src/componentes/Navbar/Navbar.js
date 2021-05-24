@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Navbar.scss';
 import Logotipo from '../../assets/BLANCO_Sin_Fondo.png';
-import 'bootstrap';
+import 'bootstrap/dist/js/bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome} from '@fortawesome/free-solid-svg-icons';
 import {faUserInjured} from '@fortawesome/free-solid-svg-icons';
@@ -20,10 +20,10 @@ function Homescreen() {
                     <a className='navbar-brand' href='#'>
                         <img src={Logotipo} className='img-fluid size-img' />
                     </a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcol-1" aria-controls='navcol-1' aria-expanded='false' aria-label='Toggle navigation'>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded='false' aria-label='Toggle navigation'>
                         <span className='navbar-toggler-icon'></span>
                     </button>
-                    <div className='collapse navbar-collapse' id='navcol-1'>
+                    <div className='collapse navbar-collapse' id='navbarCollapse'>
                         <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
                             <li className='nav-item' role="presentation">
                                 <a className = 'nav-link' href='#'><FontAwesomeIcon icon={faHome}></FontAwesomeIcon> Home</a>
