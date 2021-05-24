@@ -7,6 +7,7 @@ import Homescreen from './Homescreen/Homescreen';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Search from './Searchbar/Search';
+import Formulario from './Formulario_paciente/Formulario';
 
 function App(){
     const [token, setToken] = useState();
@@ -21,6 +22,14 @@ function App(){
                 <Switch>
                     <Route path="/">
                         <Navbar />
+                        <Search/>
+                    </Route>
+                    <Route path="/Ingresar_Paciente">
+                        <Navbar/>
+                        <Formulario/>
+                    </Route>
+                    <Route path="/Informacion_Pacientes">
+                        <Navbar/>
                         <Search/>
                     </Route>
                 </Switch>
