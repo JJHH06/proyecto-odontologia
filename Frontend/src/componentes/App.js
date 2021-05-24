@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 import Homescreen from './Homescreen/Homescreen';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './Navbar/Navbar';
 
 function App(){
     const [token, setToken] = useState();
@@ -18,7 +19,7 @@ function App(){
             <BrowserRouter>
                 <Switch>
                     <Route path="/">
-                        <Homescreen />
+                        <Navbar />
                     </Route>
                 </Switch>
             </BrowserRouter>
