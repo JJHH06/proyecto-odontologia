@@ -10,6 +10,7 @@ import {faBoxes} from '@fortawesome/free-solid-svg-icons';
 import {faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 // objeto de la calculadora
 function Navbar() {
@@ -60,12 +61,12 @@ function Navbar() {
                   >
                     <li>
                       <a className="dropdown-item" href="#">
-                        Ingresar nuevo Paciente
+                        <Link to='/informacion_pacientes'>Informacion de Pacientes</Link>
                       </a>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        Informacion de Pacientes
+                      <Link to='/ingresar_paciente'>Ingresar nuevo Paciente</Link>
                       </a>
                     </li>
                   </ul>

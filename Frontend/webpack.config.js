@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+    publicPath: '/',
   },
   plugins: [
     new MiniCssExtractPlugin(),
@@ -68,5 +69,8 @@ module.exports = {
         exclude: /(node_modules)/,
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };

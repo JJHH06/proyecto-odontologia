@@ -19,19 +19,18 @@ function App(){
     return(
         <div className='app'>
             <BrowserRouter>
+            <Navbar/>
                 <Switch>
-                    <Route path="/">
-                        <Navbar />
+                    <Route path="/informacion_pacientes">
                         <Search/>
                     </Route>
-                    <Route path="/Ingresar_Paciente">
-                        <Navbar/>
+                    <Route path="/ingresar_paciente">
                         <Formulario/>
                     </Route>
-                    <Route path="/Informacion_Pacientes">
-                        <Navbar/>
-                        <Search/>
+                    <Route path="/">
+                        
                     </Route>
+                    
                 </Switch>
             </BrowserRouter>
         </div>
