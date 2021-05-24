@@ -60,14 +60,14 @@ function Navbar() {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
-                        <Link to='/informacion_pacientes'>Informacion de Pacientes</Link>
-                      </a>
+ 
+                        <Link className="dropdown-item" to='/informacion_pacientes'>Informacion de Pacientes</Link>
+                      
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
-                      <Link to='/ingresar_paciente'>Ingresar nuevo Paciente</Link>
-                      </a>
+                      
+                      <Link className="dropdown-item" to='/ingresar_paciente'>Ingresar nuevo Paciente</Link>
+                      
                     </li>
                   </ul>
                 </li>
