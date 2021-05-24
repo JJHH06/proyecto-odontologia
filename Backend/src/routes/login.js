@@ -2,7 +2,7 @@ const {Router} = require('express');
 const router = Router();
 const pool = require("./db");
 
-router.get("/validate_login", async(req,res) => {
+router.post("/validate_login", async(req,res) => {
     try {
         const {id_attemp,pass_attemp} = req.body;
         const validate_login = await pool.query(
