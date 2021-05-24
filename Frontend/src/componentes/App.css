@@ -1,1 +1,14 @@
 
+.paciente-busqueda{
+    padding-block: 10px;
+}
+
+.header-busqueda{
+    background-color: rgb(212, 212, 212);
+    padding-block: 10px;
+}
+
+.paciente-busqueda:hover{
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+}

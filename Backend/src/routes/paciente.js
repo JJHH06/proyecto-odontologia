@@ -15,6 +15,28 @@ router.post("/addPaciente", async(req,res) => {
     }
 });
 
+
+router.post("/searchPaciente", async(req,res) => {
+    try {
+        const {busqueda} = req.body;
+        const response = await pool.query(
+            `
+            select *, Extract(year from age(fecha_nacimiento)) as edad from paciente
+            where nombre ilike  '%'|| $1 || '%'
+            `,
+            [busqueda]
+        )
+        res.json(response.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+
+
+
+
+
 router.get("/getAllPacientes", async(req,res) => {
     try {
         const getAllPacientes = await pool.query(

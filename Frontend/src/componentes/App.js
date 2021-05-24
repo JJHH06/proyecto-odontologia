@@ -6,12 +6,13 @@ import 'bootstrap/dist/js/bootstrap';
 import Homescreen from './Homescreen/Homescreen';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
+import Search from './Searchbar/Search';
 
 function App(){
     const [token, setToken] = useState();
 
     if (!token) {
-      return <Login setToken={setToken} />;
+        return <Login setToken={setToken} />;
     }
     
     return(
@@ -20,6 +21,7 @@ function App(){
                 <Switch>
                     <Route path="/">
                         <Navbar />
+                        <Search/>
                     </Route>
                 </Switch>
             </BrowserRouter>
