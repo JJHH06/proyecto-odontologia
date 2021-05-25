@@ -39,9 +39,7 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navcol-1">
               <ul className="navbar-nav flex-grow-1">
                 <li className="nav-item" role="presentation">
-                  <a className="nav-link" href="#">
-                    <FontAwesomeIcon icon={faHome}></FontAwesomeIcon> Home
-                  </a>
+                  <Link className="nav-link" to='/'><FontAwesomeIcon icon={faHome}></FontAwesomeIcon> Home</Link>
                 </li>
                 <li className="nav-item dropdown">
                   <a
