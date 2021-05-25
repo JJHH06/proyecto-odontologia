@@ -8,12 +8,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Search from './Searchbar/Search';
 import Formulario from './Formulario_paciente/Formulario';
+import useToken from './useToken';
 
 function App(){
-    const [token, setToken] = useState();
 
-    if (!token) {
-        return <Login setToken={setToken} />;
+    const { token, setToken } = useToken();
+
+    if(!token) {
+        return <Login setToken={setToken} />
     }
     
     return(

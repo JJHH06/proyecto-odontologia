@@ -41,13 +41,14 @@ import axios from 'axios';
 
 
 
+
 function Login({setToken}){
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const token = 'token123';
+    const token = {"token":"token123"};
 
 
     
@@ -68,6 +69,7 @@ function Login({setToken}){
   .then(function (response) {
     console.log(JSON.stringify(response.data));
     if (response.data.validate_login){
+      
       setToken(token);
     }
     
@@ -75,10 +77,6 @@ function Login({setToken}){
   .catch(function (error) {
     console.log(error);
   });
-
-
-
-
 
   }
   return (

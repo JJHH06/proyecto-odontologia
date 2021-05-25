@@ -34,7 +34,7 @@ function Formulario() {
     const[emergencyNumber, setEmergencyNumber] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        
         var data = JSON.stringify({
             "nombre": name,
             "telefono_casa": homePhone,
@@ -64,6 +64,7 @@ function Formulario() {
           axios(config)
           .then(function (response) {
             console.log(JSON.stringify(response.data));
+            
           })
           .catch(function (error) {
             console.log(error);
