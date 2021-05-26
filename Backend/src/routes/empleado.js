@@ -26,9 +26,9 @@ router.get("/getAllEmpleados", async(req,res) => {
     }
 });
 
-router.get("/getEmpleado/:id_empleado", async(req,res) => {
+router.get("/getEmpleado", async(req,res) => {
     try {
-        const {id_empleado} = req.params;
+        const {id_empleado} = req.body;
         const getEmpleado = await pool.query(
             "SELECT id_empleado, password, nombre FROM empleado WHERE id_empleado = $1",
             [id_empleado]
@@ -39,9 +39,25 @@ router.get("/getEmpleado/:id_empleado", async(req,res) => {
     }
 });
 
-router.put("/updateEmpleado/:id_empleado", async(req,res) => {
+router.post("/searchEmpleado", async(req,res) => {
     try {
-        const {id_empleado} = req.params;
+        const {busqueda} = req.body;
+        const response = await pool.query(
+            `
+            SELECT id_empleado, password, nombre FROM empleado
+            where nombre ilike  '%'|| $1 || '%'
+            `,
+            [busqueda]
+        )
+        res.json(response.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+router.put("/updateEmpleado", async(req,res) => {
+    try {
+        const {id_empleado} = req.body;
         const {password,nombre} = req.body;
         const updateEmpleado = await pool.query(
             "UPDATE empleado SET password = $1, nombre = $2 WHERE id_empleado = $3",
@@ -57,9 +73,9 @@ router.put("/updateEmpleado/:id_empleado", async(req,res) => {
     }
 });
 
-router.delete("/deleteEmpleado/:id_empleado", async(req,res) => {
+router.delete("/deleteEmpleado", async(req,res) => {
     try {
-        const {id_empleado} = req.params;
+        const {id_empleado} = req.body;
         const deleteEmpleado = await pool.query(
             "DELETE FROM empleado WHERE id_empleado = $1",
             [id_empleado]
