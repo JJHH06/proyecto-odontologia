@@ -83,9 +83,9 @@ function Navbar() {
                 </li>
                 <li className="nav-item" role="presentation">
                   <a className="nav-link" href="#">
-                    <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon> Sign
-                    out
+                    <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon> Sign out
                   </a>
+                  
                 </li>
               </ul>
             </div>
