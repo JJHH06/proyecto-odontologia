@@ -76,10 +76,9 @@ function Navbar() {
                   </a>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <a className="nav-link" href="#">
-                    <FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon>{" "}
-                    Agenda
-                  </a>
+                  <Link className="nav-link" to='/agenda'><FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon>{" "} 
+                  Agenda
+                  </Link>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a className="nav-link" href="#">
