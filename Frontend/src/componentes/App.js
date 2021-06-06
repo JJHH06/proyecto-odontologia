@@ -9,6 +9,7 @@ import Navbar from './Navbar/Navbar';
 import Search from './Searchbar/Search';
 import Formulario from './Formulario_paciente/Formulario';
 import useToken from './useToken';
+import Agenda from './Agenda/Agenda';
 
 function App(){
 
@@ -30,8 +31,11 @@ function App(){
                     <Route path="/ingresar_paciente">
                         <Formulario/>
                     </Route>
+                    <Route path="/agenda">
+                        <Agenda/>
+                    </Route>
                     <Route path="/">
-                        
+
                     </Route>
                     
                 </Switch>
