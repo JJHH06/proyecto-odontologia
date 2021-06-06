@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './search.scss';
 import Logotipo from '../../assets/BLANCO_Sin_Fondo.png';
 import axios from 'axios';
+import PatientResult from './PatientResult/PatientResult';
 
 
 // objeto de la calculadora
@@ -63,19 +64,7 @@ function Search() {
             </div>
             {
                 pacientesEncontrados.map((paciente,index) =>(
-                    <div className = "row paciente-busqueda">
-                <div className="col">
-                        {paciente.nombre}
-                </div>
-                <div className="col">
-                {paciente.edad}
-
-                </div>
-
-                <div className="col">
-                {paciente.telefono_celular}
-                </div>
-                    </div>
+                    <PatientResult paciente= {paciente}/>
                 ))
             }
 
