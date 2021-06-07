@@ -10,6 +10,7 @@ import Search from './Searchbar/Search';
 import Formulario from './Formulario_paciente/Formulario';
 import useToken from './useToken';
 import Agenda from './Agenda/Agenda';
+import Ficha from './FichaPaciente/Ficha';
 
 function App(){
 
@@ -33,6 +34,9 @@ function App(){
                     </Route>
                     <Route path="/agenda">
                         <Agenda/>
+                    </Route>
+                    <Route path="/ficha">
+                        <Ficha/>
                     </Route>
                     <Route path="/">
 

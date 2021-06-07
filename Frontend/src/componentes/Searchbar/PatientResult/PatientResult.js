@@ -1,10 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
 const PatientResult = (props) => {
   const items = props;
+  const history = useHistory();
+
+  const handleFicha = () => {
+    console.log('si se ejecuta');
+    history.push(`/ficha`);
+  }
   
   return (
-    <div className = "row paciente-busqueda">
+    <div className = "row paciente-busqueda" onClick={handleFicha}>
+      
                 <div className="col">
                         {items.paciente.nombre}
                 </div>
