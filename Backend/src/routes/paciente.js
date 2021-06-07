@@ -20,11 +20,12 @@ router.post("/searchPaciente", async(req,res) => {
         const {busqueda} = req.body;
         const response = await pool.query(
             `
-            select *, Extract(year from age(fecha_nacimiento)) as edad from paciente
+            select *, Extract(year from age(fecha_nacimiento)) as edad, getPadecimientos(id_paciente) as padecimientos from paciente
             where nombre ilike  '%'|| $1 || '%'
             `,
             [busqueda]
         )
+        console.log(response.rows);
         res.json(response.rows);
     } catch (err) {
         console.error(err.message);
