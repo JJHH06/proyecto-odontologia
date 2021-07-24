@@ -12,7 +12,7 @@ const PatientResult = (props) => {
   }
   
   return (
-    <div className = "row paciente-busqueda" onClick={handleFicha}>
+    <div data-testid="paciente-buscado" className = "row paciente-busqueda" onClick={handleFicha}>
       
                 <div className="col">
                         {items.paciente.nombre}

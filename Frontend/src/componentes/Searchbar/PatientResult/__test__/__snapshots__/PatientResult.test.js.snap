@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<div
+  className="row paciente-busqueda"
+  data-testid="paciente-buscado"
+  onClick={[Function]}
+>
+  <div
+    className="col"
+  >
+    TestPatient
+  </div>
+  <div
+    className="col"
+  >
+    12
+  </div>
+  <div
+    className="col"
+  >
+    12345678
+  </div>
+</div>
+`;
