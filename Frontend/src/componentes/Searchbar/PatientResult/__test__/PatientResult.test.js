@@ -20,7 +20,7 @@ it("Renders PatientResult Correctly",() =>{
     expect(getByTestId('paciente-buscado')).toHaveTextContent("TestPatient")
 });
 
-it('PatientResult results are displayed', async () => {
+it('PatientResult result is displayed', async () => {
     render(<PatientResult paciente = {TESTPATIENT}/>);
     expect(screen.getByTestId('paciente-buscado')).toBeInTheDocument();
 });

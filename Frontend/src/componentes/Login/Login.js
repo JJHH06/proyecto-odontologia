@@ -80,7 +80,7 @@ function Login({setToken}){
 
   }
   return (
-    <div className="login">
+    <div data-testid="login-component" className="login">
       <div className="container">
         <div className="row content">
           <div className="col-md-6 mb-3">
@@ -93,7 +93,7 @@ function Login({setToken}){
                 <label htmlFor="text">Email</label>
                 <input type="text" name="text" className="form-control" onChange={e =>setUserName(e.target.value)} />
               </div>
-              <div className="form-group">
+              <div data-testid="login-form" className="form-group">
                 <label htmlFor="password" className="espacio">
                   Password
                 </label>
