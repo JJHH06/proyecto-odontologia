@@ -37,13 +37,13 @@ function Search() {
 
 
     return (
-        <div className = "container">
+        <div data-testid="search-patient" className = "container">
            
             <div className = "row">
                 <div className = "col-10 input-group input-search-patient">
                 <input type="text" className="form-control" placeholder="Nombre del paciente" aria-label="Recipient's username with two button addons" onChange={e =>setPacientesBusqueda(e.target.value)}/>
                 
-                <button type="submit" onClick = {handleSearch} className="btn btn-secondary btn-lg">Buscar</button>
+                <button type="submit" onClick = {handleSearch} data-testid="search-button" className="btn btn-secondary btn-lg">Buscar</button>
                 </div>
             </div>
             
@@ -62,7 +62,7 @@ function Search() {
 
                 </div>
             </div>
-            {
+            {pacientesEncontrados.length === 0 ? <span data-testid="cargando-info"/>:
                 pacientesEncontrados.map((paciente,index) =>(
                     <PatientResult paciente= {paciente}/>
                 ))

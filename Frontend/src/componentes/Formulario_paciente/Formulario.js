@@ -74,7 +74,7 @@ function Formulario() {
 
 
     return (
-        <div className='formulario-paciente'>
+        <div className='formulario-paciente'data-testid="patient-form" >
             <div className='container'>
                 <h1>Ficha Nuevo Paciente</h1>
                 <form onSubmit={handleSubmit}>

@@ -419,6 +419,140 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Cita",
+			"item": [
+				{
+					"name": "addCita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paciente\": \"2\",\r\n    \"fecha\": \"2005-01-15\",\r\n    \"hora_inicio\": \"11:30\",\r\n    \"hora_final\": \"12:30\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/cita/addCita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"addCita"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/cita/getAllCitas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"getAllCitas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchCitaByDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "getCitaByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "updateCita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cita\": \"1\",\r\n    \"paciente\": \"2\",\r\n    \"fecha\": \"2021-01-15\",\r\n    \"hora_inicio\": \"11:30:00\",\r\n    \"hora_final\": \"12:30:00\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/cita/updateCita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"updateCita"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cita\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/cita/deleteCita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"deleteCita"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

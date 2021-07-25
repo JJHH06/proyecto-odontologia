@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<div
+  className="container"
+  data-testid="search-patient"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-10 input-group input-search-patient"
+    >
+      <input
+        aria-label="Recipient's username with two button addons"
+        className="form-control"
+        onChange={[Function]}
+        placeholder="Nombre del paciente"
+        type="text"
+      />
+      <button
+        className="btn btn-secondary btn-lg"
+        data-testid="search-button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
+  <hr
+    className="featurette-divider search-separator"
+  />
+  <div
+    className="row header-busqueda"
+  >
+    <div
+      className="col"
+    >
+      <b>
+        Nombre
+      </b>
+    </div>
+    <div
+      className="col"
+    >
+      <b>
+        Edad
+      </b>
+    </div>
+    <div
+      className="col"
+    >
+      <b>
+        Telefono
+      </b>
+    </div>
+  </div>
+  <span
+    data-testid="cargando-info"
+  />
+</div>
+`;
