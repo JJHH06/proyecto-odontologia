@@ -16,13 +16,35 @@ export default class Agenda extends React.Component {
   
     render() {
     return (
+      <div>
+        <div className='container size-mini-calendar'>
+        <FullCalendar
+                plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
+                headerToolbar={{
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'dayGridMonth'
+                }}
+                initialView="dayGridMonth"
+
+            />
+        </div>
         <div className='container size-calendar'>
+          <div className='row'>
+            <div className='col-lg-6'>
+            <div>
+            <div className='titulo-unidad'>
+              <h1>
+                Calendario Unidad 1
+              </h1>
+            </div>
+          
             <FullCalendar
                 plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
                 headerToolbar={{
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                    right: 'timeGridWeek,timeGridDay,listWeek'
                 }}
                 initialView="timeGridDay"
                 editable={true}
@@ -39,7 +61,46 @@ export default class Agenda extends React.Component {
                 eventsSet={this.handleEvents} 
 
             />
+          </div>
+            </div>
+            <div className='col-lg-6'>
+            <div>
+            <div className='titulo-unidad'>
+              <h1>
+                Calendario Unidad 2
+              </h1>
+            </div>
+          <FullCalendar
+                plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
+                headerToolbar={{
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek,timeGridDay,listWeek'
+                }}
+                initialView="timeGridDay"
+                editable={true}
+                selectable={true}
+                selectHelper={true}
+                selectMirror={true}
+                dayMaxEvents={true}
+                eventLimit={true}
+                weekends={this.state.weekendsVisible}
+                initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+                select={this.handleDateSelect}
+                eventContent={renderEventContent} // custom render function
+                eventClick={this.handleEventClick}
+                eventsSet={this.handleEvents} 
+
+            />
+          </div>
+            </div>
+
+          </div>
+          
+          
         </div>
+      </div>
+        
     )
   }
 

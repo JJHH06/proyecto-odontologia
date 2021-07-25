@@ -12,3 +12,21 @@
     border-radius: 5px;
 
 }
+
+.container.size-calendar .titulo-unidad{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.container.size-calendar .titulo-unidad h1{
+    font-weight: bold;
+}
+
+.container.size-mini-calendar{
+    margin-top: 100px;
+    max-width: 600px;
+    max-height: 500px;
+}
