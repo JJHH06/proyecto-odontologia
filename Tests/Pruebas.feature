@@ -1,0 +1,36 @@
+Feature: Mantenimiento de citas
+
+  Rules:
+  -  Es cuando una cita ya está realizada, pero se desean modificar detalles
+  -  El cliente ya está registrado
+
+
+  Scenario: Llega tarde a su cita
+    Given El paciente ya tiene una cita planificada
+    When El paciente llega 20 minutos después de la hora de cita
+    Then No se le puede atender dado que no hay tiempo suficiente
+    And Se agenda una nueva cita en el horario disponible
+    And El paciente se trata como <Reagendado>
+
+  Scenario: El doctor no está disponible para atender a un paciente
+    Given El doctor de la cita no puede asistir
+    When El doctor no está disponible
+    Then Se verifica disponibilidad y aceptación con cliente
+    And Se agenda la cita 
+
+
+  Scenario Outline: El cliente quiere cambiar su cita a otro día
+    Given Un paciente con una cita planificada
+    |Paciente Id| Estado Cita|
+    |Paciente   |
+    When Existe horario disponible para reagendar su cita
+    Then Se verifica la disponibilidad en el horario solicitado
+    And El paciente se trata como <Reagendado>
+    Examples:
+      | description    | | phone listed | Reagendado       |
+      | Ambos disponibles    | yes                    | yes          | restricted   |
+      | Doctor disponible    | yes          | no           | restricted   |
+      | Paciente disponible  | no           | yes          | restricted   |
+      | Ninguno disponible   | no           | no           | unrestricted |
+
+https://miro.com/app/board/o9J_lDlHelM=/ => Example Mapping
