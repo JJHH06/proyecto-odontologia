@@ -25,7 +25,16 @@ router.get("/searchCitaByDate", async (req, res) => {
             `,
             [fecha, no_unidad]
         )
-        console.log(response.rows);
+
+        for (var i = 0; i < response.rows.length; i++) {
+            var date = response.rows[i].fecha.toString()
+            date = new Date(date).toISOString().substr(0, 10)
+            var datePart = date.match(/\d+/g);
+            year = datePart[0], // get only two digits
+                month = datePart[1], day = datePart[2]
+            response.rows[i].fecha = day + '/' + month + '/' + year
+        }
+
         res.json(response.rows);
     } catch (err) {
         console.error(err.message);
@@ -38,6 +47,16 @@ router.get("/getAllCitas", async (req, res) => {
             `SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad
             FROM cita`
         )
+
+        for (var i = 0; i < getAllCitas.rows.length; i++) {
+            var date = getAllCitas.rows[i].fecha.toString()
+            date = new Date(date).toISOString().substr(0, 10)
+            var datePart = date.match(/\d+/g);
+            year = datePart[0], // get only two digits
+                month = datePart[1], day = datePart[2]
+            getAllCitas.rows[i].fecha = day + '/' + month + '/' + year
+        }
+        //console.log(getAllCitas.rows)
         res.json(getAllCitas.rows);
     } catch (err) {
         console.error(err.message);
@@ -51,7 +70,17 @@ router.get("/getCitaByID", async (req, res) => {
             "SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad FROM cita WHERE id_cita = $1",
             [id_cita]
         );
-        res.json(getCita.rows[0]);
+
+        for (var i = 0; i < getCita.rows.length; i++) {
+            var date = getCita.rows[i].fecha.toString()
+            date = new Date(date).toISOString().substr(0, 10)
+            var datePart = date.match(/\d+/g);
+            year = datePart[0], // get only two digits
+                month = datePart[1], day = datePart[2]
+            getCita.rows[i].fecha = day + '/' + month + '/' + year
+        }
+
+        res.json(getCita.rows);
     } catch (err) {
         console.error(err.message);
     }
