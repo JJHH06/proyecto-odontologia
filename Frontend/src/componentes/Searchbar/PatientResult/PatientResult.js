@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom'
 
@@ -8,7 +8,10 @@ const PatientResult = (props) => {
 
   const handleFicha = () => {
     console.log('si se ejecuta');
-    history.push(`/ficha`);
+    history.push({
+      pathname: `/ficha`,
+      state: items.paciente 
+    });
   }
   
   return (
