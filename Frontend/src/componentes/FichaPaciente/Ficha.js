@@ -53,18 +53,27 @@ function Ficha(props) {
                             <li><p className='subtitulo'>Contacto de emergencia: <span>{location.state.contacto_emergencia}</span></p> </li>
                             <li><p className='subtitulo'>Telefono medico: <span>{location.state.telefono_medico}</span></p> </li>
                             
+                            
                         </ul>
                     </div>
                 </div>
                 <div className='col-lg-12'>
                     <div className='cuadro'>
-                        <div className='container-h3'>
+                        <div className='container'>
                             <h3>Cita</h3>
                         </div>
                         <ul>
                             <li><p className='subtitulo'>Motivo de consulta: <span>{location.state.motivo_consulta}</span></p> </li>
                             <li><p className='subtitulo'>Presupuesto: <span>No calculado</span></p> </li>
                             <li><p className='subtitulo'>Medicamentos: <span>{location.state.medicamentos}</span></p> </li>
+                            <li><h3>Condiciones preexistentes</h3></li>
+                            <li><ul>
+                            {
+                                location.state.padecimientos.map((padecimiento,index) =>(
+                                    <li><p>{padecimiento}</p></li>
+                                ))
+                            }
+                            </ul></li>
                             
                         </ul>
                     </div>
