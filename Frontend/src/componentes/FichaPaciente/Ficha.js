@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 import './Ficha.scss';
+import Odontogram from "../Odontograma/Odontogram"
 
 
 function Ficha(props) {
@@ -59,7 +60,7 @@ function Ficha(props) {
                 </div>
                 <div className='col-lg-12'>
                     <div className='cuadro'>
-                        <div className='container'>
+                        <div className='container-h3'>
                             <h3>Cita</h3>
                         </div>
                         <ul>
@@ -76,6 +77,9 @@ function Ficha(props) {
                             </ul></li>
                             
                         </ul>
+                    </div>
+                    <div className='cuadro'>
+                        <Odontogram/>
                     </div>
                 </div>
                 
