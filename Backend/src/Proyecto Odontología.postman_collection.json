@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Rapopopopota\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Strange\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"abonos\": \"10.11\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Jose Carlos\",\r\n    \"email\": \"rata@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Mouse\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Tabsin para Rata\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -327,7 +327,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_empleado\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"id_empleado\": \"123@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -387,11 +387,8 @@
 			"item": [
 				{
 					"name": "validate_login",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -430,7 +427,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"paciente\": \"2\",\r\n    \"fecha\": \"2005-01-15\",\r\n    \"hora_inicio\": \"11:30\",\r\n    \"hora_final\": \"12:30\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
+							"raw": "{\r\n    \"paciente\": \"1\",\r\n    \"fecha\": \"2005-01-15\",\r\n    \"hora_inicio\": \"11:30\",\r\n    \"hora_final\": \"12:30\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -476,19 +473,67 @@
 				},
 				{
 					"name": "searchCitaByDate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"2021-01-15\",\r\n    \"no_unidad\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/cita/searchCitaByDate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"searchCitaByDate"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getCitaByID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cita\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/cita/getCitaByID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"cita",
+								"getCitaByID"
+							]
+						}
 					},
 					"response": []
 				},
@@ -523,7 +568,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "deleteCita",
 					"request": {
 						"method": "DELETE",
 						"header": [],
