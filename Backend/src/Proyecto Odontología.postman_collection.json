@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Jose Carlos\",\r\n    \"email\": \"rata@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Mouse\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Tabsin para Rata\"\r\n\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Jose Carlos\",\r\n    \"email\": \"rata@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Mouse\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Tabsin para Rata\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -76,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_paciente\": \"3\"\r\n}",
+							"raw": "{\r\n    \"id_paciente\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,7 +106,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_paciente\": \"2\",\r\n    \"nombre\": \"Jose Carlos Rata\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29T06:00:00.000Z\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14T06:00:00.000Z\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Strange\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"abonos\": \"4.24\"\r\n}",
+							"raw": "{\r\n    \"id_paciente\": \"4\",\r\n    \"nombre\": \"Jose Carlos\",\r\n    \"email\": \"rata@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"Rata\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Mouse\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Tabsin para Rata\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -592,6 +592,74 @@
 								"api",
 								"cita",
 								"deleteCita"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "condiciones_paciente",
+			"item": [
+				{
+					"name": "addCondicionesPaciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"4\",\r\n    \"condiciones\": [\r\n        {\r\n            \"id_condicion\": \"23\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"25\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"3\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/condiciones_paciente/addCondicionesPaciente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"condiciones_paciente",
+								"addCondicionesPaciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCondicionesPacienteByIDPaciente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/condiciones_paciente/getCondicionesPacienteByIDPaciente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"condiciones_paciente",
+								"getCondicionesPacienteByIDPaciente"
 							]
 						}
 					},
