@@ -38,5 +38,3 @@ Feature: Mantenimiento de citas
       | Solo Doctor disponible    | no           |
       | Solo Paciente disponible  | no           |
       | Ninguno disponible        | no           |
-
-https://miro.com/app/board/o9J_lDlHelM=/ => Example Mapping
