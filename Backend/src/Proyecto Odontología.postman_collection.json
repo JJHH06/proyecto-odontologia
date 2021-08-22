@@ -574,7 +574,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_cita\": \"2\"\r\n}",
+							"raw": "{\r\n    \"id_cita\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -660,6 +660,77 @@
 								"api",
 								"condiciones_paciente",
 								"getCondicionesPacienteByIDPaciente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tratamiento",
+			"item": [
+				{
+					"name": "getTratamientoByPieza",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"no_pieza\": \"2\",\r\n    \"id_paciente\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/getTratamientoByPieza",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"getTratamientoByPieza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTratamientos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/getTratamientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"getTratamientos"
 							]
 						}
 					},
