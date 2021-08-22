@@ -26,9 +26,11 @@ router.get("/getTratamientos", async (req, res) => {
             on t.id_tratamiento = tp.id_tratamiento where id_paciente = $1 group by t.id_tratamiento, t.nombre`,
             [id_paciente]
         );
-        res.json(getTratamientos.rows);
+        res.status(200).send({ code: 1, result: getTratamientos.rows });
+
     } catch (err) {
         console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
