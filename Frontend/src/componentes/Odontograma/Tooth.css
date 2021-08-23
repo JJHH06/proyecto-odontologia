@@ -1,6 +1,8 @@
 svg.tooth {
   cursor: pointer;
   fill: white;
+  width: 30px;
+  height: 49px;
 }
 
 svg.tooth .to-do {
