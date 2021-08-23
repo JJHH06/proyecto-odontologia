@@ -147,6 +147,165 @@ function Formulario() {
                         <label htmlFor='telefono_contacto'>Telefono del Contacto</label>
                         <input type="tel" name="telefono_contacto" placeholder='1234-5678' pattern="[0-9]{4}-[0-9]{4}" className="form-control" onChange={e =>setEmergencyNumber(e.target.value)} />
                     </div>
+                    <div className="form-space">
+                        <h4>Condiciones preexistentes</h4>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='salud-reciente'></input>
+                                <label className='form-check-label' for='salud-reciente'>Problemas de salud recientes</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='problemas-cardiacos'></input>
+                                <label className='form-check-label' for='problemas-cardiacos'>Problemas cardiacos</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='presion-alta'></input>
+                                <label className='form-check-label' for='presion-altas'>Presion alta</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='presion-baja'></input>
+                                <label className='form-check-label' for='presion-baja'>Presion baja</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='dificultad-respiracion'></input>
+                                <label className='form-check-label' for='dificultad-respiracion'>Dificultades para respirar</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='asma'></input>
+                                <label className='form-check-label' for='asma'>Asma</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='tos-cronica'></input>
+                                <label className='form-check-label' for='tos-cronica'>Tos Cronica</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='cirugias-recientes'></input>
+                                <label className='form-check-label' for='cirugias-recientes'>Cirugias Recientes</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='tratamiento-radiacion'></input>
+                                <label className='form-check-label' for='tratamiento-radiacion'>Tratamiento con radiacion</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='diabetes'></input>
+                                <label className='form-check-label' for='diabetes'>Diabetes</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='hipoglicemia'></input>
+                                <label className='form-check-label' for='hipoglicemia'>Hipoglicemia</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='gastritis'></input>
+                                <label className='form-check-label' for='gastritis'>Gastritis</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='hepatitis'></input>
+                                <label className='form-check-label' for='hepatitis'>Hepatitis</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='problemas-renales'></input>
+                                <label className='form-check-label' for='problemas-renales'>Problemas Renales</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='anemia'></input>
+                                <label className='form-check-label' for='anemia'>Anemia</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='fiebre-reumatica'></input>
+                                <label className='form-check-label' for='fiebre-reumatica'>Fiebre reumatica</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='excesivo-sangrado'></input>
+                                <label className='form-check-label' for='excesivo-sangrado'>Excesivo sangrado de heridas</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='alergias'></input>
+                                <label className='form-check-label' for='alergias'>Alergia a antibióticos, penicilina</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='otras-alergias'></input>
+                                <label className='form-check-label' for='otras-alergias'>Otras alergias</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='epilepsia'></input>
+                                <label className='form-check-label' for='epilepsia'>Epilepsia</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='Amigdalitis'></input>
+                                <label className='form-check-label' for='Amigdalitis'>Amigdalitis</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='uso-tabaco'></input>
+                                <label className='form-check-label' for='uso-tabaco'>Uso de tabaco</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='Sangrado-encias'></input>
+                                <label className='form-check-label' for='Sangrado-encias'>Sangrado de encías</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='sensibilidad-dental-frio'></input>
+                                <label className='form-check-label' for='sensibilidad-dental-frio'>Sensibilidad dental al frio</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='sensibilidad-dental-dulces'></input>
+                                <label className='form-check-label' for='sensibilidad-dental-dulces'>Sensibilidad dental a dulces</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='dolor-masticar'></input>
+                                <label className='form-check-label' for='dolor-masticar'>Dolor al masticar</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='Bruxismo'></input>
+                                <label className='form-check-label' for='Bruxismo'>Bruxismo, rechina dientes</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='dientes-flojos'></input>
+                                <label className='form-check-label' for='dientes-flojos'>Dientes flojos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-space container checkboxes'>
+                        <div className='row'>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='dolor-pecho'></input>
+                                <label className='form-check-label' for='dolor-pecho'>Dolor en el pecho</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='artritis'></input>
+                                <label className='form-check-label' for='artritis'>Artritis</label>
+                            </div>
+                            <div className = 'col-xl'>
+                                <input className='form-check-input' type='checkbox' value='' id='empaque-alimenticio'></input>
+                                <label className='form-check-label' for='empaque-alimenticio'>Empaque alimenticio</label>
+                            </div>
+                        </div>
+                    </div>
                     <div className="form-space boton-formulario"> 
                         <input type="submit" name="submit" value="Registrar nuevo paciente"/>                   
                     </div>
