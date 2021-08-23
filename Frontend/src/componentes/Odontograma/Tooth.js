@@ -4,6 +4,7 @@ import './Tooth.css';
 
 function Tooth(props) {
   return (
+      
     <svg class="tooth">
         {/* transform="translate(0,0)" */}
       <g transform ="scale(1.5)">
@@ -24,6 +25,7 @@ function Tooth(props) {
         </text>
       </g>
     </svg>
+    
   );
 }
 
