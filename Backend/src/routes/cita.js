@@ -9,9 +9,11 @@ router.post("/addCita", async (req, res) => {
             "INSERT INTO cita(paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad) VALUES($1,$2,$3,$4,$5,$6) RETURNING *",
             [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad]
         );
-        res.json(addCita.rows[0]);
+        //res.json(addCita.rows[0]);
+        res.status(200).send({ code: 1, result: addCita.rows[0] });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -35,9 +37,11 @@ router.get("/searchCitaByDate", async (req, res) => {
             response.rows[i].fecha = day + '/' + month + '/' + year
         }
 
-        res.json(response.rows);
+        //res.json(response.rows);
+        res.status(200).send({ code: 1, result: response.rows });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -57,9 +61,13 @@ router.get("/getAllCitas", async (req, res) => {
             getAllCitas.rows[i].fecha = day + '/' + month + '/' + year
         }
         //console.log(getAllCitas.rows)
-        res.json(getAllCitas.rows);
+        //res.json(getAllCitas.rows);
+        res.status(200).send({ code: 1, result: getAllCitas.rows });
+
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
+
     }
 });
 
@@ -80,9 +88,12 @@ router.get("/getCitaByID", async (req, res) => {
             getCita.rows[i].fecha = day + '/' + month + '/' + year
         }
 
-        res.json(getCita.rows);
+        //res.json(getCita.rows);
+        res.status(200).send({ code: 1, result: getCita.rows });
+
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -97,9 +108,11 @@ router.put("/updateCita", async (req, res) => {
             "SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad FROM cita WHERE id_cita = $1",
             [id_cita]
         );
-        res.json(getCita.rows[0]);
+        //res.json(getCita.rows[0]);
+        res.status(200).send({ code: 1, result: getCita.rows[0] });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -110,9 +123,11 @@ router.delete("/deleteCita", async (req, res) => {
             `DELETE FROM cita WHERE id_cita = $1`,
             [id_cita]
         );
-        res.json("Cita was deleted!");
+        //res.json("Cita was deleted!");
+        res.status(200).send({ code: 1, result: "Cita was deleted!" });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
