@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Tooth from './Tooth'
-function Odontogram() {
-    
+import axios from 'axios'
+function Odontogram(props) {
+    const [selectedPiece, setSelectedPiece] = useState("Cargando...");
+    const [tratamientos, setTratamientos] = useState([]);
 
     const teethConfiguration = [
         [18,17,16,15,14,13,12,11],
@@ -13,6 +15,37 @@ function Odontogram() {
         [48,47,46,45,44,43,42,41],
         [31,32,33,34,35,36,37,38]
     ]
+
+    const getTratamientosBoca = () => {
+        var data = JSON.stringify({
+            "id_paciente": props.id_paciente || ""
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://localhost:5000/api/tratamiento/getTratamientos',
+            headers: { 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            setSelectedPiece("Resumen Tratamientos")
+            setTratamientos(response.data.result);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+    useEffect(()=>{
+        getTratamientosBoca();
+    },[])
+
+
+
     return (
       <div>
         <div className="container">
@@ -133,9 +166,14 @@ function Odontogram() {
         </div>
 
         <div className='cuadro'>
-                        <h3>Resumen General</h3>
+                        <h3>{selectedPiece}</h3>
                         <ul>
-                            <li><p className='subtitulo'>Motivo de consulta: <span>cantidad</span></p> </li>
+                            {
+                                tratamientos.map((tratamiento,index) =>(
+                                    <li><p className='subtitulo'>{tratamiento.tratamiento+":"} <span>tratamiento.count</span></p> </li>
+                            
+                                ))
+                            }
                             
                             
                         </ul>
