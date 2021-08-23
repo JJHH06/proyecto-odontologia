@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Tooth from './Tooth'
 function Odontogram() {
+    
+
     const teethConfiguration = [
         [18,17,16,15,14,13,12,11],
         [21,22,23,24,25,26,27,28],
@@ -129,6 +131,15 @@ function Odontogram() {
 
           
         </div>
+
+        <div className='cuadro'>
+                        <h3>Resumen General</h3>
+                        <ul>
+                            <li><p className='subtitulo'>Motivo de consulta: <span>cantidad</span></p> </li>
+                            
+                            
+                        </ul>
+                    </div>
       </div>
     );
 }
