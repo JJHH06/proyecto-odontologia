@@ -18,7 +18,7 @@ router.get("/getTratamientoByPieza", async (req, res) => {
     }
 });
 
-router.get("/getTratamientos", async (req, res) => {
+router.post("/getTratamientos", async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const getTratamientos = await pool.query(

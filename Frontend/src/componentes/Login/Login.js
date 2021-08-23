@@ -68,7 +68,7 @@ function Login({setToken}){
   axios(config)
   .then(function (response) {
     console.log(JSON.stringify(response.data));
-    if (response.data.validate_login){
+    if (response.data.result.validate_login){
       
       setToken(token);
     }

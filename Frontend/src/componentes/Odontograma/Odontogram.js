@@ -34,6 +34,9 @@ function Odontogram(props) {
           .then(function (response) {
             console.log(JSON.stringify(response.data));
             setSelectedPiece("Resumen Tratamientos")
+            if(response.data.result.length === 0){
+                setSelectedPiece("El paciente no posee tratamientos")
+            }
             setTratamientos(response.data.result);
           })
           .catch(function (error) {
@@ -170,7 +173,7 @@ function Odontogram(props) {
                         <ul>
                             {
                                 tratamientos.map((tratamiento,index) =>(
-                                    <li><p className='subtitulo'>{tratamiento.tratamiento+":"} <span>tratamiento.count</span></p> </li>
+                                    <li><p className='subtitulo'>{tratamiento.tratamiento+":"} <span>{tratamiento.count}</span></p> </li>
                             
                                 ))
                             }

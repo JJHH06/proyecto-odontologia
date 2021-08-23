@@ -79,7 +79,7 @@ function Ficha(props) {
                         </ul>
                     </div>
                     <div className='cuadro'>
-                        <Odontogram/>
+                        <Odontogram id_paciente={location.state.id_paciente}/>
                     </div>
                 </div>
                 
