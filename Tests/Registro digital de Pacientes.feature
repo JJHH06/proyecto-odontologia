@@ -19,13 +19,13 @@ Feature: Registro digital de Pacientes
     When Llegue a su cita de seguimiento
     Then El asistente procede a buscarlo dentro del sistema
     And Le alista al doctor la ficha virtual del paciente dentro de la clínica
-  
+
   Scenario: No hay señal
     Given Una falla de conectividad en el sistema
     When Se esten buscando los datos de un paciente recurrente
     Then Se espera a que la señal de internet vuelva
     And Se sigue buscando hasta que carguen los datos solicitados
-    
+
   Scenario: Datos generales y dentales en un mismo lugar
     Given Una cita dental
     When El doctor desee ver el progreso dental de su paciente
@@ -33,9 +33,12 @@ Feature: Registro digital de Pacientes
     And apareceran todos los datos unificados
 
   Scenario: Buscando a algun paciente en el sistema
-    Given Una busqueda de datos de algun paciente 
-    When Se tenga que preparar la información de una cita recurrente al doctor 
+    Given Una busqueda de datos de algun paciente
+    When Se tenga que preparar la información de una cita recurrente al doctor
     Then La asistente buscará cualquier combinación del nombre del paciente
     And El paciente deseado aparecerá entre los primeros resultados de las busquedas
 
-  
+  Scenario: Llama por teléfono un paciente nuevo
+    Given Un paciente nuevo sin datos registrados previamente en la clínica
+    When Desea agendar una primera cita en la clínica dental por medio de llamada telefónica
+    Then Se le indica al cliente que al presentarse el día de su cita se le tomaran sus datos
