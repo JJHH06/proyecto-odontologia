@@ -16,14 +16,20 @@ Feature: Agenda Organizada
   Then se tendrá que atender rapidamente a ambos pacientes
   And se reducirá el tiempo de limpieza haciendola más rápido
 
-Scenario: La agenda está muy cargada
+  Scenario: La agenda está muy cargada
   Given Un día en donde este llena la agenda
   When Se empiecen a acumular los pacientes y a atrasar las citas
   Then Los pacientes tendran que esperar en la sala de espera
   And Se tendrá que limpiar cada unidad mucho más rápido
 
-Scenario: Acuerdo de doctores en equipo a utilizar
+  Scenario: Acuerdo de doctores en equipo a utilizar
   Given 2 doctores dandose cuenta que tienen 2 citas simultaneas
   When los 2 necesiten un aparato unico al mismo tiempo
   Then se pondrán de acuerdo en que parte de la cita lo utilizará cada quien
   And al final de utilizar el aparato, uno se lo cederá al otro
+
+  Scenario: Llega un paciente sin cita
+  Given En un momento donde el doctor está ocupado
+  Then Se le agendará una cita para un día en que el paciente y el doctor puedan
+  And Tendrá que regresar para la fecha que se acordó.
+

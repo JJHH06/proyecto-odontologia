@@ -37,3 +37,5 @@ Feature: Registro digital de Pacientes
     When Se tenga que preparar la información de una cita recurrente al doctor 
     Then La asistente buscará cualquier combinación del nombre del paciente
     And El paciente deseado aparecerá entre los primeros resultados de las busquedas
+
+  
