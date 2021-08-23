@@ -9,9 +9,11 @@ router.post("/addPaciente", async (req, res) => {
             "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
             [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
         );
-        res.json(addPaciente.rows[0]);
+        //res.json(addPaciente.rows[0]);
+        res.status(200).send({ code: 1, result: addPaciente.rows[0] });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -46,9 +48,12 @@ router.post("/searchPaciente", async (req, res) => {
         }
 
         //console.log(response.rows);
-        res.json(response.rows);
+        //res.json(response.rows);
+        res.status(200).send({ code: 1, result: response.rows });
+
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -78,9 +83,11 @@ router.get("/getAllPacientes", async (req, res) => {
             getAllPacientes.rows[i].visita_anterior_dentista = fechaFinal;
         }
 
-        res.json(getAllPacientes.rows);
+        res.status(200).send({ code: 1, result: getAllPacientes.rows });
+
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -112,9 +119,12 @@ router.get("/getPaciente", async (req, res) => {
             getPaciente.rows[i].visita_anterior_dentista = fechaFinal;
         }
 
-        res.json(getPaciente.rows[0]);
+        //res.json(getPaciente.rows[0]);
+        res.status(200).send({ code: 1, result: getPaciente.rows[0] });
+
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -132,9 +142,11 @@ router.put("/updatePaciente", async (req, res) => {
             FROM paciente WHERE id_paciente = $1`,
             [id_paciente]
         );
-        res.json(getPaciente.rows[0]);
+        //res.json(getPaciente.rows[0]);
+        res.status(200).send({ code: 1, result: getPaciente.rows[0] });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 
@@ -145,9 +157,11 @@ router.delete("/deletePaciente", async (req, res) => {
             `DELETE FROM paciente WHERE id_paciente = $1`,
             [id_paciente]
         );
-        res.json("Paciente was deleted!");
+        //res.json("Paciente was deleted!");
+        res.status(200).send({ code: 1, result: "Paciente was deleted!" });
     } catch (err) {
         console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
     }
 });
 module.exports = router;
