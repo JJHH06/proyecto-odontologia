@@ -9,7 +9,7 @@ import PatientResult from './PatientResult/PatientResult';
 // objeto de la calculadora
 function Search() {
     const [pacientesBusqueda, setPacientesBusqueda] = useState("");
-    const [pacientesEncontrados, setPacientesEncontrados] = useState([]);
+    const [pacientesEncontrados, setPacientesEncontrados] = useState({result:[]});
 
     const handleSearch = (e) => {
         var data = JSON.stringify({
@@ -62,8 +62,10 @@ function Search() {
 
                 </div>
             </div>
-            {pacientesEncontrados.length === 0 ? <span data-testid="cargando-info"/>:
-                pacientesEncontrados.map((paciente,index) =>(
+
+            {
+            pacientesEncontrados.result.length === 0 ? <span data-testid="cargando-info"/>:
+                pacientesEncontrados.result.map((paciente,index) =>(
                     <PatientResult paciente= {paciente}/>
                 ))
             }
