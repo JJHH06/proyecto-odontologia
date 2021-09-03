@@ -1,7 +1,6 @@
 /* eslint-disable prefer-template */
 import React, { useState } from 'react';
 import './search.scss';
-import Logotipo from '../../assets/BLANCO_Sin_Fondo.png';
 import axios from 'axios';
 import PatientResult from './PatientResult/PatientResult';
 
@@ -9,7 +8,7 @@ import PatientResult from './PatientResult/PatientResult';
 // objeto de la calculadora
 function Search() {
     const [pacientesBusqueda, setPacientesBusqueda] = useState("");
-    const [pacientesEncontrados, setPacientesEncontrados] = useState({result:[]});
+    const [pacientesEncontrados, setPacientesEncontrados] = useState([]);
 
     const handleSearch = (e) => {
         var data = JSON.stringify({
@@ -28,7 +27,8 @@ function Search() {
           axios(config)
           .then(function (response) {
             console.log(JSON.stringify(response.data));
-            setPacientesEncontrados(response.data)
+            //resultado = response.data OR [];
+            setPacientesEncontrados(response.data.result)
           })
           .catch(function (error) {
             console.log(error);
@@ -64,8 +64,8 @@ function Search() {
             </div>
 
             {
-            pacientesEncontrados.result.length === 0 ? <span data-testid="cargando-info"/>:
-                pacientesEncontrados.result.map((paciente,index) =>(
+            pacientesEncontrados.length === 0 ? <span data-testid="cargando-info"/>:
+                pacientesEncontrados.map((paciente,index) =>(
                     <PatientResult paciente= {paciente}/>
                 ))
             }
