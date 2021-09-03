@@ -4,12 +4,27 @@ const pool = require("./db");
 
 router.post("/addPaciente", async (req, res) => {
     try {
-        const { nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
-        //console.log(req.body)
+        var { nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
+        console.log(req.body)
+
+        var date = fecha_nacimiento;
+        date = new Date(date).toISOString().substr(0, 10);
+        var datePart = date.match(/\d+/g);
+        year = datePart[0],
+            month = datePart[1], day = datePart[2]
+        fecha_nacimiento = day + '/' + month + '/' + year;
+        console.log(fecha_nacimiento)
+
+        var date2 = visita_anterior_dentista;
+        date2 = new Date(date2).toISOString().substr(0, 10);
+        var datePart2 = date2.match(/\d+/g);
+        year = datePart2[0],
+            month = datePart2[1], day = datePart2[2]
+        visita_anterior_dentista = day + '/' + month + '/' + year;
+        console.log(visita_anterior_dentista)
 
         var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
         if ((fecha_nacimiento.match(RegExPattern)) && (fecha_nacimiento != '')) {
-
             if ((visita_anterior_dentista.match(RegExPattern)) && (visita_anterior_dentista != '')) {
                 const addPaciente = await pool.query(
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
@@ -38,6 +53,7 @@ router.post("/addPaciente", async (req, res) => {
                 res.status(200).send({ code: 1, result: addPaciente.rows[0] });
             }
         }
+
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
