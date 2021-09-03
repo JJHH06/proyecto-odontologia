@@ -5,7 +5,7 @@ const pool = require("./db");
 router.post("/addPaciente", async (req, res) => {
     try {
         var { nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
-        console.log(req.body)
+        //console.log(req.body)
 
         var date = fecha_nacimiento;
         date = new Date(date).toISOString().substr(0, 10);
@@ -13,7 +13,7 @@ router.post("/addPaciente", async (req, res) => {
         year = datePart[0],
             month = datePart[1], day = datePart[2]
         fecha_nacimiento = day + '/' + month + '/' + year;
-        console.log(fecha_nacimiento)
+        //console.log(fecha_nacimiento)
 
         var date2 = visita_anterior_dentista;
         date2 = new Date(date2).toISOString().substr(0, 10);
@@ -21,7 +21,7 @@ router.post("/addPaciente", async (req, res) => {
         year = datePart2[0],
             month = datePart2[1], day = datePart2[2]
         visita_anterior_dentista = day + '/' + month + '/' + year;
-        console.log(visita_anterior_dentista)
+        //console.log(visita_anterior_dentista)
 
         var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
         if ((fecha_nacimiento.match(RegExPattern)) && (fecha_nacimiento != '')) {
