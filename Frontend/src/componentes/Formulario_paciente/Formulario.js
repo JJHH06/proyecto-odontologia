@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Formulario.scss";
 import axios from "axios";
+import { useHistory } from 'react-router'
+
 
 function formatDate(date) {
   var d = new Date(date),
@@ -15,6 +17,8 @@ function formatDate(date) {
 }
 
 function Formulario() {
+const history = useHistory()
+
   const [name, setName] = useState("");
   const [homePhone, setHomePhone] = useState("");
   const [cellPhone, setCellPhone] = useState("");
@@ -43,6 +47,7 @@ function Formulario() {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     var data = JSON.stringify({
       nombre: name,
       telefono_casa: homePhone,
@@ -71,7 +76,7 @@ function Formulario() {
 
     axios(config)
       .then(function (response) {
-        alert("Nuevo paciente ingresado con exito");
+        
         console.log(JSON.stringify(response.data));
 
         // Para ingresar las condiciones del paciente
@@ -89,10 +94,16 @@ function Formulario() {
           },
           data: newPatientConditions,
         };
+
+        
         //Post con Axios
-        axios(configConditions)
+        return  axios(configConditions)
           .then(function (response) {
+            console.log("Con las condiciones", JSON.stringify(response.data));
             console.log(JSON.stringify(response.data));
+            
+            alert("Nuevo paciente ingresado con exito");
+            history.go(0)
           })
           .catch(function (error) {
             alert("No se ha podido ingresar las condiciones medicas");

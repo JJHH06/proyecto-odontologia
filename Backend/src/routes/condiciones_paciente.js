@@ -9,7 +9,7 @@ router.post("/addCondicionesPaciente", async (req, res) => {
         for (var i = 0; i < condiciones.length; i++) {
             const addCondicionesPaciente = await pool.query(
                 "INSERT INTO condiciones_paciente(id_paciente, id_condicion) VALUES($1,$2) RETURNING *",
-                [id_paciente, condiciones[i].id_condicion]
+                [id_paciente, condiciones[i]]
             );
         }
 
