@@ -5,7 +5,11 @@ function Odontogram(props) {
     const [summaryTitle, setSummaryTitle] = useState("Cargando...");
     const [tratamientos, setTratamientos] = useState([]);
     const [selectedPiece, setSelectedPiece] = useState({id_pieza: "0", bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]});
+    const [selectedTooth, setSelectedTooth] = useState("0");
 
+    function handleChangedPiece(newValue) {
+      setSelectedPiece(newValue);
+    }
     const teethConfiguration = [
         [18,17,16,15,14,13,12,11],
         [21,22,23,24,25,26,27,28],
@@ -47,7 +51,9 @@ function Odontogram(props) {
     useEffect(()=>{
         getTratamientosBoca();
     },[])
-
+    useEffect(()=>{
+      console.log(selectedPiece)
+    })
 
 
     return (
@@ -62,7 +68,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[0].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth tooth_id={id} id_paciente={props.id_paciente} />
+                      <Tooth setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente} />
                     </div>
                   ))}
                 </div>
@@ -73,7 +79,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[1].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   {/* <div className="col-4"></div> */}
@@ -90,7 +96,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[2].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -101,7 +107,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[3].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   <div className="col-4"></div>
@@ -118,7 +124,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[4].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -129,7 +135,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[5].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   <div className="col-4"></div>
@@ -146,7 +152,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[6].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -157,7 +163,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[7].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={setSelectedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   {/* <div className="col-4"></div> */}
@@ -181,7 +187,49 @@ function Odontogram(props) {
                             
                             
                         </ul>
-                    </div>: null}
+                    </div>: 
+                    <div className='cuadro'>
+                    <h3>
+                      {"Resumen pieza "+selectedPiece.id_pieza}
+                    </h3>
+                    <br/>
+                    <h5>Oclusal</h5>
+                    <ul>
+                    {
+                      selectedPiece.oclusal.map((tratamiento,index)=>(
+                        <li><p > {tratamiento}</p> </li>
+                      ))
+                    }</ul>
+                    <h5>Bucal</h5>
+                    <ul>
+                    {
+                      selectedPiece.bucal.map((tratamiento,index)=>(
+                        <li><p >{tratamiento}</p> </li>
+                      ))
+                    }</ul>
+                    <h5>Lingual</h5>
+                    <ul>
+                    {
+                      selectedPiece.lingual.map((tratamiento,index)=>(
+                        <li><p > {tratamiento}</p> </li>
+                      ))
+                    }</ul>
+                    <h5>Distal</h5>
+                    <ul>
+                    {
+                      selectedPiece.distal.map((tratamiento,index)=>(
+                        <li><p > {tratamiento}</p> </li>
+                      ))
+                    }</ul>
+                    <h5>Mesial</h5>
+                    <ul>
+                    {
+                      selectedPiece.mesial.map((tratamiento,index)=>(
+                        <li><p > {tratamiento}</p> </li>
+                      ))
+                    }</ul>
+
+                      </div>}
       </div>
     );
 }
