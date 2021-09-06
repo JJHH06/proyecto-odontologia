@@ -668,7 +668,72 @@
 			]
 		},
 		{
-			"name": "tratamiento",
+			"name": "tratamiento_paciente",
+			"item": [
+				{
+					"name": "getTratamientoByPieza",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"no_pieza\": \"2\",\r\n    \"id_paciente\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/getTratamientoByPieza",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"getTratamientoByPieza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTratamientos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/getTratamientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"getTratamientos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tratamiento_paciente Copy",
 			"item": [
 				{
 					"name": "getTratamientoByPieza",
