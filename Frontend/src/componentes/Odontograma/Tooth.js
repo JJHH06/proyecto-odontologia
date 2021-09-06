@@ -4,11 +4,12 @@ import './Tooth.css';
 import axios from 'axios'
 
 
-function Tooth(props) {
+function Tooth({id_paciente,tooth_id,setSelectedPiece}) {
+  
   const handleClick = () =>{
     //alert("Se ha hecho click en el diente " + props.tooth_id + "Del paciente "+props.id_paciente)
 
-    let diente = {id_pieza: props.tooth_id, bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]};
+    let diente = {id_pieza: tooth_id, bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]};
     let index = {bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
     if ((diente.id_pieza >= 11 && diente.id_pieza<=18) || (diente.id_pieza >= 51 && diente.id_pieza<=55)){
       console.log("Esquina superior izquierda")
@@ -31,7 +32,7 @@ function Tooth(props) {
 
     var data = JSON.stringify({
       "no_pieza": diente.id_pieza,
-      "id_paciente": props.id_paciente
+      "id_paciente": id_paciente
     });
     
     var config = {
@@ -44,29 +45,30 @@ function Tooth(props) {
     };
     
     axios(config)
-    .then(function (response) {
+    .then( (response) => {
       console.log(JSON.stringify(response.data.result));
       response.data.result.forEach(element =>{
         //let index = {bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
         //let diente = {id_pieza: props.tooth_id, bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]};
         if(element.seccion === index.oclusal){
-          diente.oclusal.push(element.nombre_tratamiento)
+          diente.oclusal = [...diente.oclusal, element.nombre_tratamiento]
         }
         else if(element.seccion === index.bucal){
-          diente.bucal.push(element.nombre_tratamiento)
+          diente.bucal = [...diente.bucal, element.nombre_tratamiento]
         }
         else if(element.seccion === index.lingual){
-          diente.lingual.push(element.nombre_tratamiento)
+          diente.lingual = [...diente.lingual, element.nombre_tratamiento]
         } 
         else if(element.seccion === index.distal){
-          diente.distal.push(element.nombre_tratamiento)
+          diente.distal = [...diente.distal, element.nombre_tratamiento]
         }
-        else if(element.seccion === index.oclusal){
-          diente.oclusal.push(element.nombre_tratamiento)
+        else if(element.seccion === index.mesial){
+          diente.mesial = [...diente.mesial, element.nombre_tratamiento]
         }
       })
+      console.log(diente)
       //aqui se madna a llamar el push
-      props.setSelectedPiece(diente);
+      setSelectedPiece(diente)
     })
     .catch(function (error) {
       console.log(error);
@@ -75,6 +77,8 @@ function Tooth(props) {
     
     //props.setSelectedPiece();
   }
+
+  
   return (
       
     <svg onClick = {handleClick} class="tooth">
@@ -93,7 +97,7 @@ function Tooth(props) {
           stroke-width="0.1"
           class="tooth"
         >
-          {props.tooth_id}
+          {tooth_id}
         </text>
       </g>
     </svg>
