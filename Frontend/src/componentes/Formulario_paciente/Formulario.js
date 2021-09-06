@@ -278,7 +278,7 @@ const history = useHistory()
             />
           </div>
           <div className="form-space">
-            <h4>Condiciones preexistentes</h4>
+            <h4>Historial Medico</h4>
           </div>
           <div className="form-space container checkboxes">
             <div className="row">
@@ -543,6 +543,9 @@ const history = useHistory()
               </div>
             </div>
           </div>
+          <div className="form-space">
+            <h4>Historial Dental</h4>
+          </div>
           <div className="form-space container checkboxes">
             <div className="row">
               <div className="col-xl">
@@ -693,8 +696,9 @@ const history = useHistory()
               </div>
             </div>
           </div>
-          <div className="form-space boton-formulario">
+          <div className="form-space boton-align">
             <input
+              className = 'boton-formulario'
               type="submit"
               name="submit"
               value="Registrar nuevo paciente"
