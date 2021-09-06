@@ -17,8 +17,9 @@ app.use('/api/empleado', require(path.join(__dirname, '/routes/empleado')));
 app.use('/api/login', require(path.join(__dirname, '/routes/login')));
 app.use('/api/cita', require(path.join(__dirname, '/routes/cita')));
 app.use('/api/condiciones_paciente', require(path.join(__dirname, '/routes/condiciones_paciente')));
-app.use('/api/tratamiento', require(path.join(__dirname, '/routes/tratamiento')));
+app.use('/api/tratamiento_paciente', require(path.join(__dirname, '/routes/tratamiento_paciente')));
 app.use('/api/inventario', require(path.join(__dirname, '/routes/inventario')));
+app.use('/api/tratamiento', require(path.join(__dirname, '/routes/tratamiento')));
 
 //starting the server
 app.listen(app.get('port'), () => {
