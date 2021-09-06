@@ -3,11 +3,13 @@ import './Inventario.scss';
 import Producto from './Productos';
 import Productos from './Productos';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 
 // objeto de la calculadora
 function Inventario() {
 
     const [productosEncontrados, setProductosEncontrados] = useState("");
+    const history = useHistory();
 
     var axios = require('axios');
 
@@ -26,12 +28,20 @@ function Inventario() {
     console.log(error);
     });
 
+    const handleProduct = () =>{
+        history.push({
+            pathname: `/nuevo_producto`
+        });
+    }
+
+
+
     
     return (
         <div data-testid="search-patient" className = "container">
 
             <div className = "btn-space">
-                <button className="btn btn-secondary btn-lg">Nuevo Inventario</button>
+                <button className="btn btn-secondary btn-lg" onClick={handleProduct}>Agregar Producto</button>
             </div>
            
             <div className = "titulo-principal">
