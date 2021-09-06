@@ -12,6 +12,7 @@ import useToken from './useToken';
 import Agenda from './Agenda/Agenda';
 import Ficha from './FichaPaciente/Ficha';
 import Inventario from './Inventario/Inventario';
+import AddProducto from './AddProduct/AddProduct';
 
 function App(){
 
@@ -41,6 +42,9 @@ function App(){
                     </Route>
                     <Route path="/inventario">
                         <Inventario/>
+                    </Route>
+                    <Route path="/nuevo_producto">
+                        <AddProducto/>
                     </Route>
                     <Route path="/">
 
