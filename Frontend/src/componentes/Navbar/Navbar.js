@@ -70,10 +70,10 @@ function Navbar() {
                   </ul>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/inventario">
                     <FontAwesomeIcon icon={faBoxes}></FontAwesomeIcon>{" "}
                     Inventario
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item" role="presentation">
                   <Link className="nav-link" to='/agenda'><FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon>{" "} 
