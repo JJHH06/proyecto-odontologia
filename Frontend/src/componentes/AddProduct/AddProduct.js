@@ -20,6 +20,14 @@ function AddProducto() {
                         <label htmlFor = 'cantidad'>Cantidad</label>
                         <input type='number' name='producto' className='form-control' min = '1'/>
                     </div>
+                    <div className="form-space boton-align">
+                        <input
+                            className = 'boton-formulario'
+                            type="submit"
+                            name="submit"
+                            value="Registrar nuevo producto"
+                        />
+                    </div>
                 </form>
             </div>
 
