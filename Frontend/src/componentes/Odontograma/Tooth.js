@@ -1,11 +1,83 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import PropTypes from "prop-types";
 import './Tooth.css';
+import axios from 'axios'
+
 
 function Tooth(props) {
+  const handleClick = () =>{
+    //alert("Se ha hecho click en el diente " + props.tooth_id + "Del paciente "+props.id_paciente)
+
+    let diente = {id_pieza: props.tooth_id, bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]};
+    let index = {bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
+    if ((diente.id_pieza >= 11 && diente.id_pieza<=18) || (diente.id_pieza >= 51 && diente.id_pieza<=55)){
+      console.log("Esquina superior izquierda")
+      index = {bucal:1, lingual:3, distal:4, mesial:2, oclusal:0};
+
+
+    } else if ((diente.id_pieza >= 21 && diente.id_pieza<=28) || (diente.id_pieza >= 61 && diente.id_pieza<=65)){
+      console.log("Esquina superior derecha")
+      index = {bucal:1, lingual:3, distal:2, mesial:4, oclusal:0};
+      
+
+    } else if ((diente.id_pieza >= 41 && diente.id_pieza<=48) || (diente.id_pieza >= 81 && diente.id_pieza<=85)){
+      console.log("Esquina inferior izquierda")
+      // solo cambia distal y mesial
+      index = {bucal:3, lingual:1, distal:4, mesial:2, oclusal:0};
+    } else{
+      console.log("Esquina inferior derecha") 
+    }
+    //Aqui ya puedo hacer el request basado en los estados
+
+    var data = JSON.stringify({
+      "no_pieza": diente.id_pieza,
+      "id_paciente": props.id_paciente
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5000/api/tratamiento/getTratamientoByPieza',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data.result));
+      response.data.result.forEach(element =>{
+        //let index = {bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
+        //let diente = {id_pieza: props.tooth_id, bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]};
+        if(element.seccion === index.oclusal){
+          diente.oclusal.push(element.nombre_tratamiento)
+        }
+        else if(element.seccion === index.bucal){
+          diente.bucal.push(element.nombre_tratamiento)
+        }
+        else if(element.seccion === index.lingual){
+          diente.lingual.push(element.nombre_tratamiento)
+        } 
+        else if(element.seccion === index.distal){
+          diente.distal.push(element.nombre_tratamiento)
+        }
+        else if(element.seccion === index.oclusal){
+          diente.oclusal.push(element.nombre_tratamiento)
+        }
+      })
+      //aqui se madna a llamar el push
+      props.setSelectedPiece(diente);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
+    
+    //props.setSelectedPiece();
+  }
   return (
       
-    <svg class="tooth">
+    <svg onClick = {handleClick} class="tooth">
         {/* transform="translate(0,0)" */}
       <g transform ="scale(1.5)">
         <polygon points="0,0 20,0 15,5 5,5" class=""></polygon>
@@ -29,8 +101,8 @@ function Tooth(props) {
   );
 }
 
-Tooth.propTypes = {
-    tooth_id: PropTypes.number.isRequired,
-};
+// Tooth.propTypes = {
+//     tooth_id: PropTypes.number.isRequired,
+// };
 
 export default Tooth;

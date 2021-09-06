@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 
-router.get("/getTratamientoByPieza", async (req, res) => {
+router.post("/getTratamientoByPieza", async (req, res) => {
     try {
         const { no_pieza, id_paciente } = req.body;
         const getTratamientoByPieza = await pool.query(
