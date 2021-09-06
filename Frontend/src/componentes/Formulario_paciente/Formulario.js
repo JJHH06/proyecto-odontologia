@@ -135,8 +135,7 @@ const history = useHistory()
             <input
               type="tel"
               name="telefono_casa"
-              placeholder="1234-5678"
-              pattern="[0-9]{4}-[0-9]{4}"
+              placeholder="12345678"
               className="form-control"
               onChange={(e) => setHomePhone(e.target.value)}
             />
@@ -146,8 +145,7 @@ const history = useHistory()
             <input
               type="tel"
               name="telefono_celular"
-              placeholder="1234-5678"
-              pattern="[0-9]{4}-[0-9]{4}"
+              placeholder="12345678"
               className="form-control"
               onChange={(e) => setCellPhone(e.target.value)}
             />
@@ -251,8 +249,7 @@ const history = useHistory()
             <input
               type="tel"
               name="telefono_doctor"
-              placeholder="1234-5678"
-              pattern="[0-9]{4}-[0-9]{4}"
+              placeholder="12345678"
               className="form-control"
               onChange={(e) => setDoctorNumber(e.target.value)}
             />
@@ -271,8 +268,7 @@ const history = useHistory()
             <input
               type="tel"
               name="telefono_contacto"
-              placeholder="1234-5678"
-              pattern="[0-9]{4}-[0-9]{4}"
+              placeholder="12345678"
               className="form-control"
               onChange={(e) => setEmergencyNumber(e.target.value)}
             />
@@ -543,6 +539,34 @@ const history = useHistory()
               </div>
             </div>
           </div>
+          <div className="form-space container checkboxes">
+            <div className="row">
+            <div className="col-xl">
+                <input
+                  className="form-check-input"
+                  onChange={addCondition}
+                  type="checkbox"
+                  value={5}
+                  id="dolor-pecho"
+                ></input>
+                <label className="form-check-label" for="dolor-pecho">
+                  Dolor en el pecho
+                </label>
+              </div>
+              <div className="col-xl">
+                <input
+                  className="form-check-input"
+                  onChange={addCondition}
+                  type="checkbox"
+                  value={17}
+                  id="artritis"
+                ></input>
+                <label className="form-check-label" for="artritis">
+                  Artritis
+                </label>
+              </div>
+            </div>
+          </div>
           <div className="form-space">
             <h4>Historial Dental</h4>
           </div>
@@ -658,30 +682,6 @@ const history = useHistory()
           </div>
           <div className="form-space container checkboxes">
             <div className="row">
-              <div className="col-xl">
-                <input
-                  className="form-check-input"
-                  onChange={addCondition}
-                  type="checkbox"
-                  value={5}
-                  id="dolor-pecho"
-                ></input>
-                <label className="form-check-label" for="dolor-pecho">
-                  Dolor en el pecho
-                </label>
-              </div>
-              <div className="col-xl">
-                <input
-                  className="form-check-input"
-                  onChange={addCondition}
-                  type="checkbox"
-                  value={17}
-                  id="artritis"
-                ></input>
-                <label className="form-check-label" for="artritis">
-                  Artritis
-                </label>
-              </div>
               <div className="col-xl">
                 <input
                   className="form-check-input"
