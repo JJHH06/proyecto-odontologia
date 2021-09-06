@@ -11,6 +11,7 @@ import Formulario from './Formulario_paciente/Formulario';
 import useToken from './useToken';
 import Agenda from './Agenda/Agenda';
 import Ficha from './FichaPaciente/Ficha';
+import Inventario from './Inventario/Inventario';
 
 function App(){
 
@@ -37,6 +38,9 @@ function App(){
                     </Route>
                     <Route path="/ficha">
                         <Ficha/>
+                    </Route>
+                    <Route path="/inventario">
+                        <Inventario/>
                     </Route>
                     <Route path="/">
 
