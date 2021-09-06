@@ -1,29 +1,23 @@
 import {React, useState} from 'react';
 
 const Producto = (props) => {
-    let cantidad = 100
-//   const items = props;
-//   const alerta = "Sufucientes unidades"
 
+  const items = props;
   
   return (
     <div className = "row style-border">
       
         <div className="col">
-            {/* {items.inventario.nombre} */}
-            Guates
+            {items.inventario.nombre_item}
         </div>
         <div className="col">
-            {/* {items.inventario.cantidad} */}
-            {cantidad}
+            {items.inventario.cantidad}
         </div>
         <div className="col">
-            {/* {items.inventario.ultima_fecha} */}
-            05/09/2021
+            {items.inventario.ultima_fecha}
         </div>
         <div className="col">
-            {/* {alerta} */}
-            Sufucientes unidades
+            {items.inventario.cantidad < 20 ? "Pocas unidades restantes":"Sufucientes unidades"}
         </div>
 
     </div>
