@@ -6,6 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils'
+import Demo from './Demo'
 
 export default class Agenda extends React.Component {
     
@@ -38,29 +39,8 @@ export default class Agenda extends React.Component {
                 Calendario Unidad 1
               </h1>
             </div>
-          
-            <FullCalendar
-                plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
-                headerToolbar={{
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'timeGridWeek,timeGridDay,listWeek'
-                }}
-                initialView="timeGridDay"
-                editable={true}
-                selectable={true}
-                selectHelper={true}
-                selectMirror={true}
-                dayMaxEvents={true}
-                eventLimit={true}
-                weekends={this.state.weekendsVisible}
-                initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-                select={this.handleDateSelect}
-                eventContent={renderEventContent} // custom render function
-                eventClick={this.handleEventClick}
-                eventsSet={this.handleEvents} 
-
-            />
+          <Demo/>
+            
           </div>
             </div>
             <div className='col-lg-6'>
@@ -70,28 +50,7 @@ export default class Agenda extends React.Component {
                 Calendario Unidad 2
               </h1>
             </div>
-          <FullCalendar
-                plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
-                headerToolbar={{
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'timeGridWeek,timeGridDay,listWeek'
-                }}
-                initialView="timeGridDay"
-                editable={true}
-                selectable={true}
-                selectHelper={true}
-                selectMirror={true}
-                dayMaxEvents={true}
-                eventLimit={true}
-                weekends={this.state.weekendsVisible}
-                initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-                select={this.handleDateSelect}
-                eventContent={renderEventContent} // custom render function
-                eventClick={this.handleEventClick}
-                eventsSet={this.handleEvents} 
-
-            />
+            <Demo/>
           </div>
             </div>
 
