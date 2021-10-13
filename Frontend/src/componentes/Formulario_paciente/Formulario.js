@@ -67,7 +67,7 @@ const history = useHistory()
 
     var config = {
       method: "post",
-      url: "http://localhost:5000/api/paciente/addPaciente",
+      url: "http://198.211.103.50:5000/api/paciente/addPaciente",
       headers: {
         "Content-Type": "application/json",
       },
@@ -88,7 +88,7 @@ const history = useHistory()
         //Configuracion de las condiciones
         var configConditions = {
           method: "post",
-          url: "http://localhost:5000/api/condiciones_paciente/addCondicionesPaciente",
+          url: "http://198.211.103.50:5000/api/condiciones_paciente/addCondicionesPaciente",
           headers: {
             "Content-Type": "application/json",
           },

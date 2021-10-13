@@ -17,7 +17,7 @@ import axios from 'axios';
   
 //   var config = {
 //     method: 'post',
-//     url: 'http://localhost:5000/api/login/validate_login',
+//     url: 'http://198.211.103.50:5000/api/login/validate_login',
 //     headers: { 
 //       'Content-Type': 'application/json'
 //     },
@@ -59,7 +59,7 @@ function Login({setToken}){
   
   var config = {
     method: 'post',
-    url: 'http://localhost:5000/api/login/validate_login',
+    url: 'http://198.211.103.50:5000/api/login/validate_login',
     headers: { 
       'Content-Type': 'application/json'
     },

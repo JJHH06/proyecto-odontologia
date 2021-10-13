@@ -17,7 +17,7 @@ function Search() {
           
           var config = {
             method: 'post',
-            url: 'http://localhost:5000/api/paciente/searchPaciente',
+            url: 'http://198.211.103.50:5000/api/paciente/searchPaciente',
             headers: { 
               'Content-Type': 'application/json'
             },

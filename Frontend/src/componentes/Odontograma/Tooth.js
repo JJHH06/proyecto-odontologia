@@ -37,7 +37,7 @@ function Tooth({id_paciente,tooth_id,setSelectedPiece}) {
     
     var config = {
       method: 'post',
-      url: 'http://localhost:5000/api/tratamiento/getTratamientoByPieza',
+      url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getTratamientoByPieza',
       headers: { 
         'Content-Type': 'application/json'
       },

@@ -20,7 +20,7 @@ router.post("/addCondicionesPaciente", async (req, res) => {
     }
 });
 
-router.get("/getCondicionesPacienteByIDPaciente", async (req, res) => {
+router.post("/getCondicionesPacienteByIDPaciente", async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const getCondicionesPaciente = await pool.query(

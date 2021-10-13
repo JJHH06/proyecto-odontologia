@@ -28,7 +28,7 @@ function Odontogram(props) {
           
           var config = {
             method: 'post',
-            url: 'http://localhost:5000/api/tratamiento/getTratamientos',
+            url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getTratamientos',
             headers: { 
               'Content-Type': 'application/json'
             },
