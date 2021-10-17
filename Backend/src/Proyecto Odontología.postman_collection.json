@@ -871,7 +871,13 @@
 					"name": "addItem",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"nombre_item\": \"guacamol\",\r\n    \"cantidad\": \"10\"\r\n}",
@@ -901,7 +907,13 @@
 					"name": "getAllItems",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/inventario/getAllItems",
 							"protocol": "http",
@@ -922,7 +934,13 @@
 					"name": "getItemById",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_item\": \"6\"\r\n}",
@@ -952,7 +970,13 @@
 					"name": "getItemByName",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"nombre_item\": \"Algo\"\r\n}",
@@ -982,7 +1006,13 @@
 					"name": "upadteItem",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_item\": \"6\",\r\n    \"nombre_item\": \"Algodon\",\r\n    \"cantidad\": \"4\"\r\n}",
@@ -1012,7 +1042,13 @@
 					"name": "deleteItem",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_item\": \"11\"\r\n}",

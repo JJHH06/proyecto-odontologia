@@ -2,8 +2,22 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const moment = require('moment');
+const jwt = require("jsonwebtoken");
 
-router.post("/addItem", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[2];
+        req.token = bearerToken;
+        //console.log("TOKEN ", req.token)
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+router.post("/addItem", verifyToken, async (req, res) => {
     try {
         var { nombre_item, cantidad } = req.body;
 
@@ -35,7 +49,16 @@ router.post("/addItem", async (req, res) => {
         }
 
         //res.json(addItem.rows[0]);
-        res.status(200).send({ code: 1, result: addItem.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: addItem.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: addItem.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -44,7 +67,7 @@ router.post("/addItem", async (req, res) => {
 });
 
 
-router.post("/getAllItems", async (req, res) => {
+router.post("/getAllItems", verifyToken, async (req, res) => {
     try {
         const getAllItems = await pool.query(
             `SELECT * 
@@ -62,7 +85,16 @@ router.post("/getAllItems", async (req, res) => {
             }
         }
 
-        res.status(200).send({ code: 1, result: getAllItems.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getAllItems.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getAllItems.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -70,7 +102,7 @@ router.post("/getAllItems", async (req, res) => {
     }
 });
 
-router.post("/getItemByNameById", async (req, res) => {
+router.post("/getItemByNameById", verifyToken, async (req, res) => {
     try {
         const { nombre_item } = req.body;
         const getItemByName = await pool.query(
@@ -92,7 +124,16 @@ router.post("/getItemByNameById", async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        res.status(200).send({ code: 1, result: getItemByName.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getItemByName.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getItemByName.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -101,7 +142,7 @@ router.post("/getItemByNameById", async (req, res) => {
 });
 
 
-router.post("/getItemByName", async (req, res) => {
+router.post("/getItemByName", verifyToken, async (req, res) => {
     try {
         const { nombre_item } = req.body;
         const getItemByName = await pool.query(
@@ -123,7 +164,16 @@ router.post("/getItemByName", async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        res.status(200).send({ code: 1, result: getItemByName.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getItemByName.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getItemByName.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -131,7 +181,7 @@ router.post("/getItemByName", async (req, res) => {
     }
 });
 
-router.put("/upadteItem", async (req, res) => {
+router.put("/upadteItem", verifyToken, async (req, res) => {
     try {
         const { id_item } = req.body;
         const { nombre_item, cantidad } = req.body;
@@ -172,14 +222,23 @@ router.put("/upadteItem", async (req, res) => {
         }
 
         //res.json(getItem.rows[0]);
-        res.status(200).send({ code: 1, result: getItem.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getItem.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getItem.rows[0] });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.delete("/deleteItem", async (req, res) => {
+router.delete("/deleteItem", verifyToken, async (req, res) => {
     try {
         const { id_item } = req.body;
         const deleteItem = await pool.query(
@@ -187,7 +246,16 @@ router.delete("/deleteItem", async (req, res) => {
             [id_item]
         );
         //res.json("Item was deleted!");
-        res.status(200).send({ code: 1, result: "Item was deleted!" });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Item was deleted!" });
+            }
+        });
+        //res.status(200).send({ code: 1, result: "Item was deleted!" });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
