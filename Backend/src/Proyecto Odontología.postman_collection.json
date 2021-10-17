@@ -461,7 +461,13 @@
 					"name": "addCita",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"paciente\": \"1\",\r\n    \"fecha\": \"2005-01-15\",\r\n    \"hora_inicio\": \"11:30\",\r\n    \"hora_final\": \"12:30\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
@@ -491,7 +497,13 @@
 					"name": "getAllCitas",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:5000/api/cita/getAllCitas",
 							"protocol": "http",
@@ -515,7 +527,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"fecha\": \"2021-01-15\",\r\n    \"no_unidad\": \"2\"\r\n}",
@@ -548,7 +566,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_cita\": \"1\"\r\n}",
@@ -578,7 +602,13 @@
 					"name": "updateCita",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_cita\": \"1\",\r\n    \"paciente\": \"2\",\r\n    \"fecha\": \"2021-01-15\",\r\n    \"hora_inicio\": \"11:30:00\",\r\n    \"hora_final\": \"12:30:00\",\r\n    \"estado_cita\": \"Activo\",\r\n    \"no_unidad\": \"2\"\r\n}",
@@ -608,7 +638,13 @@
 					"name": "deleteCita",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_cita\": \"3\"\r\n}",

@@ -1,8 +1,22 @@
 const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
+const jwt = require("jsonwebtoken");
 
-router.post("/addCita", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[2];
+        req.token = bearerToken;
+        //console.log("TOKEN ", req.token)
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+router.post("/addCita", verifyToken, async (req, res) => {
     try {
         const { paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad } = req.body;
         const addCita = await pool.query(
@@ -10,14 +24,23 @@ router.post("/addCita", async (req, res) => {
             [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad]
         );
         //res.json(addCita.rows[0]);
-        res.status(200).send({ code: 1, result: addCita.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: addCita.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: addCita.rows[0] });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.get("/searchCitaByDate", async (req, res) => {
+router.get("/searchCitaByDate", verifyToken, async (req, res) => {
     try {
         const { fecha, no_unidad } = req.body;
         const response = await pool.query(
@@ -38,14 +61,23 @@ router.get("/searchCitaByDate", async (req, res) => {
         }
 
         //res.json(response.rows);
-        res.status(200).send({ code: 1, result: response.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: response.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: response.rows });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.get("/getAllCitas", async (req, res) => {
+router.get("/getAllCitas", verifyToken, async (req, res) => {
     try {
         const getAllCitas = await pool.query(
             `SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad
@@ -62,7 +94,16 @@ router.get("/getAllCitas", async (req, res) => {
         }
         //console.log(getAllCitas.rows)
         //res.json(getAllCitas.rows);
-        res.status(200).send({ code: 1, result: getAllCitas.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getAllCitas.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getAllCitas.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -71,7 +112,7 @@ router.get("/getAllCitas", async (req, res) => {
     }
 });
 
-router.get("/getCitaByID", async (req, res) => {
+router.get("/getCitaByID", verifyToken, async (req, res) => {
     try {
         const { id_cita } = req.body;
         const getCita = await pool.query(
@@ -89,7 +130,16 @@ router.get("/getCitaByID", async (req, res) => {
         }
 
         //res.json(getCita.rows);
-        res.status(200).send({ code: 1, result: getCita.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getCita.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getCita.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -97,7 +147,7 @@ router.get("/getCitaByID", async (req, res) => {
     }
 });
 
-router.put("/updateCita", async (req, res) => {
+router.put("/updateCita", verifyToken, async (req, res) => {
     try {
         const { id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad } = req.body;
         const updateCita = await pool.query(
@@ -109,14 +159,23 @@ router.put("/updateCita", async (req, res) => {
             [id_cita]
         );
         //res.json(getCita.rows[0]);
-        res.status(200).send({ code: 1, result: getCita.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getCita.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getCita.rows[0] });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.delete("/deleteCita", async (req, res) => {
+router.delete("/deleteCita", verifyToken, async (req, res) => {
     try {
         const { id_cita } = req.body;
         const deleteCita = await pool.query(
@@ -124,7 +183,16 @@ router.delete("/deleteCita", async (req, res) => {
             [id_cita]
         );
         //res.json("Cita was deleted!");
-        res.status(200).send({ code: 1, result: "Cita was deleted!" });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Cita was deleted!" });
+            }
+        });
+        //res.status(200).send({ code: 1, result: "Cita was deleted!" });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
