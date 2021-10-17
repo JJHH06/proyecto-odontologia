@@ -26,7 +26,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
         var datePart = date.match(/\d+/g);
         year = datePart[0],
             month = datePart[1], day = datePart[2]
-        fecha_nacimiento = day + '/' + month + '/' + year;
+        fecha_nacimiento = month + '/' + day + '/' + year;
         //console.log(fecha_nacimiento)
 
         var date2 = visita_anterior_dentista;
@@ -34,7 +34,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
         var datePart2 = date2.match(/\d+/g);
         year = datePart2[0],
             month = datePart2[1], day = datePart2[2]
-        visita_anterior_dentista = day + '/' + month + '/' + year;
+        visita_anterior_dentista = month + '/' + day + '/' + year;
         //console.log(visita_anterior_dentista)
 
         var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
