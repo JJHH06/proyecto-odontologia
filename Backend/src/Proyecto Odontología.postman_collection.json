@@ -12,10 +12,16 @@
 					"name": "addPaciente",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"elonmusk\",\r\n    \"email\": \"elonmusk@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"mickey \",\r\n    \"email\": \"mouse@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,11 +47,18 @@
 				{
 					"name": "getAllPacientes",
 					"protocolProfileBehavior": {
-						"disableBodyPruning": true
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
@@ -73,10 +86,16 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_paciente\": \"9\"\r\n}",
+							"raw": "{\r\n    \"id_paciente\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -103,7 +122,13 @@
 					"name": "updatePaciente",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_paciente\": \"9\",\r\n    \"nombre\": \"Pruebas\",\r\n    \"email\": \"rata@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-07-29\",\r\n    \"estado_civil\": \"soltero\",\r\n    \"ocupacion\": \"Rata\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Jose Carlos\",\r\n    \"visita_anterior_dentista\": \"2021-04-14\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor Mouse\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Tabsin para Rata\"\r\n}",
@@ -133,7 +158,13 @@
 					"name": "deletePaciente",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"id_paciente\": \"10\"\r\n}",
@@ -163,7 +194,13 @@
 					"name": "searchPaciente",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"busqueda\": \"Jose\"\r\n}",
@@ -677,7 +714,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"no_pieza\": \"2\",\r\n    \"id_paciente\": \"1\"\r\n}",
+							"raw": "{\r\n    \"no_pieza\": \"11\",\r\n    \"id_paciente\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -685,7 +722,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/tratamiento_paciente/getTratamientoByPieza",
+							"raw": "http://localhost:5000/api/trata",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -693,8 +730,7 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"tratamiento_paciente",
-								"getTratamientoByPieza"
+								"trata"
 							]
 						}
 					},
@@ -724,74 +760,6 @@
 							"path": [
 								"api",
 								"tratamiento_paciente",
-								"getTratamientos"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "tratamiento_paciente Copy",
-			"item": [
-				{
-					"name": "getTratamientoByPieza",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"no_pieza\": \"2\",\r\n    \"id_paciente\": \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/tratamiento/getTratamientoByPieza",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tratamiento",
-								"getTratamientoByPieza"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getTratamientos",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id_paciente\": \"1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5000/api/tratamiento/getTratamientos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"tratamiento",
 								"getTratamientos"
 							]
 						}
