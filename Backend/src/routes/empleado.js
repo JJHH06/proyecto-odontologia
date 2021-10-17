@@ -1,8 +1,22 @@
 const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
+const jwt = require("jsonwebtoken");
 
-router.post("/addEmpleado", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[2];
+        req.token = bearerToken;
+        //console.log("TOKEN ", req.token)
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+router.post("/addEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado, password, nombre } = req.body;
         const addEmpleado = await pool.query(
@@ -10,7 +24,16 @@ router.post("/addEmpleado", async (req, res) => {
             [id_empleado, password, nombre]
         );
         //res.json(addEmpleado.rows[0]);
-        res.status(200).send({ code: 1, result: addEmpleado.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: addEmpleado.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: addEmpleado.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -19,13 +42,22 @@ router.post("/addEmpleado", async (req, res) => {
     }
 });
 
-router.get("/getAllEmpleados", async (req, res) => {
+router.get("/getAllEmpleados", verifyToken, async (req, res) => {
     try {
         const getAllEmpleados = await pool.query(
             "SELECT id_empleado, password, nombre FROM empleado"
         );
         //res.json(getAllEmpleados.rows);
-        res.status(200).send({ code: 1, result: getAllEmpleados.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getAllEmpleados.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getAllEmpleados.rows });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
@@ -33,7 +65,7 @@ router.get("/getAllEmpleados", async (req, res) => {
     }
 });
 
-router.get("/getEmpleado", async (req, res) => {
+router.get("/getEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado } = req.body;
         const getEmpleado = await pool.query(
@@ -41,7 +73,16 @@ router.get("/getEmpleado", async (req, res) => {
             [id_empleado]
         );
         //res.json(getEmpleado.rows[0]);
-        res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -49,7 +90,7 @@ router.get("/getEmpleado", async (req, res) => {
     }
 });
 
-router.post("/searchEmpleado", async (req, res) => {
+router.post("/searchEmpleado", verifyToken, async (req, res) => {
     try {
         const { busqueda } = req.body;
         const response = await pool.query(
@@ -60,7 +101,16 @@ router.post("/searchEmpleado", async (req, res) => {
             [busqueda]
         )
         //res.json(response.rows);
-        res.status(200).send({ code: 1, result: response.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: response.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: response.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -68,7 +118,7 @@ router.post("/searchEmpleado", async (req, res) => {
     }
 });
 
-router.put("/updateEmpleado", async (req, res) => {
+router.put("/updateEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado } = req.body;
         const { password, nombre } = req.body;
@@ -81,14 +131,23 @@ router.put("/updateEmpleado", async (req, res) => {
             [id_empleado]
         );
         //res.json(getEmpleado.rows[0]);
-        res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getEmpleado.rows[0] });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.delete("/deleteEmpleado", async (req, res) => {
+router.delete("/deleteEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado } = req.body;
         const deleteEmpleado = await pool.query(
@@ -96,7 +155,16 @@ router.delete("/deleteEmpleado", async (req, res) => {
             [id_empleado]
         );
         res.json("Empleado was deleted!");
-        res.status(200).send({ code: 1, result: "Empleado was deleted!" });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Empleado was deleted!" });
+            }
+        });
+        //res.status(200).send({ code: 1, result: "Empleado was deleted!" });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
