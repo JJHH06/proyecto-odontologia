@@ -1,8 +1,22 @@
 const { Router } = require('express');
 const router = Router();
+const jwt = require("jsonwebtoken");
 const pool = require("./db");
 
-router.post("/addPaciente", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[2];
+        req.token = bearerToken;
+        //console.log("TOKEN ", req.token)
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+router.post("/addPaciente", verifyToken, async (req, res) => {
     try {
         var { nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
         //console.log(req.body)
@@ -30,13 +44,31 @@ router.post("/addPaciente", async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                    //console.log("token", req.token, "token")
+                    if (error) {
+                        console.log("error", error)
+                        res.sendStatus(401);
+                    } else {
+                        res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                    }
+                });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
             } else {
                 const addPaciente = await pool.query(
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                    //console.log("token", req.token, "token")
+                    if (error) {
+                        console.log("error", error)
+                        res.sendStatus(401);
+                    } else {
+                        res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                    }
+                });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
             }
         } else {
             if ((visita_anterior_dentista.match(RegExPattern)) && (visita_anterior_dentista != '')) {
@@ -44,13 +76,32 @@ router.post("/addPaciente", async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                    //console.log("token", req.token, "token")
+                    if (error) {
+                        console.log("error", error)
+                        res.sendStatus(401);
+                    } else {
+                        res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+
+                    }
+                });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
             } else {
                 const addPaciente = await pool.query(
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                    //console.log("token", req.token, "token")
+                    if (error) {
+                        console.log("error", error)
+                        res.sendStatus(401);
+                    } else {
+                        res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                    }
+                });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
             }
         }
 
@@ -60,7 +111,7 @@ router.post("/addPaciente", async (req, res) => {
     }
 });
 
-router.post("/searchPaciente", async (req, res) => {
+router.post("/searchPaciente", verifyToken, async (req, res) => {
     try {
         const { busqueda } = req.body;
         const response = await pool.query(
@@ -96,7 +147,17 @@ router.post("/searchPaciente", async (req, res) => {
 
         //console.log(response.rows);
         //res.json(response.rows);
-        res.status(200).send({ code: 1, result: response.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: response.rows });
+            }
+        });
+
+        //res.status(200).send({ code: 1, result: response.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -104,7 +165,7 @@ router.post("/searchPaciente", async (req, res) => {
     }
 });
 
-router.get("/getAllPacientes", async (req, res) => {
+router.get("/getAllPacientes", verifyToken, async (req, res) => {
     try {
         const getAllPacientes = await pool.query(
             `SELECT * 
@@ -134,7 +195,17 @@ router.get("/getAllPacientes", async (req, res) => {
             }
         }
 
-        res.status(200).send({ code: 1, result: getAllPacientes.rows });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getAllPacientes.rows, authData });
+            }
+        });
+
+        //res.status(200).send({ code: 1, result: getAllPacientes.rows });
 
     } catch (err) {
         console.error(err.message);
@@ -142,7 +213,7 @@ router.get("/getAllPacientes", async (req, res) => {
     }
 });
 
-router.get("/getPaciente", async (req, res) => {
+router.get("/getPaciente", verifyToken, async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const getPaciente = await pool.query(
@@ -175,7 +246,16 @@ router.get("/getPaciente", async (req, res) => {
         }
 
         //res.json(getPaciente.rows[0]);
-        res.status(200).send({ code: 1, result: getPaciente.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getPaciente.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getPaciente.rows[0] });
 
     } catch (err) {
         console.error(err.message);
@@ -183,7 +263,7 @@ router.get("/getPaciente", async (req, res) => {
     }
 });
 
-router.put("/updatePaciente", async (req, res) => {
+router.put("/updatePaciente", verifyToken, async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const { nombre, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
@@ -198,14 +278,23 @@ router.put("/updatePaciente", async (req, res) => {
             [id_paciente]
         );
         //res.json(getPaciente.rows[0]);
-        res.status(200).send({ code: 1, result: getPaciente.rows[0] });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getPaciente.rows[0] });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getPaciente.rows[0] });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
     }
 });
 
-router.delete("/deletePaciente", async (req, res) => {
+router.delete("/deletePaciente", verifyToken, async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const deletePaciente = await pool.query(
@@ -213,7 +302,17 @@ router.delete("/deletePaciente", async (req, res) => {
             [id_paciente]
         );
         //res.json("Paciente was deleted!");
-        res.status(200).send({ code: 1, result: "Paciente was deleted!" });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Paciente was deleted!" });
+            }
+        });
+        //res.status(200).send({ code: 1, result: "Paciente was deleted!" });
+
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, error: err.message });
