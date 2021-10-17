@@ -1,8 +1,22 @@
 const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
+const jwt = require("jsonwebtoken");
 
-router.post("/addCondicionesPaciente", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[2];
+        req.token = bearerToken;
+        //console.log("TOKEN ", req.token)
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+router.post("/addCondicionesPaciente", verifyToken, async (req, res) => {
     try {
         const { id_paciente, condiciones } = req.body;
 
@@ -13,14 +27,23 @@ router.post("/addCondicionesPaciente", async (req, res) => {
             );
         }
 
-        res.status(200).send({ code: 1, message: "Datos insertados correctamente" });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, message: "Datos insertados correctamente" });
+            }
+        });
+        //res.status(200).send({ code: 1, message: "Datos insertados correctamente" });
     } catch (err) {
         console.error(err.message);
         res.status(200).send({ code: 0, message: "Error: " + err.message });
     }
 });
 
-router.post("/getCondicionesPacienteByIDPaciente", async (req, res) => {
+router.post("/getCondicionesPacienteByIDPaciente", verifyToken, async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const getCondicionesPaciente = await pool.query(
@@ -40,7 +63,16 @@ router.post("/getCondicionesPacienteByIDPaciente", async (req, res) => {
         }
 
         console.log(getCondicionesPaciente.rows)
-        res.status(200).send({ code: 1, id_paciente: id_paciente, condiciones: array });
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, id_paciente: id_paciente, condiciones: array });
+            }
+        });
+        //res.status(200).send({ code: 1, id_paciente: id_paciente, condiciones: array });
 
     } catch (err) {
         console.error(err.message);
