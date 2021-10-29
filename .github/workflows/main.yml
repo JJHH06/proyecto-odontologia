@@ -25,7 +25,6 @@ jobs:
         with:
           
           ref: main
-          path: ./Frontend/* 
           
 
       - name: View Files
