@@ -16,23 +16,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+       run:
+        working-directory: ./Frontend
     steps:
       - name: Copying the Source Code
-        uses: actions/checkout@v2
+       
+      - uses: actions/checkout@v2
+        working-directory: ./Frontend
         with:
           ref: main
-          path: 'Frontend'
           
-      - name: Moving into folder
-        run: cd Frontend
-        
-      - name: see
-        run: ls
-      
- 
 
+ 
+      
       - name: Setting up Node 14
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'npm'
