@@ -19,7 +19,7 @@ jobs:
       - name: Copying the Source Code
         uses: actions/checkout@v2
         with:
-          ref: prod
+          ref: main/Frontend
 
       - name: Setting up Node 14
         uses: actions/setup-node@v2
