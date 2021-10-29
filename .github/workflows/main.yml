@@ -33,11 +33,11 @@ jobs:
         run: ls
 
       
-      - name: Setting up Node 14
+      - name: Setting up Node 16
         uses: actions/setup-node@v2
         with:
           cache-dependency-path: ./Frontend
-          node-version: '14'
+          node-version: '16.7.0'
           cache: 'npm'
 
       
@@ -48,9 +48,6 @@ jobs:
         run: npm run build
 
   # This workflow contains a single job called "SFTP"
-  deploy-via-sftp:
-    runs-on: ubuntu-latest
-    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
           
