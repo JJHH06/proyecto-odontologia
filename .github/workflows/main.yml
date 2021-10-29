@@ -22,6 +22,9 @@ jobs:
         with:
           ref: main
           path: 'Frontend'
+          
+      - name: Viewing files
+        run: ls
 
       - name: Setting up Node 14
         uses: actions/setup-node@v2
@@ -29,8 +32,7 @@ jobs:
           node-version: '14'
           cache: 'npm'
 
-      - name: Viewing files
-        run: ls
+      
       - name: Instaling Libraries
         run: npm install
 
