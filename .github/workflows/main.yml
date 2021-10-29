@@ -23,8 +23,8 @@ jobs:
           ref: main
           path: 'Frontend'
           
-      - name: Viewing files
-        run: ls
+      - name: Moving into folder
+        run: cd Frontend
 
       - name: Setting up Node 14
         uses: actions/setup-node@v2
