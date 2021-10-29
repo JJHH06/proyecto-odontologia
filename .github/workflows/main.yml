@@ -28,7 +28,9 @@ jobs:
           path: ./Frontend/* 
           
 
- 
+      - name: View Files
+        run: ls
+      - run: ls Frontend
       
       - name: Setting up Node 14
         uses: actions/setup-node@v2
