@@ -19,10 +19,11 @@ jobs:
 
     steps:
       - name: Copying the Source Code
-       
+        working-directory: ./Frontend
         uses: actions/checkout@v2
+        
         with:
-          working-directory: ./Frontend
+          
           ref: main
           
 
