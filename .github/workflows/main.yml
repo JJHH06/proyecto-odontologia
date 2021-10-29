@@ -19,6 +19,8 @@ jobs:
     defaults:
       run:
         working-directory: ./Frontend
+    env:
+      CI: false
     steps:
       - name: Copying the Source Code
         
