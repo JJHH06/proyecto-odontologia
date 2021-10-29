@@ -30,11 +30,12 @@ jobs:
 
       - name: View Files
         run: ls
-      - run: ls Frontend
+      - run: ls /Frontend
       
       - name: Setting up Node 14
         uses: actions/setup-node@v2
         with:
+          local_path: ./Frontend
           node-version: '14'
           cache: 'npm'
 
