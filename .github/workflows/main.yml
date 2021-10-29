@@ -13,6 +13,29 @@ on:
  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copying the Source Code
+        uses: actions/checkout@v2
+        with:
+          ref: prod
+
+      - name: Setting up Node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+
+      - name: Instaling Libraries
+        run: npm install
+
+      - name: Running tests
+        run: npm run test
+
+      - name: Building Project
+        run: npm run build
+
   # This workflow contains a single job called "SFTP"
   deploy-via-sftp:
     runs-on: ubuntu-latest
