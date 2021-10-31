@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Empleados.scss';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
@@ -20,6 +20,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 
+
+
 const useStyles = makeStyles({
     root: {
         "& > *": {
@@ -27,7 +29,7 @@ const useStyles = makeStyles({
         },
     },
     table: {
-        minWidth: 500,
+        minWidth: 100,
     },
     snackbar: {
         bottom: "104px",
@@ -41,9 +43,27 @@ function Empleados() {
   
     // Defining a state named rows
     // which we can update by calling on setRows function
-    const [rows, setRows] = useState([
-        { id: 1, Nombre: "", Correo: "", Contraseña: "", Estado: "" },
-    ]);
+    const [rows, setRows] = useState([]);
+
+    const fillData = () =>{
+      var data = '';
+    
+      var config = {
+        method: 'get',
+        url: 'http://198.211.103.50:5000/api/empleado/getAllEmpleados',
+        headers: { },
+        data : data
+      };
+      
+      axios(config)
+      .then(function (response) {
+        console.log(response.data.result)
+        setRows(response.data.result);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    } 
   
     // Initial states
     const [open, setOpen] = React.useState(false);
@@ -117,6 +137,10 @@ function Empleados() {
     const handleNo = () => {
         setShowConfirm(false);
     };
+
+    useEffect(()=>{
+      fillData();
+  },[])
   
   return (
     <TableBody>
@@ -196,27 +220,27 @@ function Empleados() {
                       <div>
                         <TableCell padding="none">
                           <input
-                            value={row.Nombre}
+                            value={row.nombre}
                             name="Nombre"
                             onChange={(e) => handleInputChange(e, i)}
                           />
                         </TableCell>
                         <TableCell padding="none">
                           <input
-                            value={row.Correo}
+                            value={row.id_empleado}
                             name="Correo"
                             onChange={(e) => handleInputChange(e, i)}
                           />
                         </TableCell>
                         <TableCell padding="none">
                           <input
-                            value={row.Contraseña}
+                            value={row.password}
                             name="Contraseña"
                             onChange={(e) => handleInputChange(e, i)}
                           />
                     
                         </TableCell>
-                        <TableCell padding="none">
+                        {/* <TableCell padding="none">
                           <select
                             style={{ width: "75px" }}
                             name="Estado"
@@ -227,18 +251,18 @@ function Empleados() {
                             <option value="Administrador">Administrador</option>
                             <option value="Empleado">Empleado</option>
                           </select>
-                        </TableCell>
+                        </TableCell> */}
                       </div>
                     ) : (
                       <div>
                         <TableCell component="th" scope="row">
-                          {row.Nombre}
+                          {row.nombre}
                         </TableCell>
                         <TableCell component="th" scope="row">
-                          {row.Correo}
+                          {row.id_empleado}
                         </TableCell>
                         <TableCell component="th" scope="row">
-                          {row.Contraseña}
+                          {row.password}
                         </TableCell>
                         <TableCell component="th" scope="row" align="center">
                           {row.Estado}
