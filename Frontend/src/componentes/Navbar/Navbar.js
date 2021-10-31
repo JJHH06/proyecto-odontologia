@@ -11,6 +11,7 @@ import {faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
 
 // objeto de la calculadora
 function Navbar() {
@@ -78,6 +79,11 @@ function Navbar() {
                 <li className="nav-item" role="presentation">
                   <Link className="nav-link" to='/agenda'><FontAwesomeIcon icon={faCalendarAlt}></FontAwesomeIcon>{" "} 
                   Agenda
+                  </Link>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <Link className="nav-link" to='/Empleados'><FontAwesomeIcon icon={faAddressCard}></FontAwesomeIcon>{" "} 
+                  Empleados
                   </Link>
                 </li>
                 <li className="nav-item" role="presentation">
