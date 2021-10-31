@@ -13,7 +13,7 @@ import Agenda from './Agenda/Agenda';
 import Ficha from './FichaPaciente/Ficha';
 import Inventario from './Inventario/Inventario';
 import AddProducto from './AddProduct/AddProduct';
-
+import Empleados from './Empleados/Empleados';
 function App(){
 
     const { token, setToken } = useToken();
@@ -45,6 +45,9 @@ function App(){
                     </Route>
                     <Route path="/nuevo_producto">
                         <AddProducto/>
+                    </Route>
+                    <Route path="/Empleados">
+                        <Empleados/>
                     </Route>
                     <Route path="/">
 
