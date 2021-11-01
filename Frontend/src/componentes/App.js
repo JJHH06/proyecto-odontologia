@@ -14,6 +14,8 @@ import Ficha from './FichaPaciente/Ficha';
 import Inventario from './Inventario/Inventario2';
 import AddProducto from './AddProduct/AddProduct';
 import Empleados from './Empleados/Empleados';
+import Tratamiento from './Tratamiento/Tratamiento';
+
 function App(){
 
     const { token, setToken } = useToken();
@@ -48,6 +50,9 @@ function App(){
                     </Route>
                     <Route path="/Empleados">
                         <Empleados/>
+                    </Route>
+                    <Route path="/Tratamiento">
+                        <Tratamiento/>
                     </Route>
                     <Route path="/">
 
