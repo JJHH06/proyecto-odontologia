@@ -16,7 +16,7 @@ function formatDate(date) {
   return [year, month, day].join("-");
 }
 
-function Formulario() {
+function Formulario(props) {
 const history = useHistory()
 
   const [name, setName] = useState("");
@@ -118,10 +118,10 @@ const history = useHistory()
 
   return (
     <div className="formulario-paciente" data-testid="patient-form">
-      <div className="container">
+      <div className="container border-style">
         <h1>Ficha Nuevo Paciente</h1>
         <form onSubmit={handleSubmit}>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
@@ -130,7 +130,7 @@ const history = useHistory()
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="telefono_casa">Telefono de Casa</label>
             <input
               type="tel"
@@ -140,7 +140,7 @@ const history = useHistory()
               onChange={(e) => setHomePhone(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="telefono_celular">Celular</label>
             <input
               type="tel"
@@ -151,7 +151,7 @@ const history = useHistory()
             />
           </div>
 
-          <div className="form-space row">
+          <div className="form-space input-style row">
             <label
               htmlFor="example-date-input1"
               className="col-4 col-form-label"
@@ -168,7 +168,7 @@ const history = useHistory()
             </div>
           </div>
 
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="estado_civil">Estado Civil</label>
             <input
               type="text"
@@ -177,7 +177,7 @@ const history = useHistory()
               onChange={(e) => setCivilState(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="ocupacion">Ocupacion</label>
             <input
               type="text"
@@ -186,16 +186,16 @@ const history = useHistory()
               onChange={(e) => setProfession(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="direccion">Direccion</label>
             <input
               type="text"
               name="direccion"
-              className="form-control"
+              className="form-control input-style"
               onChange={(e) => setAddress(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="recomendado_por">Recomendado por</label>
             <input
               type="text"
@@ -205,7 +205,7 @@ const history = useHistory()
             />
           </div>
 
-          <div className="form-space row">
+          <div className="form-space input-style row">
             <label
               htmlFor="example-date-input2"
               className="col-4 col-form-label"
@@ -222,7 +222,7 @@ const history = useHistory()
               />
             </div>
 
-            <div className="form-space">
+            <div className="form-space input-style">
               <label htmlFor="motivo_consulta">Motivo de consulta</label>
               <input
                 type="text"
@@ -233,7 +233,7 @@ const history = useHistory()
             </div>
           </div>
 
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="doctor_personal">Doctor personal</label>
             <input
               type="text"
@@ -242,7 +242,7 @@ const history = useHistory()
               onChange={(e) => setPersonalDoctor(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="telefono_doctor">
               Telefono del doctor personal
             </label>
@@ -254,7 +254,7 @@ const history = useHistory()
               onChange={(e) => setDoctorNumber(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="contacto_emergencia">Contacto de Emergencia</label>
             <input
               type="text"
@@ -263,7 +263,7 @@ const history = useHistory()
               onChange={(e) => setEmergencyContact(e.target.value)}
             />
           </div>
-          <div className="form-space">
+          <div className="form-space input-style">
             <label htmlFor="telefono_contacto">Telefono del Contacto</label>
             <input
               type="tel"

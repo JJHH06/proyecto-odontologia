@@ -1,49 +1,73 @@
-.formulario-paciente .form-space{
-    margin-top: 35px;
-    font-size: 18px;
+// .formulario-paciente {
+//   background-color: #7cacde;
+//   height: 100%;
+//   width: 100%;
+// }
+
+.formulario-paciente .form-space {
+  margin-top: 35px;
+  font-size: 18px;
 }
 
-.formulario-paciente h1{
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 25px;
+.formulario-paciente .form-space.input-style input {
+  padding-left: 10px !important;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
-.formulario-paciente form{
-    border-style: solid;
-    padding: 30px;
+.formulario-paciente h1 {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
-.formulario-paciente .form-space.boton-align{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+// .formulario-paciente form{
+//     border-style: solid;
+//     padding: 30px;
+// }
+
+.formulario-paciente .container.border-style {
+  padding: 30px;
+  margin-top: 10px;
+  background-color: #dee5ec;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px 1px #00000081;
 }
 
-.formulario-paciente .boton-formulario{
-    
-    box-shadow:inset 0px 1px 0px 0px #bee2f9;
-	background:linear-gradient(to bottom, #63b8ee 5%, rgb(74, 193, 224) 100%);
-	background-color:#63b8ee;
-	border-radius:6px;
-	border:1px solid #3866a3;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:11px 60px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #7cacde;
+.formulario-paciente .form-space.boton-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.formulario-paciente .boton-formulario:hover{
-    background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
-	background-color:#468ccf;
+.formulario-paciente .boton-formulario {
+  box-shadow: inset 0px 1px 0px 0px #bee2f9;
+  background: linear-gradient(to bottom, #63b8ee 5%, rgb(74, 193, 224) 100%);
+  background-color: #63b8ee;
+  border-radius: 6px;
+  border: 1px solid #3866a3;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 11px 60px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #7cacde;
 }
 
-.form-space.container.checkboxes label{
-    margin-left: 10px;
+.formulario-paciente .boton-formulario:hover {
+  background: linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+  background-color: #468ccf;
+}
+
+.form-space.container.checkboxes label {
+  margin-left: 10px;
 }
