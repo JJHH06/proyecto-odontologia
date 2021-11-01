@@ -8,10 +8,11 @@ import Odontogram from "../Odontograma/Odontogram"
 function Ficha(props) {
 
     const location = useLocation();
-    console.log(location.state);
+    // console.log(location.state);
     //console.log(props.location.state)
     return (
-        <div className= 'container estilo-ficha'>
+        <>
+         {location? <div  className= 'container estilo-ficha'>
             <h1>{location.state.nombre}</h1>
             <div className='row'>
                 <div className='col-lg-6'>
@@ -84,7 +85,7 @@ function Ficha(props) {
                 </div>
                 
             </div>
-        </div>
+        </div>: <div data-testid="patient-form" >Paciente no disponible, La vuelve a la pantalla de inicio</div>}</>
     );
 }
 

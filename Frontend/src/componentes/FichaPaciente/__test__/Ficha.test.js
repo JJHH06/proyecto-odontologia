@@ -3,9 +3,20 @@ import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
 import {render, cleanup, screen} from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect";
-import Ficha from '../../Ficha_paciente/Ficha';
+import Ficha from '../Ficha';
+import { jssPreset } from '@material-ui/styles';
 
 
+jest.mock('react-router-dom', () => ({
+    useLocation: jest.fn().mockReturnValue({
+    location: {state:"Elpepe"},
+      pathname: '/another-route',
+      search: '',
+      hash: '',
+      state: null,
+      key: '5nvxpbdafa',
+    }),
+}));
 
 afterEach(cleanup);
 it("Renders without crashing",()=>{
