@@ -12,6 +12,7 @@ import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
+import {faMedkit} from '@fortawesome/free-solid-svg-icons';
 
 // objeto de la calculadora
 function Navbar() {
@@ -69,6 +70,12 @@ function Navbar() {
                       
                     </li>
                   </ul>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <Link className="nav-link" to="/Tratamiento">
+                    <FontAwesomeIcon icon={faMedkit}></FontAwesomeIcon>{" "}
+                    Tratatamientos
+                  </Link>
                 </li>
                 <li className="nav-item" role="presentation">
                   <Link className="nav-link" to="/inventario">
