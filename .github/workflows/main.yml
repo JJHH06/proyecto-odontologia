@@ -45,6 +45,9 @@ jobs:
       
       - name: Instaling Libraries
         run: npm install
+        
+      - name: Battery testing before launch
+        run: npm test
 
       - name: Building Project
         run: npm run build
