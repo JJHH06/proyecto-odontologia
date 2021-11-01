@@ -11,7 +11,7 @@ import Formulario from './Formulario_paciente/Formulario';
 import useToken from './useToken';
 import Agenda from './Agenda/Agenda';
 import Ficha from './FichaPaciente/Ficha';
-import Inventario from './Inventario/Inventario';
+import Inventario from './Inventario/Inventario2';
 import AddProducto from './AddProduct/AddProduct';
 import Empleados from './Empleados/Empleados';
 function App(){
