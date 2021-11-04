@@ -31,7 +31,7 @@ function App(){
             <Navbar/>
                 <Switch>
                     <Route path="/informacion_pacientes">
-                        <Search/>
+                        <Search token = {token}/>
                     </Route>
                     <Route path="/ingresar_paciente">
                         <Formulario/>

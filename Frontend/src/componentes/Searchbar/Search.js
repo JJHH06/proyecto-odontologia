@@ -6,11 +6,12 @@ import PatientResult from './PatientResult/PatientResult';
 
 
 // objeto de la calculadora
-function Search() {
+function Search({token}) {
     const [pacientesBusqueda, setPacientesBusqueda] = useState("");
     const [pacientesEncontrados, setPacientesEncontrados] = useState([]);
 
     const handleSearch = (e) => {
+        console.log("auth token: ",token)
         var data = JSON.stringify({
             "busqueda": pacientesBusqueda
           });

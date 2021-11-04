@@ -78,10 +78,15 @@ function Tooth({id_paciente,tooth_id,setSelectedPiece}) {
     //props.setSelectedPiece();
   }
 
+  //handle left click function
+  const handleEditTooth = () =>{
+    alert("Se ha hecho click derecho en el diente " + tooth_id + "Del paciente "+id_paciente)
+  }
   
+
   return (
       
-    <svg onClick = {handleClick} class="tooth">
+    <svg onClick = {handleClick} onContextMenu = {handleEditTooth} class="tooth">
         {/* transform="translate(0,0)" */}
       <g transform ="scale(1.5)">
         <polygon points="0,0 20,0 15,5 5,5" class=""></polygon>
