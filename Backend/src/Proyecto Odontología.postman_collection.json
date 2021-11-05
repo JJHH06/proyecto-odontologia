@@ -15,7 +15,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzQ0NDIwMDcsImV4cCI6MTYzNDQ0MjA2N30.MIdWv9J9Gvvbecf2RjzBveagZrH0pdP5baKIrYsJbw8",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzU0NzYwMjUsImV4cCI6MTYzNTU2MjQyNX0._g7hbCPSqbgm7ypKG4etOazl8GHzdbk7JuqcZ_-YUpQ",
 								"type": "text"
 							}
 						],
@@ -55,7 +55,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzQ0NDIwMDcsImV4cCI6MTYzNDQ0MjA2N30.MIdWv9J9Gvvbecf2RjzBveagZrH0pdP5baKIrYsJbw8",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzU0NzYwMjUsImV4cCI6MTYzNTU2MjQyNX0._g7hbCPSqbgm7ypKG4etOazl8GHzdbk7JuqcZ_-YUpQ",
 								"type": "text"
 							}
 						],
@@ -798,7 +798,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYwMTA5MDUsImV4cCI6MTYzNjA5NzMwNX0.peh0EldOHqyzNQTHORiVRjah_jTpikdhea9p7d5P2xc",
 								"type": "text"
 							}
 						],
@@ -812,7 +812,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/trata",
+							"raw": "http://localhost:5000/api/tratamiento_paciente/getTratamientoByPieza",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -820,7 +820,8 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"trata"
+								"tratamiento_paciente",
+								"getTratamientoByPieza"
 							]
 						}
 					},
@@ -833,7 +834,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
 								"type": "text"
 							}
 						],
@@ -857,6 +858,42 @@
 								"api",
 								"tratamiento_paciente",
 								"getTratamientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTratamientos2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/getTratamientos2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"getTratamientos2"
 							]
 						}
 					},
