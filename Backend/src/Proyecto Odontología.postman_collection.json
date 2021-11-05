@@ -798,7 +798,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYwMTA5MDUsImV4cCI6MTYzNjA5NzMwNX0.peh0EldOHqyzNQTHORiVRjah_jTpikdhea9p7d5P2xc",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
 								"type": "text"
 							}
 						],
@@ -894,6 +894,78 @@
 								"api",
 								"tratamiento_paciente",
 								"getTratamientos2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTratamiento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTratamiento\": 45,\r\n    \"noPieza\": \"11\",\r\n    \"idPaciente\": 22,\r\n    \"seccion\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/addTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"addTratamiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTratamiento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTratamientoPaciente\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/deleteTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"deleteTratamiento"
 							]
 						}
 					},
