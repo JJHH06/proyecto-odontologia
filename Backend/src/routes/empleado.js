@@ -154,7 +154,7 @@ router.delete("/deleteEmpleado", verifyToken, async (req, res) => {
             "DELETE FROM empleado WHERE id_empleado = $1",
             [id_empleado]
         );
-        res.json("Empleado was deleted!");
+        //res.json("Empleado was deleted!");
         jwt.verify(req.token, 'secretKey', (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
