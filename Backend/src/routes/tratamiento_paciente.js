@@ -45,6 +45,31 @@ router.post("/getTratamientos", verifyToken, async (req, res) => {
     try {
         const { id_paciente } = req.body;
         const getTratamientos = await pool.query(
+            `select t.nombre as tratamiento, count(*) from tratamientos_paciente tp inner join tratamiento t
+            on t.id_tratamiento = tp.id_tratamiento where id_paciente = $1 group by t.id_tratamiento, t.nombre`,
+            [id_paciente]
+        );
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: getTratamientos.rows });
+            }
+        });
+        //res.status(200).send({ code: 1, result: getTratamientos.rows });
+
+    } catch (err) {
+        console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
+router.post("/getTratamientos2", verifyToken, async (req, res) => {
+    try {
+        const { id_paciente } = req.body;
+        const getTratamientos = await pool.query(
             `select count(*) as value, t.nombre as label from tratamientos_paciente tp inner join tratamiento t
             on t.id_tratamiento = tp.id_tratamiento where id_paciente = $1 group by t.id_tratamiento, t.nombre`,
             [id_paciente]
