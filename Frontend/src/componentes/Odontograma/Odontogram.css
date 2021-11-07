@@ -1,6 +1,12 @@
-.Odontogram {
+/* .Odontogram {
   text-align: center;
   padding: 5px;
   height: 220px;
   padding-left: 350px;
+} */
+
+
+.odontogram-title{
+  margin-bottom: 40px !important;
+
 }

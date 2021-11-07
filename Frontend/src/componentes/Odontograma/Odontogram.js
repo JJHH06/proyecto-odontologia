@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Tooth from './Tooth'
 import axios from 'axios'
 import Diagnosis  from './Diagnosis'
+import './Odontogram.css'
 function Odontogram(props) {
     const [summaryTitle, setSummaryTitle] = useState("Cargando...");
     const [tratamientos, setTratamientos] = useState([]);
@@ -62,11 +63,12 @@ function Odontogram(props) {
 
     return (
       <>
-      {isToothInDiagnosis? <div><Diagnosis currentDiagnosisTooth={currentDiagnosisTooth} setIsToothInDiagnosis={setIsToothInDiagnosis} /></div>:
+      {isToothInDiagnosis? <div><Diagnosis id_paciente={props.id_paciente} token={props.token} currentDiagnosisTooth={currentDiagnosisTooth} setIsToothInDiagnosis={setIsToothInDiagnosis} /></div>:
       <div>
       <div className="container">
 
         <div className="row py-3">
+        <h1 className='odontogram-title'>Odontograma</h1>
           <div className="col">
             <div className="container">
               <div className="row">
