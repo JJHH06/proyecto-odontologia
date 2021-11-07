@@ -43,6 +43,8 @@ let index = calculateToothIndex(currentDiagnosisTooth);
     const [defaultMesial, setDefaultMesial] = useState([]);
     const [defaultLingual, setDefaultLingual] = useState([]);
 
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+
   //state for the defaultToothDiagnosis
     const [defaultToothDiagnosis, setDefaultToothDiagnosis] = useState({})
 
@@ -105,7 +107,11 @@ let index = calculateToothIndex(currentDiagnosisTooth);
             //check if defaultToothDiagnosis object is empty
             // if (Object.keys(defaultToothDiagnosis).length === 0){
             // }
+            
             setDefaultToothDiagnosis(tratamientosPieza);
+            setIsDataLoaded(true);
+            
+            console.log(tratamientosPieza)
           })
           .catch(function (error) {
             console.log(error);
@@ -119,7 +125,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <>{Object.keys(defaultToothDiagnosis).length === 0? <div>cargando</div>:<>
+    <>{!isDataLoaded? <div>cargando</div>:<>
         <div className="row">
           <h1 className='diagnosis-title'>Diagnostico pieza {currentDiagnosisTooth}</h1>
           <div className="responsive-tooth-container col-md-4">
