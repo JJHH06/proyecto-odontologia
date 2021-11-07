@@ -42,6 +42,7 @@ function Diagnosis({ setIsToothInDiagnosis, currentDiagnosisTooth }) {
             className="basic-multi-select"
             classNamePrefix="select"
             placeholder="Seleccione tratamientos a realizar..."
+            menuShouldScrollIntoView={false}
           />
           <h3>Bucal:</h3>
           <Select
@@ -52,6 +53,7 @@ function Diagnosis({ setIsToothInDiagnosis, currentDiagnosisTooth }) {
             className="basic-multi-select"
             classNamePrefix="select"
             placeholder="Seleccione tratamientos a realizar..."
+            menuShouldScrollIntoView={false}
           />
           <h3>Molar:</h3>
           <Select
@@ -62,6 +64,7 @@ function Diagnosis({ setIsToothInDiagnosis, currentDiagnosisTooth }) {
             className="basic-multi-select"
             classNamePrefix="select"
             placeholder="Seleccione tratamientos a realizar..."
+            menuShouldScrollIntoView={false}
           />
 
           <h3>Lingual:</h3>
@@ -73,6 +76,7 @@ function Diagnosis({ setIsToothInDiagnosis, currentDiagnosisTooth }) {
             className="basic-multi-select"
             classNamePrefix="select"
             placeholder="Seleccione tratamientos a realizar..."
+            menuShouldScrollIntoView={false}
           />
 
           <h3>Distal:</h3>
@@ -84,6 +88,7 @@ function Diagnosis({ setIsToothInDiagnosis, currentDiagnosisTooth }) {
             className="basic-multi-select"
             classNamePrefix="select"
             placeholder="Seleccione tratamientos a realizar..."
+            menuShouldScrollIntoView={false}
           />
         </div>
         
