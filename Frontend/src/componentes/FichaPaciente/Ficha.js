@@ -79,7 +79,7 @@ function Ficha({token}) {
                             
                         </ul>
                     </div>
-                    <div className='cuadro'>
+                    <div className='odontogram-container cuadro'>
                         <Odontogram id_paciente={location.state.id_paciente} token={token}/>
                     </div>
                 </div>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Tooth from './Tooth'
 import axios from 'axios'
+import Diagnosis  from './Diagnosis'
 function Odontogram(props) {
     const [summaryTitle, setSummaryTitle] = useState("Cargando...");
     const [tratamientos, setTratamientos] = useState([]);
     const [selectedPiece, setSelectedPiece] = useState({id_pieza: "0", bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]});
-    const [selectedTooth, setSelectedTooth] = useState("0");
+    const [isToothInDiagnosis, setIsToothInDiagnosis] = useState(false);
+    const [currentDiagnosisTooth, setCurrentDiagnosisTooth] = useState(0);
 
     function handleChangedPiece(newValue) {
       setSelectedPiece(newValue);
@@ -59,180 +61,186 @@ function Odontogram(props) {
 
 
     return (
+      <>
+      {isToothInDiagnosis? <div><Diagnosis currentDiagnosisTooth={currentDiagnosisTooth} setIsToothInDiagnosis={setIsToothInDiagnosis} /></div>:
       <div>
-        <div className="container">
+      <div className="container">
 
-          <div className="row py-3">
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {/* <div className="col-4"></div> */}
+        <div className="row py-3">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {/* <div className="col-4"></div> */}
 
-                  {teethConfiguration[0].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {teethConfiguration[1].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                  {/* <div className="col-4"></div> */}
-                </div>
+                {teethConfiguration[0].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-
-          <div className="row py-3">
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  <div className="col-4"></div>
-
-                  {teethConfiguration[2].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {teethConfiguration[3].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                  <div className="col-4"></div>
-                </div>
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {teethConfiguration[1].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+                {/* <div className="col-4"></div> */}
               </div>
             </div>
           </div>
-
-          <div className="row py-3">
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  <div className="col-4"></div>
-
-                  {teethConfiguration[4].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {teethConfiguration[5].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                  <div className="col-4"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="row py-3">
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {/* <div className="col-4"></div> */}
-
-                  {teethConfiguration[6].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="container">
-                <div className="row">
-                  {teethConfiguration[7].map((id) => (
-                    <div className="col d-flex flex-column">
-                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
-                    </div>
-                  ))}
-                  {/* <div className="col-4"></div> */}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
         </div>
-        { selectedPiece.id_pieza ==="0"?
-        <div className='cuadro'>
-                        <h3>{summaryTitle}</h3>
-                        <ul>
-                            {
-                                tratamientos.map((tratamiento,index) =>(
-                                    <li><p className='subtitulo'>{tratamiento.tratamiento+":"} <span>{tratamiento.count}</span></p> </li>
-                            
-                                ))
-                            }
-                            
-                            
-                        </ul>
-                    </div>: 
-                    <div className='cuadro'>
-                    <h3>
-                      {"Resumen pieza "+selectedPiece.id_pieza}
-                    </h3>
-                    <br/>
-                    <h5>Oclusal</h5>
-                    <ul>
-                    {
-                      selectedPiece.oclusal.map((tratamiento,index)=>(
-                        <li><p > {tratamiento}</p> </li>
-                      ))
-                    }</ul>
-                    <h5>Bucal</h5>
-                    <ul>
-                    {
-                      selectedPiece.bucal.map((tratamiento,index)=>(
-                        <li><p >{tratamiento}</p> </li>
-                      ))
-                    }</ul>
-                    <h5>Lingual</h5>
-                    <ul>
-                    {
-                      selectedPiece.lingual.map((tratamiento,index)=>(
-                        <li><p > {tratamiento}</p> </li>
-                      ))
-                    }</ul>
-                    <h5>Distal</h5>
-                    <ul>
-                    {
-                      selectedPiece.distal.map((tratamiento,index)=>(
-                        <li><p > {tratamiento}</p> </li>
-                      ))
-                    }</ul>
-                    <h5>Mesial</h5>
-                    <ul>
-                    {
-                      selectedPiece.mesial.map((tratamiento,index)=>(
-                        <li><p > {tratamiento}</p> </li>
-                      ))
-                    }</ul>
 
-                      </div>}
+        <div className="row py-3">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                <div className="col-4"></div>
+
+                {teethConfiguration[2].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {teethConfiguration[3].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+                <div className="col-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row py-3">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                <div className="col-4"></div>
+
+                {teethConfiguration[4].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {teethConfiguration[5].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+                <div className="col-4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="row py-3">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {/* <div className="col-4"></div> */}
+
+                {teethConfiguration[6].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {teethConfiguration[7].map((id) => (
+                  <div className="col d-flex flex-column">
+                    <Tooth setCurrentDiagnosisTooth = {setCurrentDiagnosisTooth} token={props.token} setIsToothInDiagnosis={setIsToothInDiagnosis} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                  </div>
+                ))}
+                {/* <div className="col-4"></div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
       </div>
+      { selectedPiece.id_pieza ==="0"?
+      <div className='cuadro'>
+                      <h3>{summaryTitle}</h3>
+                      <ul>
+                          {
+                              tratamientos.map((tratamiento,index) =>(
+                                  <li><p className='subtitulo'>{tratamiento.tratamiento+":"} <span>{tratamiento.count}</span></p> </li>
+                          
+                              ))
+                          }
+                          
+                          
+                      </ul>
+                  </div>: 
+                  <div className='cuadro'>
+                  <h3>
+                    {"Resumen pieza "+selectedPiece.id_pieza}
+                  </h3>
+                  <br/>
+                  <h5>Oclusal</h5>
+                  <ul>
+                  {
+                    selectedPiece.oclusal.map((tratamiento,index)=>(
+                      <li><p > {tratamiento}</p> </li>
+                    ))
+                  }</ul>
+                  <h5>Bucal</h5>
+                  <ul>
+                  {
+                    selectedPiece.bucal.map((tratamiento,index)=>(
+                      <li><p >{tratamiento}</p> </li>
+                    ))
+                  }</ul>
+                  <h5>Lingual</h5>
+                  <ul>
+                  {
+                    selectedPiece.lingual.map((tratamiento,index)=>(
+                      <li><p > {tratamiento}</p> </li>
+                    ))
+                  }</ul>
+                  <h5>Distal</h5>
+                  <ul>
+                  {
+                    selectedPiece.distal.map((tratamiento,index)=>(
+                      <li><p > {tratamiento}</p> </li>
+                    ))
+                  }</ul>
+                  <h5>Mesial</h5>
+                  <ul>
+                  {
+                    selectedPiece.mesial.map((tratamiento,index)=>(
+                      <li><p > {tratamiento}</p> </li>
+                    ))
+                  }</ul>
+
+                    </div>}
+    </div>
+
+      }
+      
+      </>
     );
 }
 

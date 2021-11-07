@@ -4,7 +4,7 @@ import './Tooth.css';
 import axios from 'axios'
 
 
-function Tooth({token,id_paciente,tooth_id,setSelectedPiece}) {
+function Tooth({setCurrentDiagnosisTooth, setIsToothInDiagnosis, token,id_paciente,tooth_id,setSelectedPiece}) {
   
   const handleClick = () =>{
     //alert("Se ha hecho click en el diente " + props.tooth_id + "Del paciente "+props.id_paciente)
@@ -80,8 +80,11 @@ function Tooth({token,id_paciente,tooth_id,setSelectedPiece}) {
   }
 
   //handle left click function
-  const handleEditTooth = () =>{
+  const handleEditTooth = (e) =>{
+    e.preventDefault();
     alert("Se ha hecho click derecho en el diente " + tooth_id + "Del paciente "+id_paciente)
+    setCurrentDiagnosisTooth(tooth_id);
+    setIsToothInDiagnosis(true)
   }
   
 
@@ -111,8 +114,13 @@ function Tooth({token,id_paciente,tooth_id,setSelectedPiece}) {
   );
 }
 
+
+
 // Tooth.propTypes = {
-//     tooth_id: PropTypes.number.isRequired,
-// };
+//   tooth_id: PropTypes.number.isRequired,
+//   setSelectedPiece: PropTypes.func.isRequired
+//   token: PropTypes.string.isRequired,
+//   id_paciente: PropTypes.number.isRequired,
+//  };
 
 export default Tooth;
