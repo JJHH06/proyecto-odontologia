@@ -798,7 +798,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTgzMzcsImV4cCI6MTYzNjQwNDczN30.aMVVyB-i3ZJ3rEfqoedslq9Am77Q6TL7-jBxRGEcOJc",
 								"type": "text"
 							}
 						],
@@ -834,7 +834,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTgzMzcsImV4cCI6MTYzNjQwNDczN30.aMVVyB-i3ZJ3rEfqoedslq9Am77Q6TL7-jBxRGEcOJc",
 								"type": "text"
 							}
 						],
@@ -870,7 +870,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYxMjYwMDgsImV4cCI6MTYzNjIxMjQwOH0.V0Cly6brnu5k3JDgGnFrQsnMpv9QPCsA9tzMcx8w8BQ",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTgzMzcsImV4cCI6MTYzNjQwNDczN30.aMVVyB-i3ZJ3rEfqoedslq9Am77Q6TL7-jBxRGEcOJc",
 								"type": "text"
 							}
 						],
@@ -894,6 +894,33 @@
 								"api",
 								"tratamiento_paciente",
 								"getTratamientos2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTratamientos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTg1NDIsImV4cCI6MTYzNjQwNDk0Mn0.Mu-0GTfSrxllJEq_A9Mut6HPnRittbeqoOXTZd0oU1s",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento_paciente/getAllTratamientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento_paciente",
+								"getAllTratamientos"
 							]
 						}
 					},
