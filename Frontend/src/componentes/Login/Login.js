@@ -70,7 +70,7 @@ function Login({setToken}){
     console.log(JSON.stringify(response.data));
     if (response.data.result.validate_login){
       
-      setToken(token);
+      setToken({"token":response.data.result.token});
     }
     
   })

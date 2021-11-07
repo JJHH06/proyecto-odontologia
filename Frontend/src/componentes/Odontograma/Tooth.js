@@ -4,7 +4,7 @@ import './Tooth.css';
 import axios from 'axios'
 
 
-function Tooth({id_paciente,tooth_id,setSelectedPiece}) {
+function Tooth({token,id_paciente,tooth_id,setSelectedPiece}) {
   
   const handleClick = () =>{
     //alert("Se ha hecho click en el diente " + props.tooth_id + "Del paciente "+props.id_paciente)
@@ -39,6 +39,7 @@ function Tooth({id_paciente,tooth_id,setSelectedPiece}) {
       method: 'post',
       url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getTratamientoByPieza',
       headers: { 
+        'Authorization': 'Bearer  ' + token, 
         'Content-Type': 'application/json'
       },
       data : data

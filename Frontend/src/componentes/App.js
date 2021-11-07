@@ -34,25 +34,25 @@ function App(){
                         <Search token = {token}/>
                     </Route>
                     <Route path="/ingresar_paciente">
-                        <Formulario/>
+                        <Formulario token = {token}/>
                     </Route>
                     <Route path="/agenda">
-                        <Agenda/>
+                        <Agenda token = {token}/>
                     </Route>
                     <Route path="/ficha">
-                        <Ficha/>
+                        <Ficha token = {token}/>
                     </Route>
                     <Route path="/inventario">
-                        <Inventario/>
+                        <Inventario token = {token}/>
                     </Route>
                     <Route path="/nuevo_producto">
-                        <AddProducto/>
+                        <AddProducto token = {token}/>
                     </Route>
                     <Route path="/Empleados">
-                        <Empleados/>
+                        <Empleados token = {token}/>
                     </Route>
                     <Route path="/Tratamiento">
-                        <Tratamiento/>
+                        <Tratamiento token = {token}/>
                     </Route>
                     <Route path="/">
 

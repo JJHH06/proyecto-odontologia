@@ -30,6 +30,7 @@ function Odontogram(props) {
             method: 'post',
             url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getTratamientos',
             headers: { 
+              'Authorization': 'Bearer  ' + props.token, 
               'Content-Type': 'application/json'
             },
             data : data
@@ -42,6 +43,7 @@ function Odontogram(props) {
             if(response.data.result.length === 0){
                 setSummaryTitle("El paciente no posee tratamientos")
             }
+            console.log('eltratamiento', response.data.result);
             setTratamientos(response.data.result);
           })
           .catch(function (error) {
@@ -68,7 +70,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[0].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente} />
+                      <Tooth token={props.token} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente} />
                     </div>
                   ))}
                 </div>
@@ -79,7 +81,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[1].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   {/* <div className="col-4"></div> */}
@@ -96,7 +98,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[2].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -107,7 +109,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[3].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   <div className="col-4"></div>
@@ -124,7 +126,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[4].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -135,7 +137,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[5].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   <div className="col-4"></div>
@@ -152,7 +154,7 @@ function Odontogram(props) {
 
                   {teethConfiguration[6].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                 </div>
@@ -163,7 +165,7 @@ function Odontogram(props) {
                 <div className="row">
                   {teethConfiguration[7].map((id) => (
                     <div className="col d-flex flex-column">
-                      <Tooth setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
+                      <Tooth token={props.token} setSelectedTooth={setSelectedTooth} setSelectedPiece={handleChangedPiece} tooth_id={id} id_paciente={props.id_paciente}/>
                     </div>
                   ))}
                   {/* <div className="col-4"></div> */}

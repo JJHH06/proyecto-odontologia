@@ -20,6 +20,7 @@ function Search({token}) {
             method: 'post',
             url: 'http://198.211.103.50:5000/api/paciente/searchPaciente',
             headers: { 
+              'Authorization': 'Bearer  ' + token, 
               'Content-Type': 'application/json'
             },
             data : data

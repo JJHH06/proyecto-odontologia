@@ -5,7 +5,7 @@ import './Ficha.scss';
 import Odontogram from "../Odontograma/Odontogram"
 
 
-function Ficha(props) {
+function Ficha({token}) {
 
     const location = useLocation();
     // console.log(location.state);
@@ -80,7 +80,7 @@ function Ficha(props) {
                         </ul>
                     </div>
                     <div className='cuadro'>
-                        <Odontogram id_paciente={location.state.id_paciente}/>
+                        <Odontogram id_paciente={location.state.id_paciente} token={token}/>
                     </div>
                 </div>
                 

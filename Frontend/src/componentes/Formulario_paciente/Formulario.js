@@ -16,7 +16,7 @@ function formatDate(date) {
   return [year, month, day].join("-");
 }
 
-function Formulario(props) {
+function Formulario({token}) {
 const history = useHistory()
 
   const [name, setName] = useState("");
@@ -68,8 +68,9 @@ const history = useHistory()
     var config = {
       method: "post",
       url: "http://198.211.103.50:5000/api/paciente/addPaciente",
-      headers: {
-        "Content-Type": "application/json",
+      headers: { 
+        'Authorization': 'Bearer  ' + token, 
+        'Content-Type': 'application/json'
       },
       data: data,
     };
@@ -89,8 +90,9 @@ const history = useHistory()
         var configConditions = {
           method: "post",
           url: "http://198.211.103.50:5000/api/condiciones_paciente/addCondicionesPaciente",
-          headers: {
-            "Content-Type": "application/json",
+          headers: { 
+            'Authorization': 'Bearer  ' + token, 
+            'Content-Type': 'application/json'
           },
           data: newPatientConditions,
         };
