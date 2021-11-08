@@ -4,8 +4,7 @@ import "./Diagnosis.css";
 import tooth_mock from "./Assets/tooth.png";
 import axios from 'axios';
 
-let options = [
-];
+
 
 const calculateToothIndex = (pieza) => {
     let index = {bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
@@ -27,6 +26,49 @@ const calculateToothIndex = (pieza) => {
     }
 }
 
+const getAllTreatments = async (token) => {
+  let config = {
+    method: 'get',
+    url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getAllTratamientos',
+    headers: { 
+      'Authorization': 'Bearer  '+token
+    }
+  };
+   return await axios(config)
+   .then(function (response) {
+     return response.data.result
+   })
+  }
+
+const deleteTreatments = async (token, treatments) => {
+  return await axios.delete('http://198.211.103.50:5000/api/tratamiento_paciente/deleteTratamientos', {
+    headers: {
+      Authorization: 'Bearer  '+token
+    },
+    data: {
+      lista: treatments
+    }
+  }).then(function (response) {
+    return response.data.result
+  })
+
+}
+// make a function that uses the url http://198.211.103.50:5000/api/tratamiento_paciente/addTratamientos to make a post request , based on a list of treatments and an authorization header
+const addTreatments = async (token, treatments) => {
+  return await axios.post('http://198.211.103.50:5000/api/tratamiento_paciente/addTratamientos', {
+    headers: {
+      Authorization: 'Bearer  '+token
+    },
+    data: {
+      lista: treatments
+    }
+  }).then(function (response) {
+    return response.data.result
+  })
+}
+
+
+
 function Diagnosis({id_paciente, token, setIsToothInDiagnosis, currentDiagnosisTooth }) {
 let index = calculateToothIndex(currentDiagnosisTooth);
 
@@ -42,17 +84,70 @@ let index = calculateToothIndex(currentDiagnosisTooth);
     const [defaultDistal, setDefaultDistal] = useState([]);
     const [defaultMesial, setDefaultMesial] = useState([]);
     const [defaultLingual, setDefaultLingual] = useState([]);
-
+    const [options, setOptions] = useState([]);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
-
-  //state for the defaultToothDiagnosis
     const [defaultToothDiagnosis, setDefaultToothDiagnosis] = useState({})
+
+    const handleSave = () => {
+      // map every object from defaultOclusal and add a property id_paciente
+      let oclusal = defaultOclusal.map(item => {
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.oclusal };
+      });
+      let bucal = defaultBucal.map(item => {
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.bucal };
+      });
+      let distal = defaultDistal.map(item => {
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.distal };
+      });
+      let mesial = defaultMesial.map(item => {
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.mesial };
+      });
+      let lingual = defaultLingual.map(item => {
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.lingual };
+      });
+
+      //los datos seleccionados
+      const dataInSelection = {...oclusal, ...bucal, ...distal, ...mesial, ...lingual};
+
+      // Para eliminar los tratamientos desmarcados en el select
+      let deletedItems = [];
+      defaultToothDiagnosis.forEach(item => {
+        
+        if (!dataInSelection.some(element => {
+                return element.idTratamiento === item.id_tratamiento && element.seccion === item.seccion;
+              }))
+        {
+          deletedItems.push({idTratamientoPaciente: item.id_tratamiento_paciente});
+        }
+      });
+      if (deletedItems.length > 0) {
+        await deleteTreatments(token, deletedItems)
+      }
+
+      // create a list of the objects that are in dataInSelection but not in defaultToothDiagnosis
+      const newItems = dataInSelection.filter(item => {
+        return !defaultToothDiagnosis.some(element => {
+          return element.id_tratamiento === item.idTratamiento && element.seccion === item.seccion;
+        });
+      });
+
+      if (newItems.length > 0) {
+        // add the new items to the database
+        await addTreatments(token, newItems)
+      }
+      setIsToothInDiagnosis(false);
+      
+      
+    }
+  
+
 
     const handleCancel = () => {
         setIsToothInDiagnosis(false);
     }
 
-    const handleStart = () => {
+    const handleStart = async() => {
+        setOptions(await getAllTreatments(token));
         let data = JSON.stringify({
             "no_pieza": currentDiagnosisTooth,
             "id_paciente": id_paciente
@@ -75,12 +170,7 @@ let index = calculateToothIndex(currentDiagnosisTooth);
             
             tratamientosPieza.forEach(tratamiento => {
                 //if tratamiento is not already inside options, push it
-                if (!options.some(option => option.value === tratamiento.id_tratamiento)){
-                    options.push({
-                        value: tratamiento.id_tratamiento,
-                        label: tratamiento.nombre_tratamiento
-                    })
-                }
+                
 
                 //{bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
                 if (tratamiento.seccion === index.bucal){
@@ -111,12 +201,14 @@ let index = calculateToothIndex(currentDiagnosisTooth);
             setDefaultToothDiagnosis(tratamientosPieza);
             setIsDataLoaded(true);
             
-            console.log(tratamientosPieza)
           })
           .catch(function (error) {
             console.log(error);
           });
     }
+  
+
+    
 
 
 useEffect(() => {
@@ -202,7 +294,7 @@ useEffect(() => {
             <button className="btn btn-outline-danger" onClick={handleCancel}>Cancelar</button>
           </div>
           <div className="save-diagnosis-button col-md-6">
-            <button className="btn btn-outline-primary btn-lg">Guardar</button>
+            <button className="btn btn-outline-primary btn-lg" onClick={handleSave}>Guardar</button>
           </div>
         </div>
       </>}</>
