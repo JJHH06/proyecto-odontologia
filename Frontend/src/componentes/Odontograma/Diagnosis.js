@@ -88,7 +88,7 @@ let index = calculateToothIndex(currentDiagnosisTooth);
     const [isDataLoaded, setIsDataLoaded] = useState(false);
     const [defaultToothDiagnosis, setDefaultToothDiagnosis] = useState({})
 
-    const handleSave = () => {
+    const handleSave = async () => {
       // map every object from defaultOclusal and add a property id_paciente
       let oclusal = defaultOclusal.map(item => {
         return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.oclusal };
