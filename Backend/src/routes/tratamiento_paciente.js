@@ -94,8 +94,7 @@ router.post("/getTratamientos2", verifyToken, async (req, res) => {
 router.get("/getAllTratamientos", verifyToken, async (req, res) => {
     try {
         const getTratamientos = await pool.query(
-            `select tp.id_tratamiento_paciente as value, t.nombre as label from tratamientos_paciente tp inner join tratamiento t
-            on t.id_tratamiento = tp.id_tratamiento`,
+            `select id_tratamiento as value, nombre as label from tratamiento`,
             []
         );
         jwt.verify(req.token, 'secretKey', (error, authData) => {
