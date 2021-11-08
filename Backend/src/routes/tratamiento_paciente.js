@@ -139,6 +139,36 @@ router.post("/addTratamiento", verifyToken, async (req, res) => {
     }
 });
 
+router.post("/addTratamientos", verifyToken, async (req, res) => {
+    try {
+        const { lista } = req.body;
+        // console.log("lista", lista)
+
+        for (let i = 0; i < lista.length; i++) {
+            const element = lista[i];
+            // console.log(element)
+            const addTratamientos = await pool.query(
+                `INSERT INTO tratamientos_paciente (id_tratamiento, no_pieza, id_paciente, seccion)
+                VALUES ($1, $2, $3, $4) RETURNING *`,
+                [element.idTratamiento, element.noPieza, element.idPaciente, element.seccion]
+            );
+        }
+
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Tratamientos were added!" });
+            }
+        });
+    } catch (err) {
+        console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
 router.delete("/deleteTratamiento", verifyToken, async (req, res) => {
     try {
         const { idTratamientoPaciente } = req.body;
@@ -154,6 +184,33 @@ router.delete("/deleteTratamiento", verifyToken, async (req, res) => {
                 res.sendStatus(401);
             } else {
                 res.status(200).send({ code: 1, result: "Tratamiento was deleted!" });
+            }
+        });
+    } catch (err) {
+        console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
+router.delete("/deleteTratamientos", verifyToken, async (req, res) => {
+    try {
+        const { lista } = req.body;
+
+        for (let i = 0; i < lista.length; i++) {
+            const element = lista[i];
+            const deleteTratamientos = await pool.query(
+                `DELETE FROM tratamientos_paciente WHERE id_tratamiento_paciente = $1`,
+                [element.idTratamientoPaciente]
+            );
+        }
+
+        jwt.verify(req.token, 'secretKey', (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                res.status(200).send({ code: 1, result: "Tratamientos were deleted!" });
             }
         });
     } catch (err) {
