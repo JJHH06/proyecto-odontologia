@@ -43,7 +43,8 @@ const getAllTreatments = async (token) => {
 const deleteTreatments = async (token, treatments) => {
   return await axios.delete('http://198.211.103.50:5000/api/tratamiento_paciente/deleteTratamientos', {
     headers: {
-      Authorization: 'Bearer  '+token
+      'Authorization': 'Bearer  '+token,
+      'Content-Type': 'application/json'
     },
     data: {
       lista: treatments
@@ -55,14 +56,18 @@ const deleteTreatments = async (token, treatments) => {
 }
 // make a function that uses the url http://198.211.103.50:5000/api/tratamiento_paciente/addTratamientos to make a post request , based on a list of treatments and an authorization header
 const addTreatments = async (token, treatments) => {
-  return await axios.post('http://198.211.103.50:5000/api/tratamiento_paciente/addTratamientos', {
-    headers: {
-      Authorization: 'Bearer  '+token
+  const config = {
+    method: 'post',
+    url: 'http://198.211.103.50:5000/api/tratamiento_paciente/addTratamientos',
+    headers: { 
+      'Authorization': 'Bearer  '+token, 
+      'Content-Type': 'application/json'
     },
-    data: {
-      lista: treatments
-    }
-  }).then(function (response) {
+    data : JSON.stringify({lista: treatments})
+  };
+  
+  return await axios(config)
+  .then(function (response) {
     return response.data.result
   })
 }
@@ -91,43 +96,44 @@ let index = calculateToothIndex(currentDiagnosisTooth);
     const handleSave = async () => {
       // map every object from defaultOclusal and add a property id_paciente
       let oclusal = defaultOclusal.map(item => {
-        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.oclusal };
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: index.oclusal };
       });
       let bucal = defaultBucal.map(item => {
-        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.bucal };
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: index.bucal };
       });
       let distal = defaultDistal.map(item => {
-        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.distal };
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: index.distal };
       });
       let mesial = defaultMesial.map(item => {
-        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.mesial };
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: index.mesial };
       });
       let lingual = defaultLingual.map(item => {
-        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: item.lingual };
+        return {idTratamiento: item.value, idPaciente: id_paciente, noPieza: currentDiagnosisTooth, seccion: index.lingual };
       });
 
       //los datos seleccionados
-      const dataInSelection = {...oclusal, ...bucal, ...distal, ...mesial, ...lingual};
+      const dataInSelection = [...oclusal, ...bucal, ...distal, ...mesial, ...lingual];
 
       // Para eliminar los tratamientos desmarcados en el select
       let deletedItems = [];
       defaultToothDiagnosis.forEach(item => {
         
         if (!dataInSelection.some(element => {
-                return element.idTratamiento === item.id_tratamiento && element.seccion === item.seccion;
+                return element.idTratamiento == item.id_tratamiento && element.seccion == item.seccion;
               }))
         {
           deletedItems.push({idTratamientoPaciente: item.id_tratamiento_paciente});
         }
       });
       if (deletedItems.length > 0) {
+        console.log('ITEMS a ELIMINAR',deletedItems);
         await deleteTreatments(token, deletedItems)
       }
 
       // create a list of the objects that are in dataInSelection but not in defaultToothDiagnosis
       const newItems = dataInSelection.filter(item => {
         return !defaultToothDiagnosis.some(element => {
-          return element.id_tratamiento === item.idTratamiento && element.seccion === item.seccion;
+          return element.id_tratamiento == item.idTratamiento && element.seccion == item.seccion;
         });
       });
 
@@ -140,8 +146,6 @@ let index = calculateToothIndex(currentDiagnosisTooth);
       
     }
   
-
-
     const handleCancel = () => {
         setIsToothInDiagnosis(false);
     }
@@ -207,6 +211,7 @@ let index = calculateToothIndex(currentDiagnosisTooth);
           });
     }
   
+    
 
     
 
@@ -237,6 +242,7 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              onChange={setDefaultOclusal}
             />
             <h3>Bucal:</h3>
             <Select
@@ -248,6 +254,7 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              onChange={setDefaultBucal}
             />
             <h3>Mesial:</h3>
             <Select
@@ -259,6 +266,7 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              onChange={setDefaultMesial}
             />
   
             <h3>Lingual:</h3>
@@ -271,6 +279,7 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              onChange={setDefaultLingual}
             />
   
             <h3>Distal:</h3>
@@ -283,6 +292,7 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              onChange={setDefaultDistal}
             />
           </div>
           
