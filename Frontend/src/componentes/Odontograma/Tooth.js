@@ -82,7 +82,7 @@ function Tooth({setCurrentDiagnosisTooth, setIsToothInDiagnosis, token,id_pacien
   //handle left click function
   const handleEditTooth = (e) =>{
     e.preventDefault();
-    alert("Se ha hecho click derecho en el diente " + tooth_id + "Del paciente "+id_paciente)
+    //alert("Se ha hecho click derecho en el diente " + tooth_id + "Del paciente "+id_paciente)
     setCurrentDiagnosisTooth(tooth_id);
     setIsToothInDiagnosis(true)
   }

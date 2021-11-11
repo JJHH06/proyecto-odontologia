@@ -167,43 +167,51 @@ let index = calculateToothIndex(currentDiagnosisTooth);
             data : data
           };
           
-          axios(config)
+          return await axios(config)
           .then(function (response) {
             const tratamientosPieza = response.data.result;
             //iterate every element from tratamientosPieza
-            
+            let defaultLoadBucal = [];
+            let defaultLoadLingual = [];
+            let defaultLoadDistal = [];
+            let defaultLoadMesial = [];
+            let defaultLoadOclusal = [];
             tratamientosPieza.forEach(tratamiento => {
                 //if tratamiento is not already inside options, push it
-                
-
                 //{bucal:3, lingual:1, distal:2, mesial:4, oclusal:0};
                 if (tratamiento.seccion === index.bucal){
-                    setDefaultBucal([...defaultBucal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}])
+                  defaultLoadBucal = [...defaultLoadBucal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}]
 
                 } else if(tratamiento.seccion === index.lingual){
-                    setDefaultLingual([...defaultLingual,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}])
+                  defaultLoadLingual =[...defaultLoadLingual,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}]
+
                 } else if(tratamiento.seccion === index.distal){
 
-                    setDefaultDistal([...defaultDistal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}])
+                  defaultLoadDistal =[...defaultLoadDistal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}]
                     
                     
                 } else if(tratamiento.seccion === index.mesial){
-                    setDefaultMesial([...defaultMesial,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}])
+                  defaultLoadMesial= [...defaultLoadMesial,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}]
                     
                 } else if(tratamiento.seccion === index.oclusal){
-                    setDefaultOclusal([...defaultOclusal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}])
+                  defaultLoadOclusal = [...defaultLoadOclusal,{label: tratamiento.nombre_tratamiento, value: tratamiento.id_tratamiento}]
 
                 }
             });
+            setDefaultBucal(defaultLoadBucal);
+            setDefaultLingual(defaultLoadLingual);
+            setDefaultDistal(defaultLoadDistal);
+            setDefaultMesial(defaultLoadMesial);
+            setDefaultOclusal(defaultLoadOclusal);
 
 
             
             //check if defaultToothDiagnosis object is empty
             // if (Object.keys(defaultToothDiagnosis).length === 0){
             // }
-            
             setDefaultToothDiagnosis(tratamientosPieza);
             setIsDataLoaded(true);
+            return response.data;
             
           })
           .catch(function (error) {
