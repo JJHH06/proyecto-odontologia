@@ -111,6 +111,63 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
     }
 });
 
+router.post("/addPaciente2", async (req, res) => {
+    try {
+        var { nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos } = req.body;
+        //console.log(req.body)
+
+        //change format of date from dd/mm/yyyy to mm/dd/yyyy
+
+        var fecha_nacimiento_format = fecha_nacimiento.split("/");
+        fecha_nacimiento = fecha_nacimiento_format[1] + "/" + fecha_nacimiento_format[0] + "/" + fecha_nacimiento_format[2];
+
+        var visita_anterior_dentista_format = visita_anterior_dentista.split("/");
+        visita_anterior_dentista = visita_anterior_dentista_format[1] + "/" + visita_anterior_dentista_format[0] + "/" + visita_anterior_dentista_format[2];
+
+        // console.log(fecha_nacimiento)
+        // console.log(visita_anterior_dentista)
+
+        var RegExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+        if ((fecha_nacimiento.match(RegExPattern)) && (fecha_nacimiento != '')) {
+            if ((visita_anterior_dentista.match(RegExPattern)) && (visita_anterior_dentista != '')) {
+                const addPaciente = await pool.query(
+                    "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
+                    [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
+                );
+                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+            } else {
+                const addPaciente = await pool.query(
+                    "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
+                    [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
+                );
+                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+            }
+        } else {
+            if ((visita_anterior_dentista.match(RegExPattern)) && (visita_anterior_dentista != '')) {
+                const addPaciente = await pool.query(
+                    "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
+                    [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
+                );
+                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+            } else {
+                const addPaciente = await pool.query(
+                    "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *",
+                    [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
+                );
+                res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+                //res.status(200).send({ code: 1, result: addPaciente.rows[0] });
+            }
+        }
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
 router.post("/searchPaciente", verifyToken, async (req, res) => {
     try {
         const { busqueda } = req.body;
