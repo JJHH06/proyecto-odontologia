@@ -8,15 +8,12 @@ import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils'
 import Demo from './Demo'
 
-export default class Agenda extends React.Component {
+export default ({token}) => {
     
-    state = {
-        weekendsVisible: true,
-        currentEvents: []
-    }
-  
-    render() {
-    return (
+    const [events, setEvents] = React.useState(INITIAL_EVENTS)
+  ///////////////////////////
+    
+    return (<>
       <div>
         <div className='container size-mini-calendar'>
         <FullCalendar
@@ -39,7 +36,7 @@ export default class Agenda extends React.Component {
                 Calendario Unidad 1
               </h1>
             </div>
-          <Demo/>
+          <Demo token={token} unidad={"1"}/>
             
           </div>
             </div>
@@ -50,7 +47,7 @@ export default class Agenda extends React.Component {
                 Calendario Unidad 2
               </h1>
             </div>
-            <Demo/>
+            <Demo token={token} unidad={"2"}/>
           </div>
             </div>
 
@@ -60,51 +57,5 @@ export default class Agenda extends React.Component {
         </div>
       </div>
         
-    )
-  }
-
-  handleWeekendsToggle = () => {
-    this.setState({
-      weekendsVisible: !this.state.weekendsVisible
-    })
-  }
-
-  handleDateSelect = (selectInfo) => {
-    let title = prompt('Please enter a new title for your event')
-    let calendarApi = selectInfo.view.calendar
-
-    calendarApi.unselect() // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      })
-    }
-  }
-
-  handleEventClick = (clickInfo) => {
-    if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove()
-    }
-  }
-
-  handleEvents = (events) => {
-    this.setState({
-      currentEvents: events
-    })
-  }
-
-}
-
-function renderEventContent(eventInfo) {
-    return (
-      <>
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-      </>
-    )
+    </>)
 }

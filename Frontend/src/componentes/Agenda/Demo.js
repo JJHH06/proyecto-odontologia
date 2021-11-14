@@ -15,29 +15,13 @@ import {
   AppointmentTooltip,
   TodayButton,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import axios from "axios";
 
 const PUBLIC_KEY = "AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k";
 const CALENDAR_ID = "f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com";
 
-const getData = (setData, setLoading) => {
-  const dataUrl = [
-    "https://www.googleapis.com/calendar/v3/calendars/",
-    CALENDAR_ID,
-    "/events?key=",
-    PUBLIC_KEY,
-  ].join("");
-  setLoading(true);
+const flipLocalDate = (date) => date.split("/").reverse().join("-");
 
-  return fetch(dataUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Fetch response: ",data.items)
-      setTimeout(() => {
-        setData(data.items);
-        setLoading(false);
-      }, 600);
-    });
-};
 
 const styles = {
   toolbarRoot: {
@@ -61,20 +45,22 @@ const ToolbarWithLoading = withStyles(styles, { name: "Toolbar" })(
 );
 
 const usaTime = (date) =>
-  new Date(date).toLocaleString("en-US", { timeZone: "America/Los_Angeles" });
-
+  new Date(date);
+//new Date('1995-12-17T03:24:00')
 const mapAppointmentData = (appointment) => ({
-  id: appointment.id,
-  startDate: usaTime(appointment.start.dateTime),
-  endDate: usaTime(appointment.end.dateTime),
-  title: appointment.summary,
+  id: appointment.id_cita,
+  text: "el pepe",
+  startDate:  usaTime(flipLocalDate(appointment.fecha)+'T'+appointment.hora_inicio),
+  endDate:  usaTime(flipLocalDate(appointment.fecha)+'T'+appointment.hora_final),
+  title: appointment.nombre_paciente,
 });
 
 const initialState = {
   data: [],
   loading: false,
-  currentDate: "2017-05-23",
+  currentDate: new Date().toISOString().split('T')[0],
   currentViewName: "Day",
+  location: "Dr simi",
 };
 
 const reducer = (state, action) => {
@@ -92,9 +78,10 @@ const reducer = (state, action) => {
   }
 };
 
-export default () => {
+export default ({token, unidad}) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const { data, loading, currentViewName, currentDate } = state;
+
   const setCurrentViewName = React.useCallback(
     (nextViewName) =>
       dispatch({
@@ -128,12 +115,48 @@ export default () => {
       }),
     [dispatch]
   );
+  const getData = async (setData, setLoading) => {
+    // return axios request data
+    setLoading(true);
+    return await axios
 
+      .post(
+        "http://198.211.103.50:5000/api/cita/searchCitaByDate",{
+          fecha: currentDate,
+          no_unidad: unidad
+        },
+        {
+          headers: {
+            'Authorization': 'Bearer  '+token,
+            'Content-Type': 'application/json'
+          },
+        })
+      .then((response) => {
+        setLoading(false);
+        console.log('LOSDATOS',response.data)
+        return setData(response.data.result);
+        
+      }
+      );
+
+    
+  };
+  
   React.useEffect(() => {
+    console.log('LOSDATOS', data)
     console.log(currentDate)
     getData(setData, setLoading);
   }, [setData, currentViewName, currentDate]);
 
+
+  React.useEffect(() => {
+
+    //
+  }, [])
+
+  React.useEffect(() => {
+    console.log('LAFECHAAAAAAAAAAAAAAAaaa', currentDate)
+  }, [currentDate])
   return (
     <Paper>
       <Scheduler data={data} height={660}>
