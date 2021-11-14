@@ -45,7 +45,8 @@ router.post("/searchCitaByDate", verifyToken, async (req, res) => {
         const { fecha, no_unidad } = req.body;
         const response = await pool.query(
             `
-            select * from cita
+            select c.*,p.nombre as nombre_paciente from cita c
+            left join paciente p on p.id_paciente = c.paciente
             where fecha = $1 and no_unidad = $2
             `,
             [fecha, no_unidad]
