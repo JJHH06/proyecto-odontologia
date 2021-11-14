@@ -40,7 +40,7 @@ router.post("/addCita", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/searchCitaByDate", verifyToken, async (req, res) => {
+router.post("/searchCitaByDate", verifyToken, async (req, res) => {
     try {
         const { fecha, no_unidad } = req.body;
         const response = await pool.query(
@@ -112,7 +112,7 @@ router.get("/getAllCitas", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/getCitaByID", verifyToken, async (req, res) => {
+router.post("/getCitaByID", verifyToken, async (req, res) => {
     try {
         const { id_cita } = req.body;
         const getCita = await pool.query(
