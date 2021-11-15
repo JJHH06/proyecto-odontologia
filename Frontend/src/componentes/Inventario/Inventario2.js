@@ -3,9 +3,10 @@ import './Inventario.scss';
 import Producto from './Productos';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
+import { data } from 'jquery';
 
 // objeto de la calculadora
-function Inventario() {
+function Inventario({token}) {
 
     const [productosEncontrados, setProductosEncontrados] = useState("");
     const history = useHistory();
@@ -15,7 +16,10 @@ function Inventario() {
     var config = {
         method: 'post',
         url: 'http://localhost:5000/api/inventario/getAllItems',
-        headers: { }
+        headers: {
+            'Authorization': 'Bearer  ' + token, 
+            'Content-Type': 'application/json'
+        }
     };
 
     axios(config)

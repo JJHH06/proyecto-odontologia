@@ -40,12 +40,13 @@ router.post("/addCita", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/searchCitaByDate", verifyToken, async (req, res) => {
+router.post("/searchCitaByDate", verifyToken, async (req, res) => {
     try {
         const { fecha, no_unidad } = req.body;
         const response = await pool.query(
             `
-            select * from cita
+            select c.*,p.nombre as nombre_paciente from cita c
+            left join paciente p on p.id_paciente = c.paciente
             where fecha = $1 and no_unidad = $2
             `,
             [fecha, no_unidad]
@@ -112,11 +113,11 @@ router.get("/getAllCitas", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/getCitaByID", verifyToken, async (req, res) => {
+router.post("/getCitaByID", verifyToken, async (req, res) => {
     try {
         const { id_cita } = req.body;
         const getCita = await pool.query(
-            "SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad FROM cita WHERE id_cita = $1",
+            "SELECT * FROM cita WHERE id_cita = $1",
             [id_cita]
         );
 
@@ -147,15 +148,15 @@ router.get("/getCitaByID", verifyToken, async (req, res) => {
     }
 });
 
-router.put("/updateCita", verifyToken, async (req, res) => {
+router.post("/updateCita", verifyToken, async (req, res) => {
     try {
-        const { id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad } = req.body;
+        const { id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, titulo_cita } = req.body;
         const updateCita = await pool.query(
-            "UPDATE cita SET paciente = $1, fecha = $2, hora_inicio = $3, hora_final = $4, estado_cita = $5, no_unidad = $6 WHERE id_cita = $7",
-            [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, id_cita]
+            "UPDATE cita SET paciente = $1, fecha = $2, hora_inicio = $3, hora_final = $4, estado_cita = $5, no_unidad = $6, titulo_cita = $8 WHERE id_cita = $7",
+            [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, id_cita, titulo_cita]
         );
         const getCita = await pool.query(
-            "SELECT id_cita, paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad FROM cita WHERE id_cita = $1",
+            "SELECT * FROM cita WHERE id_cita = $1",
             [id_cita]
         );
         //res.json(getCita.rows[0]);
