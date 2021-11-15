@@ -2,7 +2,7 @@ import * as React from "react";
 import Paper from "@material-ui/core/Paper";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
-import { ViewState } from "@devexpress/dx-react-scheduler";
+import { ViewState, EditingState, IntegratedEditing } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
   WeekView,
@@ -21,6 +21,46 @@ const PUBLIC_KEY = "AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k";
 const CALENDAR_ID = "f7jnetm22dsjc3npc2lu3buvu4@group.calendar.google.com";
 
 const flipLocalDate = (date) => date.split("/").reverse().join("-");
+
+//axios  request to get an appointment by id
+const getAppointmentById = async (id, token) => {
+  return await axios.post(
+    `http://198.211.103.50:5000/api/cita/getCitaByID`,
+    { id_cita: id },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer  `+token,
+      },
+    }
+  ).then((response) => {
+    return response.data.result[0];
+  });
+  }
+  const updateAppointment = async (token, updated) => {
+    
+    
+    let config = {
+      method: 'post',
+      url: 'http://198.211.103.50:5000/api/cita/updateCita',
+      headers: { 
+        'Authorization': 'Bearer  '+token, 
+        'Content-Type': 'application/json'
+      },
+      data : JSON.stringify(updated)
+    };
+    
+    return await axios(config)
+    .then(function (response) {
+      return response.data;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
+
+
 
 
 const styles = {
@@ -49,10 +89,9 @@ const usaTime = (date) =>
 //new Date('1995-12-17T03:24:00')
 const mapAppointmentData = (appointment) => ({
   id: appointment.id_cita,
-  text: "el pepe",
   startDate:  usaTime(flipLocalDate(appointment.fecha)+'T'+appointment.hora_inicio),
   endDate:  usaTime(flipLocalDate(appointment.fecha)+'T'+appointment.hora_final),
-  title: appointment.nombre_paciente,
+  title: appointment.titulo_cita,
 });
 
 const initialState = {
@@ -100,7 +139,6 @@ export default ({token, unidad}) => {
   );
   const setCurrentDate = React.useCallback(
     (nextDate) =>{
-      console.log(nextDate)
       dispatch({
         type: "setCurrentDate",
         payload: nextDate,
@@ -133,7 +171,6 @@ export default ({token, unidad}) => {
         })
       .then((response) => {
         setLoading(false);
-        console.log('LOSDATOS',response.data)
         return setData(response.data.result);
         
       }
@@ -143,8 +180,6 @@ export default ({token, unidad}) => {
   };
   
   React.useEffect(() => {
-    console.log('LOSDATOS', data)
-    console.log(currentDate)
     getData(setData, setLoading);
   }, [setData, currentViewName, currentDate]);
 
@@ -154,8 +189,44 @@ export default ({token, unidad}) => {
     //
   }, [])
 
+  //creat async function thatcalls getAppointmentById
+  
+
+  const viewEdit = async (modData) => {
+    if(modData.deleted){
+      console.log('Hostia chaval, que me han eliminado', modData.deleted)
+    }
+    else if(modData.changed){
+      setLoading(true);
+      let actualData = await getAppointmentById(Object.keys(modData.changed)[0], token);
+      actualData.fecha = flipLocalDate(actualData.fecha.split('T')[0]);//para que la fecha tenga el formato del sql
+      
+      const editedData = modData.changed[Object.keys(modData.changed)[0]]
+      if(editedData.title){
+        actualData.titulo_cita = editedData.title;
+      }
+
+      if(editedData.startDate){
+        actualData.fecha = editedData.startDate.getFullYear()+'-'+parseInt(parseInt(editedData.startDate.getMonth())+1)+'-'+editedData.startDate.getDate();
+        actualData.hora_inicio = editedData.startDate.toTimeString().split(' ')[0];
+        
+      }
+      if(editedData.endDate){
+        actualData.fecha = editedData.endDate.getFullYear()+'-'+parseInt(parseInt(editedData.endDate.getMonth())+1)+'-'+editedData.endDate.getDate();
+        actualData.hora_final = editedData.endDate.toTimeString().split(' ')[0];
+      }
+      
+      //llamada a la api para actualizar
+      await updateAppointment(token,actualData)
+      getData(setData, setLoading);
+
+
+    }
+    
+  }
+
   React.useEffect(() => {
-    console.log('LAFECHAAAAAAAAAAAAAAAaaa', currentDate)
+    console.log('fecha actual', currentDate)
   }, [currentDate])
   return (
     <Paper>
@@ -166,6 +237,10 @@ export default ({token, unidad}) => {
           onCurrentViewNameChange={setCurrentViewName}
           onCurrentDateChange={setCurrentDate}
         />
+        <EditingState
+            onCommitChanges={viewEdit}
+          />
+          <IntegratedEditing />
         <DayView startDayHour={7.5} endDayHour={17.5} />
         <Appointments />
         <Toolbar
@@ -174,8 +249,9 @@ export default ({token, unidad}) => {
         <DateNavigator />
         <TodayButton />
         <ViewSwitcher />
-        <AppointmentTooltip showOpenButton showCloseButton />
-        <AppointmentForm readOnly />
+        <AppointmentTooltip showOpenButton showCloseButton showDeleteButton />
+        <AppointmentForm
+        />
       </Scheduler>
     </Paper>
   );
