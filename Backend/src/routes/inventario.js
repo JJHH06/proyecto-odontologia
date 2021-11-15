@@ -23,30 +23,20 @@ router.post("/addItem", verifyToken, async (req, res) => {
 
         moment.locale('es');
         var ultima_fecha = moment().format('L');    // 05/09/2021
+        // console.log(ultima_fecha)
+
 
         var date = ultima_fecha;
-        date = new Date(date).toISOString().substr(0, 10);
-        var datePart = date.match(/\d+/g);
-        year = datePart[0],
-            month = datePart[1], day = datePart[2]
-        ultima_fecha = day + '/' + month + '/' + year;
-        //console.log(ultima_fecha)
+
+        // change format from dd/mm/yyyy to mm/dd/yyyy
+        var date_array = date.split('/');
+        var ultima_fecha = date_array[1] + '/' + date_array[0] + '/' + date_array[2];
+        // console.log(ultima_fecha)
 
         const addItem = await pool.query(
             "INSERT INTO inventario(nombre_item, cantidad, ultima_fecha) VALUES($1,$2,$3)",
             [nombre_item, cantidad, ultima_fecha]
         );
-
-        for (var i = 0; i < addItem.rows.length; i++) {
-            if (addItem.rows[i].ultima_fecha != null) {
-                var date = addItem.rows[i].ultima_fecha.toString();
-                date = new Date(date).toISOString().substr(0, 10);
-                var datePart = date.match(/\d+/g);
-                year = datePart[0],
-                    month = datePart[1], day = datePart[2]
-                addItem.rows[i].ultima_fecha = day + '/' + month + '/' + year;
-            }
-        }
 
         //res.json(addItem.rows[0]);
         jwt.verify(req.token, 'secretKey', (error, authData) => {
