@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 
 router.post("/validate_login", async (req, res) => {

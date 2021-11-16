@@ -3,6 +3,7 @@ const router = Router();
 const pool = require("./db");
 const moment = require('moment');
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];

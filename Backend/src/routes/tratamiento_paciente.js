@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
