@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -27,7 +28,7 @@ router.post("/addCondicionesPaciente", verifyToken, async (req, res) => {
             );
         }
 
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -79,7 +80,7 @@ router.post("/getCondicionesPacienteByIDPaciente", verifyToken, async (req, res)
         }
 
         // console.log(getCondicionesPaciente.rows)
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)

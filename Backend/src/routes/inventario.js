@@ -39,7 +39,7 @@ router.post("/addItem", verifyToken, async (req, res) => {
         );
 
         //res.json(addItem.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -75,7 +75,7 @@ router.post("/getAllItems", verifyToken, async (req, res) => {
             }
         }
 
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -114,7 +114,7 @@ router.post("/getItemByNameById", verifyToken, async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -154,7 +154,7 @@ router.post("/getItemByName", verifyToken, async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -212,7 +212,7 @@ router.put("/upadteItem", verifyToken, async (req, res) => {
         }
 
         //res.json(getItem.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -236,7 +236,7 @@ router.delete("/deleteItem", verifyToken, async (req, res) => {
             [id_item]
         );
         //res.json("Item was deleted!");
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)

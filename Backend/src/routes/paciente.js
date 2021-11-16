@@ -44,7 +44,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
                     //console.log("token", req.token, "token")
                     if (error) {
                         console.log("error", error)
@@ -59,7 +59,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,fecha_nacimiento,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, fecha_nacimiento, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
                     //console.log("token", req.token, "token")
                     if (error) {
                         console.log("error", error)
@@ -76,7 +76,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,visita_anterior_dentista,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, visita_anterior_dentista, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
                     //console.log("token", req.token, "token")
                     if (error) {
                         console.log("error", error)
@@ -92,7 +92,7 @@ router.post("/addPaciente", verifyToken, async (req, res) => {
                     "INSERT INTO paciente(nombre,email,telefono_casa,telefono_celular,estado_civil,ocupacion,direccion,recomendado_por,motivo_consulta,medico,telefono_medico,contacto_emergencia,telefono_emergencia,presupuesto,medicamentos) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *",
                     [nombre, email, telefono_casa, telefono_celular, estado_civil, ocupacion, direccion, recomendado_por, motivo_consulta, medico, telefono_medico, contacto_emergencia, telefono_emergencia, presupuesto, medicamentos]
                 );
-                jwt.verify(req.token, 'secretKey', (error, authData) => {
+                jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
                     //console.log("token", req.token, "token")
                     if (error) {
                         console.log("error", error)
@@ -204,7 +204,7 @@ router.post("/searchPaciente", verifyToken, async (req, res) => {
 
         //console.log(response.rows);
         //res.json(response.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -252,7 +252,7 @@ router.get("/getAllPacientes", verifyToken, async (req, res) => {
             }
         }
 
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -303,7 +303,7 @@ router.get("/getPaciente", verifyToken, async (req, res) => {
         }
 
         //res.json(getPaciente.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -335,7 +335,7 @@ router.put("/updatePaciente", verifyToken, async (req, res) => {
             [id_paciente]
         );
         //res.json(getPaciente.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -359,7 +359,7 @@ router.delete("/deletePaciente", verifyToken, async (req, res) => {
             [id_paciente]
         );
         //res.json("Paciente was deleted!");
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
