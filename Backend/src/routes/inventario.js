@@ -3,6 +3,7 @@ const router = Router();
 const pool = require("./db");
 const moment = require('moment');
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -23,33 +24,23 @@ router.post("/addItem", verifyToken, async (req, res) => {
 
         moment.locale('es');
         var ultima_fecha = moment().format('L');    // 05/09/2021
+        // console.log(ultima_fecha)
+
 
         var date = ultima_fecha;
-        date = new Date(date).toISOString().substr(0, 10);
-        var datePart = date.match(/\d+/g);
-        year = datePart[0],
-            month = datePart[1], day = datePart[2]
-        ultima_fecha = day + '/' + month + '/' + year;
-        //console.log(ultima_fecha)
+
+        // change format from dd/mm/yyyy to mm/dd/yyyy
+        var date_array = date.split('/');
+        var ultima_fecha = date_array[1] + '/' + date_array[0] + '/' + date_array[2];
+        // console.log(ultima_fecha)
 
         const addItem = await pool.query(
             "INSERT INTO inventario(nombre_item, cantidad, ultima_fecha) VALUES($1,$2,$3)",
             [nombre_item, cantidad, ultima_fecha]
         );
 
-        for (var i = 0; i < addItem.rows.length; i++) {
-            if (addItem.rows[i].ultima_fecha != null) {
-                var date = addItem.rows[i].ultima_fecha.toString();
-                date = new Date(date).toISOString().substr(0, 10);
-                var datePart = date.match(/\d+/g);
-                year = datePart[0],
-                    month = datePart[1], day = datePart[2]
-                addItem.rows[i].ultima_fecha = day + '/' + month + '/' + year;
-            }
-        }
-
         //res.json(addItem.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -85,7 +76,7 @@ router.post("/getAllItems", verifyToken, async (req, res) => {
             }
         }
 
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -124,7 +115,7 @@ router.post("/getItemByNameById", verifyToken, async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -164,7 +155,7 @@ router.post("/getItemByName", verifyToken, async (req, res) => {
 
         //res.json(getItemByName.rows[0]);
         //console.log(getItemByName.rows[0])
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -222,7 +213,7 @@ router.put("/upadteItem", verifyToken, async (req, res) => {
         }
 
         //res.json(getItem.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -246,7 +237,7 @@ router.delete("/deleteItem", verifyToken, async (req, res) => {
             [id_item]
         );
         //res.json("Item was deleted!");
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)

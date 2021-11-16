@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 
 router.post("/validate_login", async (req, res) => {
@@ -18,7 +19,7 @@ router.post("/validate_login", async (req, res) => {
         }
         //console.log(validate_login.rows[0].validate_login)
         if (validate_login.rows[0].validate_login) {
-            jwt.sign({ user }, 'secretKey', { expiresIn: "24h" }, (err, token) => {
+            jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "24h" }, (err, token) => {
                 validate_login.rows[0].token = token;
                 res.status(200).send({ code: 1, result: validate_login.rows[0] });
             });

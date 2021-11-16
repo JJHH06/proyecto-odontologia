@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -24,7 +25,7 @@ router.post("/addCita", verifyToken, async (req, res) => {
             [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad]
         );
         //res.json(addCita.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -62,7 +63,7 @@ router.post("/searchCitaByDate", verifyToken, async (req, res) => {
         }
 
         //res.json(response.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -95,7 +96,7 @@ router.get("/getAllCitas", verifyToken, async (req, res) => {
         }
         //console.log(getAllCitas.rows)
         //res.json(getAllCitas.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -131,7 +132,7 @@ router.post("/getCitaByID", verifyToken, async (req, res) => {
         }
 
         //res.json(getCita.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -160,7 +161,7 @@ router.post("/updateCita", verifyToken, async (req, res) => {
             [id_cita]
         );
         //res.json(getCita.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -184,7 +185,7 @@ router.delete("/deleteCita", verifyToken, async (req, res) => {
             [id_cita]
         );
         //res.json("Cita was deleted!");
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)

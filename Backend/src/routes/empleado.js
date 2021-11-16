@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const pool = require("./db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 function verifyToken(req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -24,7 +25,7 @@ router.post("/addEmpleado", verifyToken, async (req, res) => {
             [id_empleado, password, nombre]
         );
         //res.json(addEmpleado.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -48,7 +49,7 @@ router.get("/getAllEmpleados", verifyToken, async (req, res) => {
             "SELECT id_empleado, password, nombre FROM empleado"
         );
         //res.json(getAllEmpleados.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -73,7 +74,7 @@ router.get("/getEmpleado", verifyToken, async (req, res) => {
             [id_empleado]
         );
         //res.json(getEmpleado.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -101,7 +102,7 @@ router.post("/searchEmpleado", verifyToken, async (req, res) => {
             [busqueda]
         )
         //res.json(response.rows);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -131,7 +132,7 @@ router.put("/updateEmpleado", verifyToken, async (req, res) => {
             [id_empleado]
         );
         //res.json(getEmpleado.rows[0]);
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
@@ -155,7 +156,7 @@ router.delete("/deleteEmpleado", verifyToken, async (req, res) => {
             [id_empleado]
         );
         //res.json("Empleado was deleted!");
-        jwt.verify(req.token, 'secretKey', (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)

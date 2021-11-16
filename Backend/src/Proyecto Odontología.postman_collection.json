@@ -15,13 +15,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzU0NzYwMjUsImV4cCI6MTYzNTU2MjQyNX0._g7hbCPSqbgm7ypKG4etOazl8GHzdbk7JuqcZ_-YUpQ",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDk4NjMsImV4cCI6MTYzNzA5NjI2M30.vjUQ2xcWnpCJ3x64SQgAov5tFxRsan3ILnvtiwekbhc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"mickey5 \",\r\n    \"email\": \"mouse@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-06-05\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"07/29/1999\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"pruba \",\r\n    \"email\": \"mouse@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-06-05\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"07/29/1999\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -29,10 +29,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/paciente/addPaciente",
+							"raw": "http://198.211.103.50:5000/api/paciente/addPaciente",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"198",
+								"211",
+								"103",
+								"50"
 							],
 							"port": "5000",
 							"path": [
@@ -748,13 +751,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDk4NjMsImV4cCI6MTYzNzA5NjI2M30.vjUQ2xcWnpCJ3x64SQgAov5tFxRsan3ILnvtiwekbhc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_paciente\": \"4\",\r\n    \"condiciones\": [\r\n        {\r\n            \"id_condicion\": \"23\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"25\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"3\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"id_paciente\": \"44\",\r\n    \"condiciones\": [\r\n        {\r\n            \"id_condicion\": \"23\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"25\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"3\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -778,16 +781,43 @@
 					"response": []
 				},
 				{
-					"name": "getCondicionesPacienteByIDPaciente",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "addCondicionesPaciente2",
 					"request": {
-						"method": "GET",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_paciente\": \"4\",\r\n    \"condiciones\": [\r\n        {\r\n            \"id_condicion\": \"23\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"25\"\r\n        },\r\n        {\r\n            \"id_condicion\": \"3\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/condiciones_paciente/addCondicionesPaciente2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"condiciones_paciente",
+								"addCondicionesPaciente2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCondicionesPacienteByIDPaciente",
+					"request": {
+						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzY4NTg4NzgsImV4cCI6MTYzNjk0NTI3OH0.jPL4f4rqKRMXfSWYnHNQOryklR8n5phSAn0BUvdzujI",
 								"type": "text"
 							}
 						],
@@ -811,6 +841,36 @@
 								"api",
 								"condiciones_paciente",
 								"getCondicionesPacienteByIDPaciente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getConditionID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conditionsArray\": \"Diabetes, Sensibilidad dental a dulces, Dolor al masticar, Bruxismo - rechinar dientes, Dientes flojos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/condiciones_paciente/getConditionID",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"condiciones_paciente",
+								"getConditionID"
 							]
 						}
 					},
@@ -1112,13 +1172,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDUyNjksImV4cCI6MTYzNzA5MTY2OX0.rGiYL1ike90zO2rtzmg_2euxFEYdSCzdtPEE_-Ptsig",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_item\": \"guacamol\",\r\n    \"cantidad\": \"10\"\r\n}",
+							"raw": "{\r\n    \"nombre_item\": \"jamon\",\r\n    \"cantidad\": \"10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1148,7 +1208,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDUyNjksImV4cCI6MTYzNzA5MTY2OX0.rGiYL1ike90zO2rtzmg_2euxFEYdSCzdtPEE_-Ptsig",
 								"type": "text"
 							}
 						],
