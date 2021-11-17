@@ -60,7 +60,7 @@ function App(){
                         <Tratamiento token = {token}/>
                     </Route>
                     <Route path="/">
-
+                        
                     </Route>
                     
                 </Switch>
