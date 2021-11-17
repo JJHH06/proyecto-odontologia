@@ -15,6 +15,7 @@ import Inventario from './Inventario/Inventario2';
 import AddProducto from './AddProduct/AddProduct';
 import Empleados from './Empleados/Empleados';
 import Tratamiento from './Tratamiento/Tratamiento';
+import Home from './Home/Home';
 
 function App(){
 
@@ -27,9 +28,13 @@ function App(){
 
     return(
         <div className='app'>
+            
             <BrowserRouter>
             <Navbar/>
                 <Switch>
+                    <Route path='/' exact component={Home}>
+                        <Search token = {token}/>
+                    </Route>
                     <Route path="/informacion_pacientes">
                         <Search token = {token}/>
                     </Route>
@@ -60,7 +65,9 @@ function App(){
                     
                 </Switch>
             </BrowserRouter>
+
         </div>
+        
         );
     
 }
