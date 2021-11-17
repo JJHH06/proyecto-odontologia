@@ -16,6 +16,7 @@ import AddProducto from './AddProduct/AddProduct';
 import Empleados from './Empleados/Empleados';
 import Tratamiento from './Tratamiento/Tratamiento';
 import Home from './Home/Home';
+import Error404 from './Pagina404/Error404';
 
 function App(){
 
@@ -58,7 +59,7 @@ function App(){
                         <Tratamiento token = {token}/>
                     </Route>
                     <Route path="/">
-                        
+                        <Error404/>
                     </Route>
                     
                 </Switch>

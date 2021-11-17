@@ -6,7 +6,7 @@ import tooth from './assets/tooth1.png'
 import { useHistory } from 'react-router-dom'
 
 
-function Error404({}){
+function Error404(){
   const history = useHistory();
   const handleHome = () =>{
     history.push({
