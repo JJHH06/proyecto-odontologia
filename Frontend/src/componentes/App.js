@@ -32,9 +32,7 @@ function App(){
             <BrowserRouter>
             <Navbar/>
                 <Switch>
-                    <Route path='/' exact component={Home}>
-                        <Search token = {token}/>
-                    </Route>
+
                     <Route path="/informacion_pacientes">
                         <Search token = {token}/>
                     </Route>
