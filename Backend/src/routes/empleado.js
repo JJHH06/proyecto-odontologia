@@ -70,7 +70,7 @@ router.post("/getEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado } = req.body;
         const getEmpleado = await pool.query(
-            "SELECT id_empleado, password, nombre FROM empleado WHERE id_empleado = $1",
+            "SELECT id_empleado, password, nombre, tipo FROM empleado WHERE id_empleado = $1",
             [id_empleado]
         );
         //res.json(getEmpleado.rows[0]);
