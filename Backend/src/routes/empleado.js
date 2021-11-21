@@ -46,7 +46,7 @@ router.post("/addEmpleado", verifyToken, async (req, res) => {
 router.get("/getAllEmpleados", verifyToken, async (req, res) => {
     try {
         const getAllEmpleados = await pool.query(
-            "SELECT id_empleado, password, nombre FROM empleado"
+            "SELECT id_empleado, password, nombre, tipo FROM empleado"
         );
         //res.json(getAllEmpleados.rows);
         jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
@@ -66,7 +66,7 @@ router.get("/getAllEmpleados", verifyToken, async (req, res) => {
     }
 });
 
-router.get("/getEmpleado", verifyToken, async (req, res) => {
+router.post("/getEmpleado", verifyToken, async (req, res) => {
     try {
         const { id_empleado } = req.body;
         const getEmpleado = await pool.query(
