@@ -1,4 +1,7 @@
+import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+
+
 
 function EditEmployee({token, currentEmployee, setCurrentEmployee}) {
 
@@ -6,44 +9,115 @@ function EditEmployee({token, currentEmployee, setCurrentEmployee}) {
     const [nameInput, setNameInput] = useState('')
     const [typeInput, setTypeInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
+    const [loading, setLoading] = useState(true)
+    let defaultUser = {}
+
+
+    const getPatient = async () => {
+        const data = JSON.stringify({
+            "id_empleado": currentEmployee.id
+          });
+          
+          var config = {
+            method: 'post',
+            url: 'http://198.211.103.50:5000/api/empleado/getEmpleado',
+            headers: { 
+              'Authorization': 'Bearer  '+token, 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+    
+          return await axios(config)
+            .then(function (response) {
+                setEmailInput(response.data.result.id_empleado)
+                setNameInput(response.data.result.nombre)
+                setTypeInput(response.data.result.tipo)
+                console.log(response.data.result.result)
+                return response.data.result
+            })      
+          
+    }
+
+
+    useEffect(async () => {
+        setLoading(true)
+        if (currentEmployee.id) {
+
+            
+            const datos = await getPatient()
+        }
+        setLoading(false)
+    }, [])
+
+
+
+    
     return (
         
-        <>
-            {/*component to add new employee */}
+            <>{loading ? <div>Loading...</div> :
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card">
                             <div className="card-header">
-                                <h4>Editar Empleado</h4>
+                                <h4 className='mx-auto'>{currentEmployee.id?'Editar Empleado':'Agregar nuevo empleado'}</h4>
                             </div>
                             <div className="card-body">
-                                <form>
-                                    <div className="form-group">
+                                <form onSubmit={(e)=>{
+                                    e.preventDefault();
+                                    //validate that passwordInput is at least 8 characters long
+                                    if (passwordInput.length < 8) {
+                                        alert('La contraseña debe tener al menos 8 caracteres')
+                                        return
+                                    }
+                                    
+                                }}>
+                                    <div className="form-group p-2">
                                         <label>Correo Electronico</label>
-                                        <input type="email" className="form-control" placeholder="Correo electrónico" value={''} />
+                                        <input type="email" className="form-control" placeholder="Correo electrónico" value={emailInput} onChange={(e)=>{
+                                            setEmailInput(e.target.value)
+                                        }} />
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group p-2">
                                         <label>Nombre</label>
-                                        <input type="text" className="form-control" placeholder="Nombre" value={''} />
+                                        <input type="text" className="form-control" placeholder="Nombre" value={nameInput} onChange={(e)=>{
+                                            setNameInput(e.target.value)
+                                        }}/>
                                     </div>
-                                    <div className="form-group">
-                                        <label>tipo</label>
-                                        <input type="text" className="form-control" placeholder="Tipo" value={''} />
+                                    <div className="form-group p-2">
+                                        <label>Tipo</label>
+                                        <input type="text" className="form-control" placeholder="Tipo" value={typeInput} onChange={(e)=>{
+                                            setTypeInput(e.target.value)
+                                        }}/>
                                     </div>
-                                    <div className="form-group">
+                                    <div className="form-group p-2">
                                         <label>Contraseña</label>
-                                        <input type="password" className="form-control" placeholder="Contraseña" value={''} />
+                                        <input type="password" className="form-control" placeholder="Contraseña" value={passwordInput} onChange={(e)=>{
+                                            setPasswordInput(e.target.value)
+                                        }}/>
                                     </div>
                                 
-                                    <button type="submit" className="btn btn-primary" >Editar</button>
+                                    
+                                    <div className="row diagnosis-button-separator">
+          <div className=" save-diagnosis-button col-md-6">
+            <button type="button" onClick={()=>{
+                setCurrentEmployee({isEdit:false});
+            }} className="btn btn-danger" >Cancelar</button>
+          </div>
+          <div className="save-diagnosis-button col-md-6">
+            <button type="submit" className="btn btn-primary" >{currentEmployee.id?'Editar':'Guardar'}</button>
+          </div>
+        </div>
+                                    
+
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </div>}</>
+        
     )
 }
 

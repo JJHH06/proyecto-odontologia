@@ -35,7 +35,7 @@ function Empleados({token}) {
   }, []);
   return (
     <div className="empleados-container">
-      <h1>Empleados</h1>
+      <h1 className="text-center mb-4 mt-4">Empleados</h1>
       {currentEmployee.isEdit? <EditEmployee token={token} currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee}/>:
       <table className="table table-hover ">
         <thead>
