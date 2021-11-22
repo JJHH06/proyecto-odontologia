@@ -36,6 +36,8 @@ function Empleados({token}) {
   return (
     <div className="empleados-container">
       <h1 className="text-center mb-4 mt-4">Empleados</h1>
+      {/*button to add new employee */}
+      <button className="btn btn-outline-primary mb-4" disabled={currentEmployee.isEdit} onClick={()=>{setCurrentEmployee({isEdit: true})}}>{currentEmployee.isEdit?'':'Agregar Empleado'}</button>
       {currentEmployee.isEdit? <EditEmployee token={token} currentEmployee={currentEmployee} setCurrentEmployee={setCurrentEmployee}/>:
       <table className="table table-hover ">
         <thead>

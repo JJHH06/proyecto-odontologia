@@ -10,7 +10,7 @@ function EditEmployee({token, currentEmployee, setCurrentEmployee}) {
     const [typeInput, setTypeInput] = useState('')
     const [passwordInput, setPasswordInput] = useState('')
     const [loading, setLoading] = useState(true)
-    let defaultUser = {}
+    
 
 
     const getPatient = async () => {
@@ -39,6 +39,63 @@ function EditEmployee({token, currentEmployee, setCurrentEmployee}) {
           
     }
 
+    const updatePatient = async () => {
+        const data = JSON.stringify({
+            "id_empleado": currentEmployee.id,
+            "password": passwordInput,
+            "nombre": nameInput,
+            "email": emailInput,
+            "tipo": typeInput
+          });
+          
+          let config = {
+            method: 'put',
+            url: 'http://198.211.103.50:5000/api/empleado/updateEmpleado',
+            headers: { 
+              'Authorization': 'Bearer  '+token, 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          return await axios(config)
+          .then(function (response) {
+            return response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          }
+            )
+    }
+
+    const addPatient = async () => {
+        const data = JSON.stringify({
+            "id_empleado": emailInput,
+            "password": passwordInput,
+            "nombre": nameInput,
+            "email": emailInput,
+            "tipo": typeInput
+          });
+          
+          let config = {
+            method: 'post',
+            url: 'http://198.211.103.50:5000/api/empleado/addEmpleado',
+            headers: { 
+              'Authorization': 'Bearer  '+token, 
+              'Content-Type': 'application/json'
+            },
+            data : data
+          };
+          
+          return await axios(config)
+          .then(function (response) {
+            return response.data;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+
 
     useEffect(async () => {
         setLoading(true)
@@ -64,13 +121,21 @@ function EditEmployee({token, currentEmployee, setCurrentEmployee}) {
                                 <h4 className='mx-auto'>{currentEmployee.id?'Editar Empleado':'Agregar nuevo empleado'}</h4>
                             </div>
                             <div className="card-body">
-                                <form onSubmit={(e)=>{
+                                <form onSubmit={async (e)=>{
                                     e.preventDefault();
                                     //validate that passwordInput is at least 8 characters long
                                     if (passwordInput.length < 8) {
                                         alert('La contraseña debe tener al menos 8 caracteres')
                                         return
                                     }
+                                    if (currentEmployee.id){
+                                        await updatePatient()
+                                    }
+                                    else{
+                                        await addPatient()
+                                    }
+                                    setCurrentEmployee({isEdit:false})
+                                    return
                                     
                                 }}>
                                     <div className="form-group p-2">
