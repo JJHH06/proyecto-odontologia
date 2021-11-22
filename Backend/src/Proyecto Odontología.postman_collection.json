@@ -88,7 +88,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzU0NzYwMjUsImV4cCI6MTYzNTU2MjQyNX0._g7hbCPSqbgm7ypKG4etOazl8GHzdbk7JuqcZ_-YUpQ",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjEzMTcsImV4cCI6MTYzNzEwNzcxN30.bYeSGMRJk_PiFFgP14KfQl7WcxnLV8Aj-o_LLkLq6XU",
 								"type": "text"
 							}
 						],
@@ -271,13 +271,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  tambor",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_empleado\": \"147\",\r\n    \"password\": \"123\",\r\n    \"nombre\": \"Andrei Portal\"\r\n}",
+							"raw": "{\r\n    \"id_empleado\": \"prue@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"nombre\": \"prueba\",\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"tipo\": \"Administrador\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -310,7 +310,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc1Mzg2NjksImV4cCI6MTYzNzYyNTA2OX0.uXjlq10IqxduMO78wNLfZFdlHhNeN5ty8HDwhIS8zuY",
 								"type": "text"
 							}
 						],
@@ -341,18 +341,21 @@
 				},
 				{
 					"name": "updateEmpleado",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc1Mzg2NjksImV4cCI6MTYzNzYyNTA2OX0.uXjlq10IqxduMO78wNLfZFdlHhNeN5ty8HDwhIS8zuY",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_empleado\": \"123456789\",\r\n    \"password\": \"123\",\r\n    \"nombre\": \"Andrei Portal\"\r\n}",
+							"raw": "{\r\n    \"id_empleado\": \"prueba@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"nombre\": \"prueba\",\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"tipo\": \"Administrador\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -421,7 +424,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjMyNTcsImV4cCI6MTYzNzEwOTY1N30.HVs1HKetahQK2Z65qQ_Cv7iq60hVh-5TyOnrDSd0QRk",
 								"type": "text"
 							}
 						],
@@ -817,7 +820,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzY4NTg4NzgsImV4cCI6MTYzNjk0NTI3OH0.jPL4f4rqKRMXfSWYnHNQOryklR8n5phSAn0BUvdzujI",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjEzMTcsImV4cCI6MTYzNzEwNzcxN30.bYeSGMRJk_PiFFgP14KfQl7WcxnLV8Aj-o_LLkLq6XU",
 								"type": "text"
 							}
 						],
@@ -1208,7 +1211,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDUyNjksImV4cCI6MTYzNzA5MTY2OX0.rGiYL1ike90zO2rtzmg_2euxFEYdSCzdtPEE_-Ptsig",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjMyNTcsImV4cCI6MTYzNzEwOTY1N30.HVs1HKetahQK2Z65qQ_Cv7iq60hVh-5TyOnrDSd0QRk",
 								"type": "text"
 							}
 						],
