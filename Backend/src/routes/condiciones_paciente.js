@@ -19,21 +19,20 @@ function verifyToken(req, res, next) {
 
 router.post("/addCondicionesPaciente", verifyToken, async (req, res) => {
     try {
-        const { id_paciente, condiciones } = req.body;
-
-        for (var i = 0; i < condiciones.length; i++) {
-            const addCondicionesPaciente = await pool.query(
-                "INSERT INTO condiciones_paciente(id_paciente, id_condicion) VALUES($1,$2) RETURNING *",
-                [id_paciente, condiciones[i].id_condicion]
-            );
-        }
-
-        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, async (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
                 res.sendStatus(401);
             } else {
+                const { id_paciente, condiciones } = req.body;
+
+                for (var i = 0; i < condiciones.length; i++) {
+                    const addCondicionesPaciente = await pool.query(
+                        "INSERT INTO condiciones_paciente(id_paciente, id_condicion) VALUES($1,$2) RETURNING *",
+                        [id_paciente, condiciones[i].id_condicion]
+                    );
+                }
                 res.status(200).send({ code: 1, message: "Datos insertados correctamente" });
             }
         });
@@ -66,26 +65,26 @@ router.post("/addCondicionesPaciente2", async (req, res) => {
 
 router.post("/getCondicionesPacienteByIDPaciente", verifyToken, async (req, res) => {
     try {
-        const { id_paciente } = req.body;
-        const getCondicionesPaciente = await pool.query(
-            'SELECT p.nombre as "Nombre", cm.nombre_condicion as "Nombre_Condicion" FROM condiciones_paciente cp INNER JOIN paciente p ON p.id_paciente = cp.id_paciente INNER JOIN condiciones_medicas cm ON cp.id_condicion = cm.id_condicion AND cp.id_paciente = $1',
-            [id_paciente]
-
-        );
-
-        array = []
-
-        for (var i = 0; i < getCondicionesPaciente.rows.length; i++) {
-            array.push(getCondicionesPaciente.rows[i]);
-        }
-
-        // console.log(getCondicionesPaciente.rows)
-        jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
+        jwt.verify(req.token, process.env.SECRET_KEY, async (error, authData) => {
             //console.log("token", req.token, "token")
             if (error) {
                 console.log("error", error)
                 res.sendStatus(401);
             } else {
+                const { id_paciente } = req.body;
+                const getCondicionesPaciente = await pool.query(
+                    'SELECT p.nombre as "Nombre", cm.nombre_condicion as "Nombre_Condicion" FROM condiciones_paciente cp INNER JOIN paciente p ON p.id_paciente = cp.id_paciente INNER JOIN condiciones_medicas cm ON cp.id_condicion = cm.id_condicion AND cp.id_paciente = $1',
+                    [id_paciente]
+
+                );
+
+                array = []
+
+                for (var i = 0; i < getCondicionesPaciente.rows.length; i++) {
+                    array.push(getCondicionesPaciente.rows[i]);
+                }
+
+                // console.log(getCondicionesPaciente.rows)
                 res.status(200).send({ code: 1, id_paciente: id_paciente, condiciones: array });
             }
         });

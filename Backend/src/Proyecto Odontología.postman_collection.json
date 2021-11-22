@@ -15,13 +15,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDk4NjMsImV4cCI6MTYzNzA5NjI2M30.vjUQ2xcWnpCJ3x64SQgAov5tFxRsan3ILnvtiwekbhc",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc1NjIwMzUsImV4cCI6MTYzNzY0ODQzNX0.u44qdrsMq9YVSB2M6QttHds4Md3G-lepwvm-KyZPySo",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"pruba \",\r\n    \"email\": \"mouse@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-06-05\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"07/29/1999\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"prusba \",\r\n    \"email\": \"mouse@gmail.com\",\r\n    \"telefono_casa\": \"8948589\",\r\n    \"telefono_celular\": \"5489489\",\r\n    \"fecha_nacimiento\": \"1999-06-05\",\r\n    \"estado_civil\": \"Casado\",\r\n    \"ocupacion\": \"estudiante\",\r\n    \"direccion\": \"Guatemala\",\r\n    \"recomendado_por\": \"Yo\",\r\n    \"visita_anterior_dentista\": \"07/29/1999\",\r\n    \"motivo_consulta\": \"Dolor en muela\",\r\n    \"medico\": \"Doctor 1\",\r\n    \"telefono_medico\": \"2156658\",\r\n    \"contacto_emergencia\": \"2145789\",\r\n    \"telefono_emergencia\": \"1454855\",\r\n    \"presupuesto\": \"35.11\",\r\n    \"medicamentos\": \"Ninguno\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -29,13 +29,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://198.211.103.50:5000/api/paciente/addPaciente",
+							"raw": "http://localhost:5000/api/paciente/addPaciente",
 							"protocol": "http",
 							"host": [
-								"198",
-								"211",
-								"103",
-								"50"
+								"localhost"
 							],
 							"port": "5000",
 							"path": [
@@ -820,7 +817,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjEzMTcsImV4cCI6MTYzNzEwNzcxN30.bYeSGMRJk_PiFFgP14KfQl7WcxnLV8Aj-o_LLkLq6XU",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc1NjIwMzUsImV4cCI6MTYzNzY0ODQzNX0.u44qdrsMq9YVSB2M6QttHds4Md3G-lepwvm-KyZPySo",
 								"type": "text"
 							}
 						],
