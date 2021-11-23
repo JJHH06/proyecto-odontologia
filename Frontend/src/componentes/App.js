@@ -42,7 +42,7 @@ function App(){
                         <Search token = {token}/>
                     </Route>
                     <Route path="/home">
-                        <Homescreen token = {token}/>
+                        <Homescreen currentUser={currentUser}/>
                     </Route>
                     <Route path="/ingresar_paciente">
                         <Formulario token = {token}/>

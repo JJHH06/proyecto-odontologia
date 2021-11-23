@@ -6,13 +6,13 @@ import agenda from "../../assets/agenda.jpg";
 import { Link } from 'react-router-dom';
 import "./Homescreen.scss";
 
-function Homescreen() {
+function Homescreen({currentUser}) {
   return (
     <div className="container">
       <div className="row jumbotron p-4 p-md-5 text-white rounded bg-dark innitial-banner">
         <div className="col-md-6 px-0">
           <h1 className="display-4 font-italic">
-            ¡Bienvenido Aministrador Pedro Lopez!
+            {'¡Bienvenido '+currentUser?.tipo+' '+currentUser?.nombre+'!'}
           </h1>
           <p className="lead my-3">
             Ademas de unicamente guardar datos de los pacientes, este es un
