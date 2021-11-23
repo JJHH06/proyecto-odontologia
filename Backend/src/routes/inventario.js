@@ -187,20 +187,14 @@ router.put("/upadteItem", verifyToken, async (req, res) => {
                 moment.locale('es');
                 var ultima_fecha = moment().format('L');    // 05/09/2021
 
-                var date = ultima_fecha;
-                date = new Date(date).toISOString().substr(0, 10);
-                var datePart = date.match(/\d+/g);
-                year = datePart[0],
-                    month = datePart[1], day = datePart[2]
-                ultima_fecha = day + '/' + month + '/' + year;
-                //console.log(ultima_fecha)
+                var fecha_nacimiento_format = ultima_fecha.split("/");
+                ultima_fecha = fecha_nacimiento_format[1] + "/" + fecha_nacimiento_format[0] + "/" + fecha_nacimiento_format[2];
 
                 const upadteItem = await pool.query(
                     `UPDATE inventario SET nombre_item=$1, cantidad=$2, ultima_fecha=$3
                     WHERE id_item = $4`,
                     [nombre_item, cantidad, ultima_fecha, id_item]
                 );
-
 
                 const getItem = await pool.query(
                     `SELECT * 
