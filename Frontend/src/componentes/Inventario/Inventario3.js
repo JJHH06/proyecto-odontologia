@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './Inventario.scss';
 import { Paper } from '@material-ui/core';
-import {SortingState, IntegratedSorting, SearchState, IntegratedFiltering } from '@devexpress/dx-react-grid';
-import { Grid, Table, Toolbar, SearchPanel, TableHeaderRow } from '@devexpress/dx-react-grid-material-ui';
-import axios from 'axios';
+import {SortingState, IntegratedSorting, SearchState, IntegratedFiltering, EditingState } from '@devexpress/dx-react-grid';
+import { Grid, Table, Toolbar, SearchPanel, TableHeaderRow, TableEditRow, TableEditColumn } from '@devexpress/dx-react-grid-material-ui';
 
 
 // objeto de la calculadora
 function Inventario2({token}) {
 
     const [productosEncontrados, setProductosEncontrados] = useState([]);
-    const [productos, setProductos] = useState([]);
+
+
 
     const columns = [
         { name: 'nombre_item', title: 'Producto' },
         { name: 'cantidad', title: 'Cantidad' },
         { name: 'ultima_fecha', title: 'Fecha de actualizacion' }
-    ];
-
-    const rows = [
-        { id_item: '1', nombre_item: 'guantes', cantidad: '20', ultima_fecha: '10/10/2021' },
-        { id_item: '2', nombre_item: 'mascarillas', cantidad: '30', ultima_fecha: '1/01/2021' },
     ];
 
     useEffect(() => {
@@ -44,15 +39,60 @@ function Inventario2({token}) {
             console.log(error);
         });
 
-        const row = productosEncontrados.map((producto, index) => {
-            const temp = {...producto};
-            delete temp.id_item;
-            return temp;
-        });
+        // const row = productosEncontrados.map((producto, index) => {
+        //     const temp = {...producto};
+        //     delete temp.id_item;
+        //     return temp;
+        // });
 
-        setProductos(row);
+        // setProductos(row);
 
-    }, []);
+    }, [productosEncontrados]);
+
+    const commitChanges = ({ added, changed, deleted }) => {
+        if (added) {
+            let producto1 = '';
+            let cantidad1 = '';
+            console.log(added);
+            added.map((producto, index) => {
+                    producto1 = producto.nombre_item;
+                    cantidad1 = producto.cantidad;
+            });
+            console.log(producto1);
+            console.log(cantidad1);
+
+            if(producto1 !== "" && cantidad1 !== ""){
+                var axios = require('axios');
+                var data = JSON.stringify({
+                    nombre_item: producto1,
+                    cantidad: cantidad1
+                });
+
+                var config = {
+                method: 'post',
+                url: 'http://localhost:5000/api/inventario/addItem',
+                headers: { 
+                    'Authorization': 'Bearer  ' + token, 
+                    'Content-Type': 'application/json'
+                },
+                data : data
+                };
+
+                axios(config)
+                .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                alert("Nuevo producto ingresado con exito");
+                })
+                .catch(function (error) {
+                    alert("Error al registrar el nuevo producto");
+                    console.log(error);
+                });
+
+            } else {
+                alert("Error al registrar el producto");
+            }
+        }
+      };
     
     return (
         <div className=''>
@@ -71,8 +111,15 @@ function Inventario2({token}) {
                             defaultSorting={[{ columnName: 'nombre_item', direction: 'asc' }]}
                         />
                         <IntegratedSorting />
+                        <EditingState
+                            onCommitChanges={commitChanges}
+                        />
                         <Table />
                         <TableHeaderRow showSortingControls />
+                        <TableEditRow />
+                        <TableEditColumn
+                            showAddCommand
+                        />
                         <Toolbar />
                         <SearchPanel />
                     </Grid>
