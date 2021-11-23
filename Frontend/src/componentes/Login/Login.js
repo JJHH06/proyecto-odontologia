@@ -57,7 +57,6 @@ const getCurrentUser = async (token, id) => {
 
   return await axios(config)
     .then(function (response) {
-      console.log(JSON.stringify(response.data.result));
       return response.data.result;
     })
     .catch(function (error) {
@@ -88,7 +87,6 @@ function Login({ setToken, setCurrentUser }) {
     };
     return await axios(config)
       .then(async (response) => {
-        console.log(JSON.stringify(response.data));
         if (response.data.result.validate_login) {
           const usuario =await getCurrentUser(response.data.result.token, username)
           setCurrentUser(usuario);

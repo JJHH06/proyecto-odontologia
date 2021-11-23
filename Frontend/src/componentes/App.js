@@ -18,15 +18,13 @@ import Tratamiento from './Tratamiento/Tratamiento';
 import Home from './Home/Home';
 import Error404 from './Pagina404/Error404';
 import Inventario2 from './Inventario/Inventario3';
+import useEmployee from './useEmployee';
 
 function App(){
 
     const { token, setToken } = useToken();
-    const [ currentUser, setCurrentUser ] = useState(sessionStorage.getItem('currentUser'));
-    useEffect(() => {
-        console.log('Usuario actual',currentUser);
-    }, [currentUser]);
-
+    const { currentUser, setCurrentUser } = useEmployee();
+    
     if(!token) {
         
         return <BrowserRouter><Login setToken={setToken} setCurrentUser={setCurrentUser} /></BrowserRouter>
@@ -39,7 +37,7 @@ function App(){
             <BrowserRouter>
             <Navbar currentUser={currentUser} setToken={setToken}/>
                 <Switch>
-
+                
                 <Route path="/informacion_pacientes">
                         <Search token = {token}/>
                     </Route>
@@ -61,19 +59,21 @@ function App(){
                     <Route path="/nuevo_producto">
                         <AddProducto token = {token}/>
                     </Route>
+                    
                     {currentUser && currentUser.tipo && currentUser.tipo === 'Administrador'?<>
                     <Route path="/Empleados">
                         <Empleados token = {token}/>
                     </Route>
                     <Route path="/Tratamiento">
                         <Tratamiento token = {token}/>
-                    </Route></>:null}
-                    <Route path="/xd">
-                        <Inventario2 token = {token}/>
                     </Route>
                     <Route path="/">
                         <Error404/>
                     </Route>
+                    </>:<Route path="/">
+                        <Error404/>
+                    </Route>}
+                    
                     
                 </Switch>
             </BrowserRouter>
