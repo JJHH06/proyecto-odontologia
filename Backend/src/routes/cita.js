@@ -25,10 +25,10 @@ router.post("/addCita", verifyToken, async (req, res) => {
                 console.log("error", error)
                 res.sendStatus(401);
             } else {
-                const { paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad } = req.body;
+                const {paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, titulo_cita } = req.body;
                 const addCita = await pool.query(
-                    "INSERT INTO cita(paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad) VALUES($1,$2,$3,$4,$5,$6) RETURNING *",
-                    [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad]
+                    "INSERT INTO cita(paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, titulo_cita) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+                    [paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, titulo_cita]
                 );
                 //res.json(addCita.rows[0]);
                 res.status(200).send({ code: 1, result: addCita.rows[0] });
