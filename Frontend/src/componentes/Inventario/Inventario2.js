@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Inventario.scss';
 import Producto from './Productos';
 import axios from 'axios';
@@ -11,25 +11,48 @@ function Inventario({token}) {
     const [productosEncontrados, setProductosEncontrados] = useState("");
     const history = useHistory();
 
-    var axios = require('axios');
+    // var axios = require('axios');
 
-    var config = {
-        method: 'post',
-        url: 'http://localhost:5000/api/inventario/getAllItems',
-        headers: {
-            'Authorization': 'Bearer  ' + token, 
-            'Content-Type': 'application/json'
-        }
-    };
+    // var config = {
+    //     method: 'post',
+    //     url: 'http://198.211.103.50:5000/api/inventario/getAllItems',
+    //     headers: {
+    //         'Authorization': 'Bearer  ' + token, 
+    //         'Content-Type': 'application/json'
+    //     }
+    // };
 
-    axios(config)
-    .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        setProductosEncontrados(response.data.result);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+    useEffect(() => {
+        var axios = require('axios');
+
+        var config = {
+            method: 'post',
+            url: 'http://198.211.103.50:5000/api/inventario/getAllItems',
+            headers: {
+                'Authorization': 'Bearer  ' + token, 
+                'Content-Type': 'application/json'
+            }
+        };
+
+        axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            setProductosEncontrados(response.data.result);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    }, []);
+
+    // axios(config)
+    // .then(function (response) {
+    //     console.log(JSON.stringify(response.data));
+    //     setProductosEncontrados(response.data.result);
+    // })
+    // .catch(function (error) {
+    // console.log(error);
+    // });
 
     const handleProduct = () =>{
         history.push({

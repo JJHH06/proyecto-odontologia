@@ -17,6 +17,7 @@ import Empleados from './Empleados/Empleados';
 import Tratamiento from './Tratamiento/Tratamiento';
 import Home from './Home/Home';
 import Error404 from './Pagina404/Error404';
+import Inventario2 from './Inventario/Inventario3';
 
 function App(){
 
@@ -47,7 +48,7 @@ function App(){
                         <Ficha token = {token}/>
                     </Route>
                     <Route path="/inventario">
-                        <Inventario token = {token}/>
+                        <Inventario2 token = {token}/>
                     </Route>
                     <Route path="/nuevo_producto">
                         <AddProducto token = {token}/>
@@ -57,6 +58,9 @@ function App(){
                     </Route>
                     <Route path="/Tratamiento">
                         <Tratamiento token = {token}/>
+                    </Route>
+                    <Route path="/xd">
+                        <Inventario2 token = {token}/>
                     </Route>
                     <Route path="/">
                         <Error404/>
