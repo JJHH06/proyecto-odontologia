@@ -5,6 +5,7 @@ import "./Login.scss";
 import Logotipo from "../../assets/FULL_COLOR.png";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { useHistory } from 'react-router-dom'
 
 // const axios = require('axios');
 
@@ -39,6 +40,7 @@ import axios from "axios";
 //loginConnection("XD","XDDDD")
 
 const getCurrentUser = async (token, id) => {
+  
   const data = JSON.stringify({
     id_empleado: id,
   });
@@ -66,7 +68,7 @@ const getCurrentUser = async (token, id) => {
 function Login({ setToken, setCurrentUser }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
-
+  const history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = { token: "token123" };
@@ -91,7 +93,9 @@ function Login({ setToken, setCurrentUser }) {
           const usuario =await getCurrentUser(response.data.result.token, username)
           setCurrentUser(usuario);
           sessionStorage.setItem('currentUser', usuario);
+          history.push("/home")
           setToken({ token: response.data.result.token });
+          
           return
           //
         }

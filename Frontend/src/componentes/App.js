@@ -28,7 +28,8 @@ function App(){
     }, [currentUser]);
 
     if(!token) {
-        return <Login setToken={setToken} setCurrentUser={setCurrentUser} />
+        
+        return <BrowserRouter><Login setToken={setToken} setCurrentUser={setCurrentUser} /></BrowserRouter>
     }
     
 
@@ -39,8 +40,11 @@ function App(){
             <Navbar currentUser={currentUser} setToken={setToken}/>
                 <Switch>
 
-                    <Route path="/informacion_pacientes">
+                <Route path="/informacion_pacientes">
                         <Search token = {token}/>
+                    </Route>
+                    <Route path="/home">
+                        <Homescreen token = {token}/>
                     </Route>
                     <Route path="/ingresar_paciente">
                         <Formulario token = {token}/>

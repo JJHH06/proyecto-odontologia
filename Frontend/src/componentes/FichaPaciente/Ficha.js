@@ -156,7 +156,7 @@ function Ficha({token,currentUserName}) {
           left: "-1000px",
           top: 0,
         }}>
-                    <PDFExport paperSize="A3" fileName={location.state.nombre+'.pdf'} margin="0cm" ref={pdfExportComponent}>
+                    <PDFExport  paperSize="A3" fileName={location.state.nombre+'.pdf'} margin="0cm" ref={pdfExportComponent}>
                         <Presupuesto nombre={location.state.nombre} doctor={'Dr. '+currentUserName} total={totalPrice} summary={tratamientosSummary}/>
         </PDFExport>
 
