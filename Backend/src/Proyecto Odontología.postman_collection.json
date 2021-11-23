@@ -413,11 +413,8 @@
 				},
 				{
 					"name": "getEmpleado",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
@@ -924,7 +921,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTgzMzcsImV4cCI6MTYzNjQwNDczN30.aMVVyB-i3ZJ3rEfqoedslq9Am77Q6TL7-jBxRGEcOJc",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
 								"type": "text"
 							}
 						],
@@ -996,7 +993,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzYzMTg1NDIsImV4cCI6MTYzNjQwNDk0Mn0.Mu-0GTfSrxllJEq_A9Mut6HPnRittbeqoOXTZd0oU1s",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
 								"type": "text"
 							}
 						],
@@ -1244,13 +1241,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMDUyNjksImV4cCI6MTYzNzA5MTY2OX0.rGiYL1ike90zO2rtzmg_2euxFEYdSCzdtPEE_-Ptsig",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NDEwMjYsImV4cCI6MTYzNzcyNzQyNn0.gK_ruj57AUf4Nb9zKYED9IWKQW1wZue7BHVPCgf9MwM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre_item\": \"jamon\",\r\n    \"cantidad\": \"10\"\r\n}",
+							"raw": "{\r\n    \"nombre_item\": \"botellas\",\r\n    \"cantidad\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1280,7 +1277,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2MzcwMjMyNTcsImV4cCI6MTYzNzEwOTY1N30.HVs1HKetahQK2Z65qQ_Cv7iq60hVh-5TyOnrDSd0QRk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NDEwMjYsImV4cCI6MTYzNzcyNzQyNn0.gK_ruj57AUf4Nb9zKYED9IWKQW1wZue7BHVPCgf9MwM",
 								"type": "text"
 							}
 						],
@@ -1343,7 +1340,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NDEwMjYsImV4cCI6MTYzNzcyNzQyNn0.gK_ruj57AUf4Nb9zKYED9IWKQW1wZue7BHVPCgf9MwM",
 								"type": "text"
 							}
 						],
@@ -1439,6 +1436,218 @@
 								"api",
 								"inventario",
 								"deleteItem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tratamiento",
+			"item": [
+				{
+					"name": "addTratamiento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"tratarueba\",\r\n    \"precio\": \"5221\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/addTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"addTratamiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTratamientos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/getAllTratamientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"getAllTratamientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTratamiento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_tratamiento\": \"141\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/getTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"getTratamiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchTratamiento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"busqueda\": \"Reposición\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/searchTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"searchTratamiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTratamiento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_tratamiento\": \"146\",\r\n    \"nombre\": \"tratamiento de prueba\",\r\n    \"precio\": \"5220\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/updateTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"updateTratamiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTratamiento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_tratamiento\": \"147\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/tratamiento/deleteTratamiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"tratamiento",
+								"deleteTratamiento"
 							]
 						}
 					},
