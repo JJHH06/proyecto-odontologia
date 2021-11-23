@@ -60,6 +60,30 @@ const getAppointmentById = async (id, token) => {
 
   }
 
+  const addAppointment = async (token, newAppointment) => {
+    
+    
+    let config = {
+      method: 'post',
+      url: 'http://198.211.103.50:5000/api/cita/addCita',
+      headers: { 
+        'Authorization': 'Bearer  '+token, 
+        'Content-Type': 'application/json'
+      },
+      data : JSON.stringify(newAppointment)
+    };
+    
+    console.log(newAppointment);
+    return await axios(config)
+    .then(function (response) {
+      return response.data;
+    }).
+    catch(function (error) {
+      console.log('ERROR POST',error);
+    }
+    );
+  }
+
 
 
 
@@ -221,7 +245,27 @@ export default ({token, unidad}) => {
       getData(setData, setLoading);
 
 
+
+
     }
+    //const {paciente, fecha, hora_inicio, hora_final, estado_cita, no_unidad, titulo_cita } = req.body;
+    
+
+    if(modData.added){
+      setLoading(true);
+      let newData = {titulo_cita: modData.added.title, 
+        no_unidad: unidad, 
+        fecha:modData.added.endDate.getFullYear()+'-'+parseInt(parseInt(modData.added.endDate.getMonth())+1)+'-'+modData.added.endDate.getDate(),
+        hora_inicio: modData.added.startDate.toTimeString().split(' ')[0],
+        hora_final: modData.added.endDate.toTimeString().split(' ')[0],
+        estado_cita: "Activo",
+        paciente: 1,
+      }
+
+      await addAppointment(token, newData)
+      getData(setData, setLoading);
+    }
+
     
   }
 
