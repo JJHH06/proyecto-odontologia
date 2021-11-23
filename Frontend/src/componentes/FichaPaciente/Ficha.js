@@ -79,9 +79,24 @@ function Ficha({token}) {
                             
                         </ul>
                     </div>
-                    <div className='odontogram-container cuadro'>
+                    <div className='mb-4 cuadro'>
                         <Odontogram id_paciente={location.state.id_paciente} token={token}/>
                     </div>
+                    {/*create button to calculate the estimate price */}
+                    <div className='mb-4 container'>
+                        <div className='row'>
+                            <div className='col-lg-12 text-center'>
+                    <button className='btn btn-success'>Generar presupuesto</button>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    
+
+
                 </div>
                 
             </div>
