@@ -211,7 +211,7 @@ function Odontogram(props) {
         
       </div>
       { selectedPiece.id_pieza ==="0"?
-      <div className='cuadro'>
+      <div className='cuadro resumen-tratamientos mb-3'>
                       <h3>{summaryTitle}</h3>
                       <ul>
                           {

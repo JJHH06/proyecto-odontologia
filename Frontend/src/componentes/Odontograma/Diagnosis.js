@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import "./Diagnosis.css";
 import tooth_mock from "./Assets/tooth.png";
+import mouth from "./Assets/mouth.png";
 import axios from 'axios';
 
 
@@ -232,15 +233,15 @@ useEffect(() => {
   return (
     <>{!isDataLoaded? <div>cargando</div>:<>
         <div className="row">
-          <h1 className='diagnosis-title'>Diagnostico pieza {currentDiagnosisTooth}</h1>
+          <h1 className='diagnosis-title'>{currentDiagnosisTooth!==0?'Diagnostico pieza '+currentDiagnosisTooth:'Diagnostico bucal'}</h1>
           <div className="responsive-tooth-container col-md-4">
-            <img src={tooth_mock} width="100" alt="tooth_mock" />
+            <img src={currentDiagnosisTooth!==0?tooth_mock:mouth} width="100" alt="tooth_mock" />
           </div>
           <div className="diagnosis-treatments-container col-md-8">
             {/* <div className="diagnosis-treatments-container-title">
               <h2>Tratamientos</h2>
             </div> */}
-            <h3>Oclusal:</h3>
+            <h3 className={currentDiagnosisTooth!==0?'':'mt-5'}>{currentDiagnosisTooth!==0?'Oclusal:':'Tratamientos:'}</h3>
             <Select
               defaultValue={defaultOclusal}
               isMulti
@@ -250,8 +251,11 @@ useEffect(() => {
               classNamePrefix="select"
               placeholder="Seleccione tratamientos a realizar..."
               menuShouldScrollIntoView={false}
+              className={currentDiagnosisTooth!==0?'':'mb-5'}
               onChange={setDefaultOclusal}
             />
+            {currentDiagnosisTooth!==0?
+            <>
             <h3>Bucal:</h3>
             <Select
               defaultValue={defaultBucal}
@@ -302,6 +306,7 @@ useEffect(() => {
               menuShouldScrollIntoView={false}
               onChange={setDefaultDistal}
             />
+            </>: null}
           </div>
           
         </div>
