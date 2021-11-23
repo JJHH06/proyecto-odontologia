@@ -168,6 +168,45 @@ function Inventario2({token}) {
             console.log(error);
             });
             
+        }
+        if (deleted) {
+            var submit = window.confirm("¿Esta seguro que desea eliminar el producto?");
+            if(submit){
+                console.log(deleted);
+                let id_item = '';
+                productosEncontrados.map((producto, index) => {
+                    if (deleted[0] === index) {
+                        id_item = producto.id_item;
+                        console.log(producto.nombre_item);
+                    }  
+                });
+
+                var axios = require('axios');
+                var data = JSON.stringify({
+                    "id_item": id_item
+                });
+
+                var config = {
+                method: 'delete',
+                url: 'http://localhost:5000/api/inventario/deleteItem',
+                headers: { 
+                    'Authorization': 'Bearer  ' + token,
+                    'Content-Type': 'application/json'
+                },
+                data : data
+                };
+
+                axios(config)
+                .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                setUpdate(update + 1);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+            }
+
+
         }       
       };
     
@@ -198,6 +237,7 @@ function Inventario2({token}) {
                         <TableEditColumn
                             showAddCommand
                             showEditCommand
+                            showDeleteCommand
                         />
                         <Toolbar />
                         <SearchPanel />
