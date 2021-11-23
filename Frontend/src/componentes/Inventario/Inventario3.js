@@ -109,6 +109,7 @@ function Inventario2({token}) {
                 // setTimeout(setUpdate(update + 1), 10000);
                 setUpdate(update + 1);
                 console.log(update);
+                setUpdate(update + 1);
                 })
                 .catch(function (error) {
                     alert("Error al registrar el nuevo producto");
