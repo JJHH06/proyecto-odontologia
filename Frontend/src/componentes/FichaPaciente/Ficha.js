@@ -3,13 +3,18 @@ import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 import './Ficha.scss';
 import Odontogram from "../Odontograma/Odontogram"
+import Presupuesto from '../Presupuesto/Presupuesto';
 
 
 function Ficha({token}) {
 
+    
     const location = useLocation();
     // console.log(location.state);
     //console.log(props.location.state)
+    
+    
+
     return (
         <>
          {location? <div  className= 'container estilo-ficha'>
@@ -82,6 +87,26 @@ function Ficha({token}) {
                     <div className='odontogram-container cuadro'>
                         <Odontogram id_paciente={location.state.id_paciente} token={token}/>
                     </div>
+                    {/*create button to calculate the estimate price */}
+                    
+                    
+                    <div className='mb-4 container'>
+                        <div className='row'>
+                            <div className='col-lg-12 text-center'>
+                            <button className='btn btn-success' >
+          Generar presupuesto
+        </button>
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    
+
+
                 </div>
                 
             </div>

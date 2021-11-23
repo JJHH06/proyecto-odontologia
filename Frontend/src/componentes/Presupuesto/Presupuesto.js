@@ -1,9 +1,9 @@
 import React from 'react';
 import Logo from '../../assets/FULL_COLOR.png';
-
-function Presupuesto({token}) {
+import './presupuesto.css';
+function Presupuesto({ref}) {
     return (
-        <div>
+        <div className='print-source'>
             {/*create presupuesto view with Logo at the top */}
 
             <div className="container">
