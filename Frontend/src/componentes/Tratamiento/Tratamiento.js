@@ -16,7 +16,43 @@ function Tratamiento({token}) {
 
   const commitChanges = ({ added, changed, deleted }) => {
     if (added) {
-      console.log(added);
+      let tratamiento1 = '';
+      let precio1 = '';
+      added.map((tratamiento, index) => {
+              tratamiento1 = tratamiento.nombre;
+              precio1 = tratamiento.precio;
+      });
+      console.log(tratamiento1);
+      console.log(precio1);
+
+      if(tratamiento1 !== "" && precio1 !== ""){
+        var axios = require('axios');
+        var data = JSON.stringify({
+          "nombre": tratamiento1,
+          "precio": precio1
+        });
+
+        var config = {
+          method: 'post',
+          url: 'http://198.211.103.50:5000/api/tratamiento/addTratamiento',
+          headers: { 
+            'Authorization': 'Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NTI5MjUsImV4cCI6MTYzNzczOTMyNX0.nw-S1TGX5Z9RWDX7bXAtzzxbag8r6VhoN00I5-VEJG8', 
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          setUpdate(update + 1);
+          console.log(update);
+          setUpdate(update + 1);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
     }
   };
 
