@@ -14,6 +14,7 @@ function Error404(){
     });
 }
   return (
+    
     <div>
       <div className='container centrar-div'>
         <div className='center-title'>

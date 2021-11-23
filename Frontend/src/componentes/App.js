@@ -60,19 +60,30 @@ function App(){
                         <AddProducto token = {token}/>
                     </Route>
                     
-                    {currentUser && currentUser.tipo && currentUser.tipo === 'Administrador'?<>
-                    <Route path="/Empleados">
+                    { currentUser?.tipo === 'Administrador'?
+                    <Route  path="/Empleados">
                         <Empleados token = {token}/>
                     </Route>
-                    <Route path="/Tratamiento">
+                    
+
+                    
+                    :null}
+
+                    { currentUser?.tipo === 'Administrador'?
+                    
+                    <Route  path="/Tratamiento">
                         <Tratamiento token = {token}/>
                     </Route>
-                    <Route path="/">
-                        <Error404/>
-                    </Route>
-                    </>:<Route path="/">
-                        <Error404/>
-                    </Route>}
+                    
+                    :null}
+
+                    
+
+<Route path="/">
+<Error404/>
+</Route>
+                    
+                    
                     
                     
                 </Switch>
