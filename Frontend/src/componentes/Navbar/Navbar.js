@@ -15,7 +15,7 @@ import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
 import {faMedkit} from '@fortawesome/free-solid-svg-icons';
 
 // objeto de la calculadora
-function Navbar({currentUser}) {
+function Navbar({currentUser,setToken}) {
 
     return (
       
@@ -113,7 +113,10 @@ function Navbar({currentUser}) {
                   </ul>
                 </li>:null}
                 <li className="nav-item" role="presentation">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="" onClick={(e)=>{
+                    setToken({});
+
+                  }}>
                     <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon> Sign out
                   </a>
                   

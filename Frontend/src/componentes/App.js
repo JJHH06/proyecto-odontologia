@@ -36,7 +36,7 @@ function App(){
         <div className='app'>
             
             <BrowserRouter>
-            <Navbar currentUser={currentUser}/>
+            <Navbar currentUser={currentUser} setToken={setToken}/>
                 <Switch>
 
                     <Route path="/informacion_pacientes">
