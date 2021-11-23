@@ -1,15 +1,17 @@
+import { height } from 'dom-helpers';
 import React from 'react';
 import Logo from '../../assets/FULL_COLOR.png';
-import './presupuesto.css';
-function Presupuesto({ref}) {
+//import './presupuesto.css';
+function Presupuesto({nombre}) {
     return (
         <div className='print-source'>
+            <div id="presupuesto-paciente">
             {/*create presupuesto view with Logo at the top */}
 
-            <div className="container">
+            <div className="container mt-2">
                 <div className="row">
                     <div className="col-md-2">
-                        <img src={Logo} alt="Logo" className="img-fluid" width={170} />
+                        <img src={Logo} alt="Logo" className="img-fluid" width={500} />
                     </div>
                 </div>
             </div>
@@ -36,11 +38,11 @@ function Presupuesto({ref}) {
                                 </p>
                                 <p className="card-text">
                                     <strong>Nombre: </strong>
-                                    <span>{'Diana Corado'}</span>
+                                    <span>{nombre}</span>
                                 </p>
                                 <p className="card-text">
                                     <strong>Email: </strong>
-                                    <span>{'xdxd@gmail.com'}</span>
+                                    <span>{'dentalesgt@gmail.com'}</span>
                                 </p>
                                 <p className="card-text">
                                     <strong>Odontologo: </strong>
@@ -98,7 +100,7 @@ function Presupuesto({ref}) {
 
 
 
-            <div className="container">
+            <div className="container mb-5">
                 <div className="row">
                     <div className="col-md-12">
                         <table className="table table-striped">
@@ -142,11 +144,37 @@ function Presupuesto({ref}) {
                     </div>
                 </div>
             </div>
-
+            {/*Sign from doctor and from patient */}
+            <div className="container mt-5">
+                <div className="row">
+                    <div className="col text-center">
+                    <div className="row">
+                        <p>{'_____________________________________'}</p>
+                        <p className="card-text">
+                                    Firma paciente
+                                </p>
+                            
+                        </div>
+                    
+                    </div>
+                    <div className="col text-center">
+                        
+                        
+                        <div className="row">
+                        <p>{'_____________________________________'}</p>
+                        <p className="card-text">
+                                    Firma odontologo
+                                </p>
+                            
+                        </div>
+                    
+                    </div>
+                    </div>
+                </div>
 
             
 
-        </div>
+            </div></div>
     )
 }
 

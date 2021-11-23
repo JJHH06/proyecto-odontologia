@@ -4,10 +4,10 @@ import { useLocation } from "react-router-dom";
 import './Ficha.scss';
 import Odontogram from "../Odontograma/Odontogram"
 import Presupuesto from '../Presupuesto/Presupuesto';
-
+import { PDFExport } from "@progress/kendo-react-pdf";
 
 function Ficha({token}) {
-
+    const pdfExportComponent = React.useRef(null);
     
     const location = useLocation();
     // console.log(location.state);
@@ -90,20 +90,31 @@ function Ficha({token}) {
                     {/*create button to calculate the estimate price */}
                     
                     
-                    <div className='mb-4 container'>
+                    <div className='mb-4 mt-4 container'>
                         <div className='row'>
                             <div className='col-lg-12 text-center'>
-                            <button className='btn btn-success' >
-          Generar presupuesto
-        </button>
+                            <button className='btn btn-success' onClick={(e)=>{
+                                if (pdfExportComponent.current) {
+                                    pdfExportComponent.current.save();
+                                  }
+                            }}>
+                                Generar presupuesto
+                            </button>
 
                             
                             </div>
                         </div>
                     </div>
-                    
+                    <div style={{
+          position: "absolute",
+          left: "-1000px",
+          top: 0,
+        }}>
+                    <PDFExport paperSize="A3" fileName={location.state.nombre+'.pdf'} margin="0cm" ref={pdfExportComponent}>
+                        <Presupuesto nombre={location.state.nombre}/>
+        </PDFExport>
 
-
+</div>
                     
 
 
