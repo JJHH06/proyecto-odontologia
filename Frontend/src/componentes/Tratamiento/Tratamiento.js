@@ -103,6 +103,44 @@ function Tratamiento({token}) {
         console.log(error);
       });
     }
+    if (deleted) {
+      var submit = window.confirm('¿Está seguro que desea eliminar el tratamiento?');
+      if(submit){
+        let id_tratamiento = '';
+        tratamientosEncontrados.map((tratamiento, index) => {
+          if (deleted[0] === index) {
+            id_tratamiento = tratamiento.id_tratamiento;
+            console.log(tratamiento.nombre);
+          }
+        });
+        console.log(id_tratamiento);
+
+
+        var axios = require('axios');
+        var data = JSON.stringify({
+          "id_tratamiento": id_tratamiento
+        });
+
+        var config = {
+          method: 'delete',
+          url: 'http://localhost:5000/api/tratamiento/deleteTratamiento',
+          headers: { 
+            'Authorization': 'Bearer  ' + token,
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+          setUpdate(update + 1);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -160,6 +198,7 @@ function Tratamiento({token}) {
             <TableEditColumn
                 showAddCommand
                 showEditCommand
+                showDeleteCommand
             />
             <Toolbar />
             <SearchPanel />
