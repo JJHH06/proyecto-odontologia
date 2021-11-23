@@ -72,12 +72,6 @@ function Navbar() {
                   </ul>
                 </li>
                 <li className="nav-item" role="presentation">
-                  <Link className="nav-link" to="/Tratamiento">
-                    <FontAwesomeIcon icon={faMedkit}></FontAwesomeIcon>{" "}
-                    Tratatamientos
-                  </Link>
-                </li>
-                <li className="nav-item" role="presentation">
                   <Link className="nav-link" to="/inventario">
                     <FontAwesomeIcon icon={faBoxes}></FontAwesomeIcon>{" "}
                     Inventario
@@ -88,10 +82,33 @@ function Navbar() {
                   Agenda
                   </Link>
                 </li>
-                <li className="nav-item" role="presentation">
-                  <Link className="nav-link" to='/Empleados'><FontAwesomeIcon icon={faAddressCard}></FontAwesomeIcon>{" "} 
-                  Empleados
-                  </Link>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <FontAwesomeIcon icon={faUserInjured}></FontAwesomeIcon>{" "}
+                    Otros
+                  </a>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+ 
+                        <Link className="dropdown-item" to='/Tratamiento'><FontAwesomeIcon icon={faMedkit}></FontAwesomeIcon> Tratamientos</Link>
+                      
+                    </li>
+                    <li>
+                      
+                      <Link className="dropdown-item" to='/Empleados'><FontAwesomeIcon icon={faAddressCard}></FontAwesomeIcon> Empleados</Link>
+                      
+                    </li>
+                  </ul>
                 </li>
                 <li className="nav-item" role="presentation">
                   <a className="nav-link" href="#">
