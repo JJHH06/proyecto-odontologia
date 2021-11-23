@@ -215,4 +215,55 @@ router.delete("/deleteTratamientos", verifyToken, async (req, res) => {
     }
 });
 
+router.post('/getPresupuestoResumen', verifyToken, async (req, res) => {
+    try {
+        jwt.verify(req.token, process.env.SECRET_KEY, async (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                const { idPaciente } = req.body;
+                const getPresupuestoResumen = await pool.query(
+                    `select t.nombre as procedimiento, t.precio,  count(*) as cantidad, sum(t.precio) as total from tratamientos_paciente tp
+                    inner join tratamiento t on t.id_tratamiento = tp.id_tratamiento
+                    where tp.id_paciente = $1
+                    group by t.id_tratamiento, t.nombre`,
+                    [idPaciente]
+                );
+                res.status(200).send({ code: 1, result: getPresupuestoResumen.rows });
+            }
+        });
+    } catch (err) {
+        console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
+router.post('/getPresupuestoTotal', verifyToken, async (req, res) => {
+    try {
+        jwt.verify(req.token, process.env.SECRET_KEY, async (error, authData) => {
+            //console.log("token", req.token, "token")
+            if (error) {
+                console.log("error", error)
+                res.sendStatus(401);
+            } else {
+                const { idPaciente } = req.body;
+                var result = {};
+                const getPresupuestoTotal = await pool.query(
+                    `select sum(t.precio) as total from tratamientos_paciente tp
+                    inner join tratamiento t on t.id_tratamiento = tp.id_tratamiento
+                    where tp.id_paciente = $1`,
+                    [idPaciente]
+                );
+                result.total = getPresupuestoTotal.rows[0].total;
+                res.status(200).send({ code: 1, result });
+            }
+        });
+    } catch (err) {
+        console.error(err.message)
+        res.status(200).send({ code: 0, error: err.message });
+    }
+});
+
 module.exports = router;
