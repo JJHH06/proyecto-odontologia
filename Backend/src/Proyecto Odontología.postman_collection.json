@@ -1379,13 +1379,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImJyYWQiLCJlbWFpbCI6ImJyYWRAZ21haWwuY29tIn0sImlhdCI6MTYzNDQzMTI4NiwiZXhwIjoxNjM0NDMxMzQ2fQ.jO94Dx1ixcSpOhETxB-ADpa9I4RF8YpVvhZbdpT0Qdk",
+								"value": "Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkX2F0dGVtcCI6IjEyM0BnbWFpbC5jb20iLCJwYXNzX2F0dGVtcCI6IjEyMyJ9LCJpYXQiOjE2Mzc2NDEwMjYsImV4cCI6MTYzNzcyNzQyNn0.gK_ruj57AUf4Nb9zKYED9IWKQW1wZue7BHVPCgf9MwM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_item\": \"6\",\r\n    \"nombre_item\": \"Algodon\",\r\n    \"cantidad\": \"4\"\r\n}",
+							"raw": "{\r\n    \"id_item\": \"14\",\r\n    \"nombre_item\": \"tortillas de harina\",\r\n    \"cantidad\": \"3\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
