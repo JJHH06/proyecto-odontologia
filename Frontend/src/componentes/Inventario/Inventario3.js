@@ -106,6 +106,7 @@ function Inventario2({token}) {
                 axios(config)
                 .then(function (response) {
                 alert("Nuevo producto ingresado con exito");
+                // setTimeout(setUpdate(update + 1), 10000);
                 setUpdate(update + 1);
                 console.log(update);
                 })
