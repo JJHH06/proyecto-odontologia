@@ -60,6 +60,10 @@ function Odontogram(props) {
       console.log(selectedPiece)
     })
 
+    useEffect(()=>{
+      getTratamientosBoca();
+  },[selectedPiece])
+
 
     return (
       <>
@@ -178,6 +182,30 @@ function Odontogram(props) {
               </div>
             </div>
           </div>
+          {/*col with centered button */}
+
+          <div className="row mt-3">
+
+                <div className="col text-center">
+                  <button className="btn btn-primary"
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+    //alert("Se ha hecho click derecho en el diente " + tooth_id + "Del paciente "+id_paciente)
+    setCurrentDiagnosisTooth(0);
+    
+    setIsToothInDiagnosis(true)
+  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedPiece({id_pieza: "0", bucal:[], lingual:[], distal:[], mesial:[], oclusal:[]})
+                  }}
+
+                  >Boca completa</button>
+                
+                
+          </div>
+          </div>
+
         </div>
 
         
