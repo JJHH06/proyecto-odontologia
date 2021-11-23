@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Inventario.scss';
 import { Paper } from '@material-ui/core';
-import {SortingState, IntegratedSorting, SearchState, IntegratedFiltering, EditingState } from '@devexpress/dx-react-grid';
-import { Grid, Table, Toolbar, SearchPanel, TableHeaderRow, TableEditRow, TableEditColumn } from '@devexpress/dx-react-grid-material-ui';
+import {SortingState, IntegratedSorting, SearchState, IntegratedFiltering, EditingState, PagingState, IntegratedPaging } from '@devexpress/dx-react-grid';
+import { Grid, Table, Toolbar, SearchPanel, TableHeaderRow, TableEditRow, TableEditColumn, PagingPanel } from '@devexpress/dx-react-grid-material-ui';
 
 
 // objeto de la calculadora
@@ -221,12 +221,18 @@ function Inventario2({token}) {
                         rows={productosEncontrados}
                         columns={columns}
                     >
+
                         <SearchState  />
                         <IntegratedFiltering />
                         <SortingState
                             defaultSorting={[{ columnName: 'nombre_item', direction: 'asc' }]}
                         />
                         <IntegratedSorting />
+                        <PagingState
+                        defaultCurrentPage={0}
+                        pageSize={10}
+                        />
+                        <IntegratedPaging />
                         <EditingState
                             onCommitChanges={commitChanges}
                             columnExtensions={editingStateColumnExtensions}
@@ -241,6 +247,7 @@ function Inventario2({token}) {
                         />
                         <Toolbar />
                         <SearchPanel />
+                        <PagingPanel />
                     </Grid>
                 </Paper>
 
