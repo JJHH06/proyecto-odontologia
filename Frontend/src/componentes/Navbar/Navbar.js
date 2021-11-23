@@ -15,7 +15,7 @@ import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
 import {faMedkit} from '@fortawesome/free-solid-svg-icons';
 
 // objeto de la calculadora
-function Navbar() {
+function Navbar({currentUser}) {
 
     return (
       
@@ -82,6 +82,8 @@ function Navbar() {
                   Agenda
                   </Link>
                 </li>
+                {
+                  currentUser && currentUser.tipo && currentUser.tipo === 'Administrador'?
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
@@ -92,7 +94,7 @@ function Navbar() {
                     aria-expanded="false"
                   >
                     <FontAwesomeIcon icon={faUserInjured}></FontAwesomeIcon>{" "}
-                    Otros
+                    Administracion
                   </a>
                   <ul
                     className="dropdown-menu"
@@ -109,7 +111,7 @@ function Navbar() {
                       
                     </li>
                   </ul>
-                </li>
+                </li>:null}
                 <li className="nav-item" role="presentation">
                   <a className="nav-link" href="#">
                     <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon> Sign out

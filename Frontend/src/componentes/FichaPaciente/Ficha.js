@@ -6,7 +6,7 @@ import Odontogram from "../Odontograma/Odontogram"
 import Presupuesto from '../Presupuesto/Presupuesto';
 import { PDFExport } from "@progress/kendo-react-pdf";
 
-function Ficha({token}) {
+function Ficha({token,currentUserName}) {
     const pdfExportComponent = React.useRef(null);
     
     const location = useLocation();
@@ -111,7 +111,7 @@ function Ficha({token}) {
           top: 0,
         }}>
                     <PDFExport paperSize="A3" fileName={location.state.nombre+'.pdf'} margin="0cm" ref={pdfExportComponent}>
-                        <Presupuesto nombre={location.state.nombre}/>
+                        <Presupuesto nombre={location.state.nombre} doctor={currentUserName}/>
         </PDFExport>
 
 </div>

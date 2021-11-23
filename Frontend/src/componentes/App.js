@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Login from './Login/Login';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -22,17 +22,21 @@ import Inventario2 from './Inventario/Inventario3';
 function App(){
 
     const { token, setToken } = useToken();
+    const [ currentUser, setCurrentUser ] = useState(sessionStorage.getItem('currentUser'));
+    useEffect(() => {
+        console.log('Usuario actual',currentUser);
+    }, [currentUser]);
 
     if(!token) {
-        return <Login setToken={setToken} />
+        return <Login setToken={setToken} setCurrentUser={setCurrentUser} />
     }
-
+    
 
     return(
         <div className='app'>
             
             <BrowserRouter>
-            <Navbar/>
+            <Navbar currentUser={currentUser}/>
                 <Switch>
 
                     <Route path="/informacion_pacientes">
@@ -45,7 +49,7 @@ function App(){
                         <Agenda token = {token}/>
                     </Route>
                     <Route path="/ficha">
-                        <Ficha token = {token}/>
+                        <Ficha token = {token} currentUserName={currentUser.nombre}/>
                     </Route>
                     <Route path="/inventario">
                         <Inventario2 token = {token}/>
@@ -53,12 +57,13 @@ function App(){
                     <Route path="/nuevo_producto">
                         <AddProducto token = {token}/>
                     </Route>
+                    {currentUser && currentUser.tipo && currentUser.tipo === 'Administrador'?<>
                     <Route path="/Empleados">
                         <Empleados token = {token}/>
                     </Route>
                     <Route path="/Tratamiento">
                         <Tratamiento token = {token}/>
-                    </Route>
+                    </Route></>:null}
                     <Route path="/xd">
                         <Inventario2 token = {token}/>
                     </Route>
