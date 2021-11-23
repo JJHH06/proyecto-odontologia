@@ -84,6 +84,29 @@ const getAppointmentById = async (id, token) => {
     );
   }
 
+  const deleteAppointment = async (token, id) => {
+    var data = JSON.stringify({
+      "id_cita": id
+    });
+    
+    var config = {
+      method: 'delete',
+      url: 'http://198.211.103.50:5000/api/cita/deleteCita',
+      headers: { 
+        'Authorization': 'Bearer  '+token, 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+    
+    return await axios(config)
+    .then(function (response) {
+      return response.data;
+    }).catch(function (error) {
+      console.log(error);
+    }
+    );
+  }
 
 
 
@@ -218,7 +241,10 @@ export default ({token, unidad}) => {
 
   const viewEdit = async (modData) => {
     if(modData.deleted){
+      setLoading(true);
       console.log('Hostia chaval, que me han eliminado', modData.deleted)
+      await deleteAppointment(token, modData.deleted);
+      getData(setData, setLoading);
     }
     else if(modData.changed){
       setLoading(true);
@@ -259,7 +285,7 @@ export default ({token, unidad}) => {
         hora_inicio: modData.added.startDate.toTimeString().split(' ')[0],
         hora_final: modData.added.endDate.toTimeString().split(' ')[0],
         estado_cita: "Activo",
-        paciente: 1,
+        paciente: null,
       }
 
       await addAppointment(token, newData)
