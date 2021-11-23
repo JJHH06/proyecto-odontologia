@@ -54,6 +54,55 @@ function Tratamiento({token}) {
         });
       }
     }
+    if (changed) {
+      let id_tratamiento = '';
+      let tratamiento1 = '';
+      let precio1 = '';
+      tratamientosEncontrados.map((tratamiento, index) => {
+        if (changed[index]) {
+          if(changed[index].nombre !== undefined){
+            tratamiento1 = changed[index].nombre;
+          } else {
+            tratamiento1 = tratamiento.nombre;
+          }
+          if(changed[index].precio !== undefined){
+            precio1 = changed[index].precio;
+          } else {
+            precio1 = tratamiento.precio;
+          }
+          id_tratamiento = tratamiento.id_tratamiento;
+        }
+      });
+      console.log(id_tratamiento);
+      console.log(tratamiento1);
+      console.log(precio1);
+
+      var axios = require('axios');
+      var data = JSON.stringify({
+        "id_tratamiento": id_tratamiento,
+        "nombre": tratamiento1,
+        "precio": precio1
+      });
+
+      var config = {
+        method: 'put',
+        url: 'http://198.211.103.50:5000/api/tratamiento/updateTratamiento',
+        headers: { 
+          'Authorization': 'Bearer  ' + token,
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        setUpdate(update + 1);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   };
 
   useEffect(() => {
@@ -110,6 +159,7 @@ function Tratamiento({token}) {
             <TableEditRow />
             <TableEditColumn
                 showAddCommand
+                showEditCommand
             />
             <Toolbar />
             <SearchPanel />
