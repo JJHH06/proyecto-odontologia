@@ -21,9 +21,9 @@ function Navbar({currentUser,setToken}) {
       
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to='/home'>
               <img src={Logotipo} className="img-fluid size-img" />
-            </a>
+            </Link>
             <button
               data-toggle="collapse"
               className="navbar-toggler"
@@ -41,7 +41,7 @@ function Navbar({currentUser,setToken}) {
             <div className="collapse navbar-collapse" id="navcol-1">
               <ul className="navbar-nav flex-grow-1">
                 <li className="nav-item" role="presentation">
-                  <Link className="nav-link" to='/'><FontAwesomeIcon icon={faHome}></FontAwesomeIcon> Home</Link>
+                  <Link className="nav-link" to='/home'><FontAwesomeIcon icon={faHome}></FontAwesomeIcon> Home</Link>
                 </li>
                 <li className="nav-item dropdown">
                   <a

@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../../assets/FULL_COLOR.png";
 import inventory from "../../assets/inventory.jpg";
 import agenda from "../../assets/agenda.jpg";
+import { Link } from 'react-router-dom';
 import "./Homescreen.scss";
 
 function Homescreen() {
@@ -48,9 +49,9 @@ function Homescreen() {
                 <p className="card-text mb-auto mt-1">
                   Pon al dia el inventario de instrumentaria existente, se recomienda hacer una vez a la semana.
                 </p>
-                <a href="becas" className="text-muted stretched-link">
+                <Link to='/inventario' className="text-muted stretched-link">
                   Ir a inventario
-                </a>
+                </Link>
               </div>
               <div className="col-auto d-none d-lg-block">
                 <img
@@ -73,9 +74,9 @@ function Homescreen() {
                 <p className="mb-auto">
                   Agenda citas para pacientes, modifica y elimina citas existentes, ademas de tener bien organizada la planeación de las citas dentro del sistema.
                 </p>
-                <a href="jobs" className="text-muted stretched-link">
+                <Link to='/agenda' className="text-muted stretched-link">
                   Ir a agenda
-                </a>
+                </Link>
               </div>
               <div className="col-auto d-none d-lg-block">
                 <img
