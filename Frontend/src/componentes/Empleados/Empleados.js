@@ -33,6 +33,12 @@ function Empleados({token}) {
   React.useEffect(() => {
     fillData(token, setRows);
   }, []);
+
+  React.useEffect(() => {
+    if(!currentEmployee.isEdit){
+      fillData(token, setRows);
+    }
+  }, [currentEmployee]);
   return (
     <div className="empleados-container">
       <h1 className="text-center mb-4 mt-4">Empleados</h1>

@@ -5,10 +5,54 @@ import './Ficha.scss';
 import Odontogram from "../Odontograma/Odontogram"
 import Presupuesto from '../Presupuesto/Presupuesto';
 import { PDFExport } from "@progress/kendo-react-pdf";
+import axios from 'axios';
 
+const getTotal= async (id, token) => {
+    const data = JSON.stringify({
+        "idPaciente": id
+      });
+      
+      let config = {
+        method: 'post',
+        url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getPresupuestoTotal',
+        headers: { 
+          'Authorization': 'Bearer  ' + token, 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      return await axios(config)
+      .then(function (response) {
+        return response.data.result.total;
+      })
+}
+
+const getTreatmentsSummary = async (id, token) => {
+    const data = JSON.stringify({
+        "idPaciente": id
+      });
+      
+      let config = {
+        method: 'post',
+        url: 'http://198.211.103.50:5000/api/tratamiento_paciente/getPresupuestoResumen',
+        headers: { 
+          'Authorization': 'Bearer  '+token, 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+      
+      return await axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        return response.data.result;
+      })
+    }
 function Ficha({token,currentUserName}) {
     const pdfExportComponent = React.useRef(null);
-    
+    const [totalPrice, setTotalPrice] = useState(0.0);
+    const [tratamientosSummary, setTratamientosSummary] = useState([]);
     const location = useLocation();
     // console.log(location.state);
     //console.log(props.location.state)
@@ -93,7 +137,9 @@ function Ficha({token,currentUserName}) {
                     <div className='mb-4 mt-4 container'>
                         <div className='row'>
                             <div className='col-lg-12 text-center'>
-                            <button className='btn btn-success' onClick={(e)=>{
+                            <button className='btn btn-success' onClick={async(e)=>{
+                                setTotalPrice(await getTotal(location.state.id_paciente, token))
+                                setTratamientosSummary(await getTreatmentsSummary(location.state.id_paciente, token))
                                 if (pdfExportComponent.current) {
                                     pdfExportComponent.current.save();
                                   }
@@ -111,7 +157,7 @@ function Ficha({token,currentUserName}) {
           top: 0,
         }}>
                     <PDFExport paperSize="A3" fileName={location.state.nombre+'.pdf'} margin="0cm" ref={pdfExportComponent}>
-                        <Presupuesto nombre={location.state.nombre} doctor={currentUserName}/>
+                        <Presupuesto nombre={location.state.nombre} doctor={'Dr. '+currentUserName} total={totalPrice} summary={tratamientosSummary}/>
         </PDFExport>
 
 </div>

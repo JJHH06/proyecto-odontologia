@@ -2,7 +2,7 @@ import { height } from 'dom-helpers';
 import React from 'react';
 import Logo from '../../assets/FULL_COLOR.png';
 //import './presupuesto.css';
-function Presupuesto({nombre}) {
+function Presupuesto({nombre, doctor, total, summary}) {
     return (
         <div className='print-source'>
             <div id="presupuesto-paciente">
@@ -46,7 +46,7 @@ function Presupuesto({nombre}) {
                                 </p>
                                 <p className="card-text">
                                     <strong>Odontologo: </strong>
-                                    <span>{'Dr. Pablo Cabrera'}</span>
+                                    <span>{doctor}</span>
                                 </p>
                                 <p className="card-text">
                                     <strong>Numero: </strong>
@@ -85,7 +85,7 @@ function Presupuesto({nombre}) {
                                         </div>
                                         <div className='d-flex flex-column col-4'>
                                         <div class="p-2"><strong>Total:</strong></div>
-                                        <div class="p-2">Q1200.00</div>
+                                        <div class="p-2">{'Q'+total}</div>
                                         </div>
                                     </div>
 
@@ -113,30 +113,16 @@ function Presupuesto({nombre}) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Detartraje</td>
-                                    <td>Q200.00</td>
-                                    <td>1</td>
-                                    <td>Q200.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Resina clase II</td>
-                                    <td>Q250.00</td>
-                                    <td>4</td>
-                                    <td>Q1000.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Sellantes de fosas y fisuras</td>
-                                    <td>Q200.00</td>
-                                    <td>8</td>
-                                    <td>Q1600.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Exodoncia multiradicular</td>
-                                    <td>Q1100.00</td>
-                                    <td>1</td>
-                                    <td>Q1100.00</td>
-                                </tr>
+                                {summary.map((row, index) => (
+                                    <tr
+                                        key={index} >
+                                        <td>{row.procedimiento}</td>
+                                        <td>{'Q'+row.precio}</td>
+                                        <td>{row.cantidad}</td>
+                                        <td>{'Q'+row.total}</td>
+                                    </tr>
+                                ))}
+                                
                                 
                             
                             </tbody>
