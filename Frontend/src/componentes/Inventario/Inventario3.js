@@ -154,7 +154,7 @@ function Inventario2({token}) {
             });
             var config = {
             method: 'put',
-            url: 'http://localhost:5000/api/inventario/upadteItem',
+            url: 'http://198.211.103.50:5000/api/inventario/upadteItem',
             headers: { 
                 'Authorization': 'Bearer  ' + token,
                 'Content-Type': 'application/json'
@@ -190,7 +190,7 @@ function Inventario2({token}) {
 
                 var config = {
                 method: 'delete',
-                url: 'http://localhost:5000/api/inventario/deleteItem',
+                url: 'http://198.211.103.50:5000/api/inventario/deleteItem',
                 headers: { 
                     'Authorization': 'Bearer  ' + token,
                     'Content-Type': 'application/json'
