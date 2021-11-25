@@ -123,7 +123,7 @@ function Tratamiento({token}) {
 
         var config = {
           method: 'delete',
-          url: 'http://localhost:5000/api/tratamiento/deleteTratamiento',
+          url: 'http://198.211.103.50:5000/api/tratamiento/deleteTratamiento',
           headers: { 
             'Authorization': 'Bearer  ' + token,
             'Content-Type': 'application/json'
